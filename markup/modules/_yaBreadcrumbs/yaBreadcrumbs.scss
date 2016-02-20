@@ -1,0 +1,37 @@
+.ya-breadcrumbs__li {
+    display: inline;
+
+    &:not(:last-child):after {
+        content: '';
+        margin: 0 2px 0 3px;
+        display: inline-block;
+        vertical-align: middle;
+        border-left: 5px solid transparent;
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        border-left-color: $anchor-color;
+    }
+}
+
+.ya-breadcrumbs__text {
+    font-size: 14px;
+    vertical-align: middle;
+    line-height: 1;
+    border-bottom: 1px solid transparent;
+    display: inline-block;
+}
+
+a.ya-breadcrumbs__text {
+    text-decoration: none;
+    color: $anchor-color;
+    transition: all $global-transition-duration linear;
+
+    &:hover {
+        color: $anchor-color-hover;
+        border-color: $anchor-color-hover;
+    }
+}
+
+span.ya-breadcrumbs__text {
+    color: #9d9d9d;
+}

@@ -1,0 +1,39 @@
+<div class="ya-slider-container ya-slider-container--{{name}}">
+
+    <!-- слайды -->
+    <div class="ya-slider">
+        <ul class="ya-slider__wrapper">
+
+        {{#each list}}
+            <li class="ya-slider__slide">
+                <div class="ya-slider__slide-in">
+                    <!-- контент -->
+                </div>
+            </li>
+        {{/each}}
+
+        </ul>
+    </div>
+
+    <!-- кнопки -->
+    <button class="ya-slider__button ya-slider__button--prev">
+        Назад
+        <span class="ya-icon"></span>
+    </button>
+    <button class="ya-slider__button ya-slider__button--next">
+        Вперед
+        <span class="ya-icon"></span>
+    </button>
+
+    <!-- точки -->
+    <div class="ya-slider__dots">
+        <ul class="ya-slider__dots-ul"></ul>
+    </div>
+
+    <!-- счетчик -->
+    <div class="ya-slider__counter">
+        <span class="ya-slider__counter-current"></span>
+        <span class="ya-slider__counter-separator">из</span>
+        <span class="ya-slider__counter-all"></span>
+    </div>
+</div>

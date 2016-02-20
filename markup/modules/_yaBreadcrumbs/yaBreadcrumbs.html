@@ -1,0 +1,19 @@
+<div class="ya-breadcrumbs">
+    <div class="ya-container">
+        <div class="ya-breadcrumbs__ul">
+
+        {{#each list}}
+            <li class="ya-breadcrumbs__li">
+
+            {{#if href}}
+                <a href="{{href}}" class="ya-breadcrumbs__text">{{text}}</a>
+            {{else}}
+                <span class="ya-breadcrumbs__text">{{text}}</span>
+            {{/if}}
+
+            </li>
+        {{/each}}
+
+        </div>
+    </div>
+</div>

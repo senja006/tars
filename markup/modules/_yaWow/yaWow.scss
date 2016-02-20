@@ -1,0 +1,17 @@
+.ya-wow-effect {
+    transition: all 0.6s linear;
+
+    @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+            transition-delay: 0.6s * $i;
+        }
+    }
+
+    .fadeIn & {
+        opacity: 0;
+    }
+
+    .animated.fadeIn & {
+        opacity: 1;
+    }
+}

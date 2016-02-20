@@ -1,0 +1,133 @@
+@function -zf-map-next($map, $key) {
+    // Store the values of the map as a list, so we can access them with nth
+    $values: map-values($map);
+
+    // Ghetto for loop
+    $i: 1;
+    $found: false;
+    @each $val in map-keys($map) {
+        @if $found == false {
+            @if ($key == $val) {
+                $found: true;
+            }
+            $i: $i + 1;
+        }
+    }
+
+    // If the key doesn't exist, or it's the last key in the map, return null
+    @if $i > length($map) {
+        @return null;
+    }
+        // Otherwise, return the value
+    @else {
+        @return nth($values, $i);
+    }
+}
+
+@function strip-unit($num) {
+    @return $num / ($num * 0 + 1);
+}
+
+@function breakpoint($val: small) {
+    // Size or keyword
+    $bp: nth($val, 1);
+    // Value for max-width media queries
+    $bp-max: 0;
+    // Direction of media query (up, down, or only)
+    $dir: if(length($val) > 1, nth($val, 2), up);
+    // Eventual output
+    $str: '';
+    // Is it a named media query?
+    $named: false;
+
+    // Orientation media queries have a unique syntax
+    @if $bp == 'landscape' or $bp == 'portrait' {
+        @return '(orientation: #{$bp})';
+    }
+    @else if $bp == 'retina' {
+        @return '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+    }
+
+    // Try to pull a named breakpoint out of the $breakpoints map
+    @if type-of($bp) == 'string' {
+        @if map-has-key($breakpoints, $bp) {
+            @if $dir == 'only' or $dir == 'down' {
+                $next-bp: -zf-map-next($breakpoints, $bp);
+
+                @if $next-bp == null {
+                    $bp-max: null;
+                }
+                @else {
+                    $bp-max: $next-bp;
+                }
+            }
+
+            $bp: map-get($breakpoints, $bp);
+            $named: true;
+        }
+        @else {
+            $bp: 0;
+        }
+    }
+
+    // Convert any pixel, rem, or unitless value to em
+    //$bp: -zf-bp-to-em($bp);
+    //@if $bp-max {
+    //    $bp-max: -zf-bp-to-em($bp-max) - (1/16);
+    //}
+
+    // Skip media query creation if the input is "0 up" or "0 down"
+    @if $bp > 0 or $dir == 'only' {
+        // "Only" ranges use the format "(min-width: n) and (max-width: n)"
+        @if $dir == 'only' {
+            @if $named == true {
+                $str: $str + '(min-width: #{$bp})';
+
+                @if $bp-max != null {
+                    $str: $str + ' and (max-width: #{$bp-max})';
+                }
+            }
+            @else {
+                @warn 'Only named media queries can have an "only" range.';
+            }
+        }
+
+            // "Down" ranges use the format "(max-width: n)"
+        @else if $dir == 'down' {
+            $max: 0;
+
+            // For named breakpoints, subtract the breakpoint value by one "pixel", or 1/16em.
+            @if $named {
+                $max: $bp-max;
+            }
+            @else {
+                $max: $bp;
+            }
+
+            $str: $str + '(max-width: #{$max})';
+        }
+
+            // "Up" ranges use the format "(min-width: n)"
+        @else if strip-unit($bp) > 0 {
+            $str: $str + '(min-width: #{$bp})';
+        }
+    }
+
+    @return $str;
+}
+
+@mixin breakpoint($value) {
+    $str: breakpoint($value);
+
+    // If $str is still an empty string, no media query is needed
+    @if $str == '' {
+        @content;
+    }
+
+        // Otherwise, wrap the content in a media query
+    @else {
+        @media screen and #{$str} {
+            @content;
+        }
+    }
+}

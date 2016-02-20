@@ -1,0 +1,114 @@
+@mixin field-error {
+
+    .#{$field-class-error} &,
+    &.#{$field-class-error} {
+        color: $field-error-color;
+
+        @if $field-error-border-color != '' {
+            border-color: $field-error-border-color;
+        }
+
+        @if $field-error-background != '' {
+            background: $field-error-background;
+        }
+    }
+}
+
+.#{$field-class} {
+    width: 100%;
+    color: $field-color;
+    border: $field-border-width $field-border-style $field-border-color;
+    height: $field-height;
+    font-family: $field-font-family;
+    font-weight: $field-font-weight;
+    font-size: $field-font-size;
+    padding: 0 $field-padding;
+    border-radius: $field-border-radius;
+    background: $field-background;
+    transition: all $field-transition-duration linear;
+
+    &:focus {
+        color: $field-focus-color;
+        background: $field-focus-background;
+        border-color: $field-focus-border-color;
+    }
+
+    @include field-error;
+}
+
+textarea.#{$field-class} {
+    height: $field-textarea-height;
+    padding: $field-textarea-padding $field-padding;
+}
+
+::-webkit-input-placeholder {
+    color: $field-placeholder-color;
+    //@include field-error;
+}
+::-moz-placeholder {
+    color: $field-placeholder-color;
+    //@include field-error;
+}
+:-ms-input-placeholder {
+    color: $field-placeholder-color;
+    //@include field-error;
+}
+
+@if $field-placeholder-hide-focus {
+
+    .#{$field-class}::-webkit-input-placeholder       {opacity: 1; transition: opacity $field-placeholder-transition-duration ease;}
+    .#{$field-class}::-moz-placeholder                {opacity: 1; transition: opacity $field-placeholder-transition-duration ease;}
+    .#{$field-class}:-moz-placeholder                 {opacity: 1; transition: opacity $field-placeholder-transition-duration ease;}
+    .#{$field-class}:-ms-input-placeholder            {opacity: 1; transition: opacity $field-placeholder-transition-duration ease;}
+    .#{$field-class}:focus::-webkit-input-placeholder {opacity: 0; transition: opacity $field-placeholder-transition-duration ease;}
+    .#{$field-class}:focus::-moz-placeholder          {opacity: 0; transition: opacity $field-placeholder-transition-duration ease;}
+    .#{$field-class}:focus:-moz-placeholder           {opacity: 0; transition: opacity $field-placeholder-transition-duration ease;}
+    .#{$field-class}:focus:-ms-input-placeholder      {opacity: 0; transition: opacity $field-placeholder-transition-duration ease;}
+}
+
+.#{$field-group-class} {
+    display: flex;
+    border: 1px solid white;
+    border-radius: $field-border-radius;
+    overflow: hidden;
+    transition: all $global-transition-duration linear;
+
+    & > * {
+        flex: 1 1 0%;
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
+        border-radius: 0;
+
+        &:first-child {
+            border-left: none;
+            border-radius: $field-border-radius - 2 0 0 $field-border-radius - 2;
+        }
+
+        &:last-child {
+            border-radius: 0 $field-border-radius - 2 $field-border-radius - 2 0;
+        }
+
+        &:not(:first-child) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+
+    &.ya-width-auto > * {
+        flex: 1 1 auto;
+    }
+
+    &.ya-error {
+        border-color: $field-error-border-color;
+
+        & > * {
+            border-color: $field-error-border-color;
+        }
+    }
+}

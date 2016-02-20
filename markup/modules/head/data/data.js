@@ -1,0 +1,3 @@
+head: {
+	index: { title: 'Главная' }
+}

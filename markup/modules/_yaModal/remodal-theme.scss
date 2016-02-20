@@ -1,0 +1,64 @@
+$remodal-class-hidden-overlay: 'remodal-overlay-none';
+
+$remodal-animation-duration: 0.4s;
+
+$remodal-overlay-background: rgba(50, 50, 50, .8);
+$remodal-overlay-open-duration: $remodal-animation-duration;
+$remodal-overlay-close-duration: $remodal-animation-duration;
+
+$remodal-wrapper-padding: 10px; // отступы по краям экрана
+
+$remodal-width: auto;
+$remodal-min-width: 0;
+$remodal-max-width: auto;
+$remodal-background: white;
+$remodal-border-radius: 0;
+$remodal-padding: 10px;
+$remodal-color: inherit;
+
+$remodal-container-width: auto;
+$remodal-container-min-width: 0;
+$remodal-container-max-width: auto;
+
+$remodal-open-animation-name: remodal-open;
+$remodal-open-duration: $remodal-animation-duration;
+$remodal-close-animation-name: remodal-close;
+$remodal-close-duration: $remodal-animation-duration;
+
+@import 'remodal-custom';
+@import "remodal-theme-base";
+
+// подложка
+.remodal-overlay {
+
+}
+
+// контейнер окна
+.remodal-wrapper {
+
+}
+
+// окно
+.remodal {
+
+    &--offcanvas-right {
+
+    }
+
+    &--offcanvas-left {
+
+    }
+
+    &--offcanvas-top {
+
+    }
+
+    &--offcanvas-bottom {
+
+    }
+}
+
+// контейнер для содержимого окна
+.remodal__container {
+
+}

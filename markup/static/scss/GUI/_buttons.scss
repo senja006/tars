@@ -1,0 +1,41 @@
+.#{$button-class} {
+
+    // основные стили //
+
+    display: inline-block;
+    padding: 0 $button-padding;
+    line-height: $button-height - $button-border-width * 2;
+    width: $button-width;
+    vertical-align: middle;
+    transition: all $button-transition-duration linear;
+    font-size: $button-font-size;
+    border-radius: $button-radius;
+    text-decoration: none;
+    text-transform: $button-text-transform;
+    font-family: $button-font-family;
+    font-weight: $button-font-weight;
+    text-align: center;
+
+    @if $button-border-width != 0 {
+        border: $button-border-width $button-border-style transparent;
+    }
+
+    &[disabled] {
+        filter: grayscale(100%);
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &:active {
+        transition: all $button-active-transition-duration linear;
+    }
+
+
+    // набор кнопок //
+
+    &--red {
+        @include button-color(black, white, red);
+        @include button-background(white, black, blue);
+        @include button-border-color(black, green);
+    }
+}

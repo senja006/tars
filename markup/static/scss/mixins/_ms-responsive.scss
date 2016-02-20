@@ -1,0 +1,38 @@
+// отзывчивые правила css
+
+@mixin ms-responsive(
+    $rules,
+    $start-size,
+    $end-size,
+    $start-br: $ms-start-breakpoint,
+    $end-br: $ms-end-breakpoint,
+    $num-steps: $ms-num-steps-breakpoints
+) {
+    $step: ceil(($start-br - $end-br) / $num-steps);
+    $ratio: ($start-size - $end-size) / ($num-steps + 1);
+
+    @each $rule in $rules {
+        $current-size: $start-size;
+
+        @include breakpoint($start-br up) {
+            #{$rule}: $start-size;
+        }
+        @for $i from 1 through $num-steps + 1 {
+            $breakpoint: $start-br - $step * ($i - 1);
+            $current-size: $current-size - $ratio;
+
+            @include breakpoint($breakpoint down) {
+                #{$rule}: $current-size;
+            }
+        }
+    }
+}
+
+//@include ms-responsive(
+//    $rules, // css правило
+//    $start-size, // стартовый размер
+//    $end-size, // конечный размер
+//    $start-br, // стартовая точка
+//    $end-br, // конечная точка
+//    $num-steps, // шаг
+//);

@@ -1,0 +1,8 @@
+yaSlider: {
+	template: {
+		name: '',
+		list: [
+			{}
+		]
+	}
+}

@@ -1,0 +1,51 @@
+// вертикальное выравнивание по центру
+@mixin vertical-align($element) {
+
+    font-size: 0;
+    letter-spacing: -1px;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1;
+
+    &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+
+    & > #{$element} {
+        display: inline-block;
+        font-size: $global-font-size;
+        letter-spacing: normal;
+        white-space: normal;
+        vertical-align: middle;
+        text-align: left;
+        line-height: normal;
+    }
+}
+
+// вертикальное выравнивание по центру
+//@include vertical-align($element);
+
+//%vaContainer {
+//    font-size: 0;
+//    letter-spacing: -1px;
+//    white-space: nowrap;
+//    text-align: center;
+//
+//    &:before {
+//        content: '';
+//        display: inline-block;
+//        height: 100%;
+//        vertical-align: middle;
+//    }
+//}
+//%vaEl {
+//    display: inline-block;
+//    font-size: 16px;
+//    letter-spacing: normal;
+//    white-space: normal;
+//    vertical-align: middle;
+//    text-align: left;
+//}

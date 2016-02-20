@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+}
+
+.#{$class-container-page} {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.#{$class-footer} {
+    flex: none;
+}
+
+.#{$class-container-content} {
+    flex: 1 0 auto;
+}
+
+.#{$class-header} {
+    flex: none;
+}

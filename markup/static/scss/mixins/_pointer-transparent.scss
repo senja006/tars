@@ -1,0 +1,30 @@
+@mixin pointer-transparent($height, $background, $skew, $margin, $position: 'bottom') {
+    position: relative;
+    overflow: hidden;
+
+    &:after,
+    &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: $height;
+        bottom: 0;
+        left: 0;
+        background: $background;
+
+        @if $position == 'top' {
+            bottom: auto;
+            top: 0;
+        }
+    }
+
+    &:before {
+        margin-left: 0 - $margin / 2;
+        transform: translateX(-50%) skew($skew, 0);
+    }
+
+    &:after {
+        margin-left: $margin / 2;
+        transform: translateX(50%) skew(0-$skew, 0);
+    }
+}

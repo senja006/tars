@@ -1,0 +1,7 @@
+yaTabs: {
+    template: {
+        tabsButtons: [
+            { text: '' }
+        ]
+    }
+}

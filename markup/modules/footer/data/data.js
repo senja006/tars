@@ -1,0 +1,8 @@
+footer: {
+	template: {
+
+	},
+    default: {
+
+    }
+}

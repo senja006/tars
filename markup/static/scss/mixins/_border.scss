@@ -1,0 +1,29 @@
+@mixin border($border, $cols, $padding-y: 0, $padding-x: 0, $outside: 'false', $child: 'li') {
+    @if $outside == 'true' {
+        border: $border;
+    }
+
+    & > #{$child} {
+        border-left: $border;
+        border-top: $border;
+        padding-left: $padding-x;
+        padding-right: $padding-x;
+        padding-top: $padding-y;
+    }
+
+    & > #{$child}:nth-child(#{$cols}n+1) {
+        border-left: none;
+        padding-left: 0;
+    }
+
+    & > #{$child}:nth-child(#{$cols}) {
+        padding-right: 0;
+    }
+
+    @for $i from 1 through $cols {
+        & > #{$child}:nth-child(#{$i}) {
+            border-top: none;
+            // padding-top: 0;
+        }
+    }
+}

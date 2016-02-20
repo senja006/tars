@@ -1,0 +1,42 @@
+@import "yaTabs-core";
+
+.ya-tabs__buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 31px;
+}
+
+.ya-tabs__buttons-ul {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.ya-tabs__button {
+    background: white;
+    width: 227px;
+    height: 45px;
+    transition: all $global-transition-duration linear;
+
+    .ya-tabs__buttons-li:not(:first-child) & {
+        border-left: 1px solid #dddddd;
+    }
+
+    &:hover {
+        background: #dddddd;
+    }
+
+    &.ya-tabs-active {
+        background: #838d8f;
+        color: white;
+    }
+}
+
+.ya-tabs__list-li {
+    transition: all 0s linear;
+}
+
+

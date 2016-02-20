@@ -1,0 +1,14 @@
+<div class="ya-menu {{modMenu}}">
+	<!-- <button class="ya-menu__toggle" data-remodal-target="remodal-menu">
+        <div class="ya-menu__toggle-div"><div class="ya-menu__toggle-div-in"></div></div>
+    </button> -->
+    <ul class="ya-menu__ul">
+
+    {{#each list}}
+        <li class="ya-menu__li {{modLi}}">
+            <a href="{{href}}" class="ya-menu__a">{{text}}</a>
+        </li>
+    {{/each}}
+
+    </ul>
+</div>

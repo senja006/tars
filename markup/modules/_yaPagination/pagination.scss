@@ -1,0 +1,48 @@
+.ya-pagination {
+    margin-bottom: 32px;
+}
+
+.ya-pagination__list {
+    display: flex;
+    justify-content: center;
+}
+
+.ya-pagination__ul {
+    @include cols(default, 14px, 'li');
+
+    align-items: center;
+}
+
+.ya-pagination__li {
+
+    &:first-child {
+        margin-right: 16px;
+    }
+
+    &:last-child {
+        margin-left: 16px;
+    }
+}
+
+.ya-pagination__a {
+    display: block;
+    text-decoration: none;
+    color: #5a5a5a;
+    font-size: 18px;
+    font-weight: 700;
+    transition: all $global-transition-duration linear;
+
+    .ya-active & {
+        color: $anchor-color;
+        font-size: 20px;
+        cursor: default;
+        pointer-events: none;
+    }
+}
+
+a.ya-pagination__a {
+
+    &:hover {
+        color: $anchor-color;
+    }
+}

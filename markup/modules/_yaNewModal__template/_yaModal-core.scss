@@ -1,0 +1,121 @@
+$ya-modal-class-active: ya-modal-active;
+
+.ya-modal-overlay {
+    position: fixed;
+    z-index: $z-index-popup - 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition-timing-function: linear;
+
+    background: $ya-modal-overlay-bg;
+
+    &.#{$ya-modal-class-active} {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.ya-modal-wrapper {
+    display: none;
+    position: fixed;
+    z-index: $z-index-popup;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    overflow: auto;
+    transition: all 0s linear 0.3s;
+
+    &[#{$ya-modal-attr-not-toggle}] {
+        z-index: $z-index-popup - 1;
+    }
+
+    .ya-modal-ready & {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &.#{$ya-modal-class-active} {
+        transition: all 0s linear 0s;
+        opacity: 1;
+        visibility: visible;
+        //display: block;
+    }
+
+    &.ya-modal-back {
+        z-index: $z-index-popup - 5;
+        transition-duration: 0s !important;
+    }
+
+    &[class*='offcanvas'] {
+        overflow: hidden;
+    }
+
+    @include vertical-align('.ya-modal-wrapper__in');
+}
+
+.ya-modal-wrapper__in {
+    padding: $ya-modal-wrapper-in-padding;
+
+    [class*='offcanvas'] & {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 0;
+    }
+}
+
+.ya-modal {
+    width: $ya-modal-width;
+    max-width: $ya-modal-max-width;
+    background: $ya-modal-bg;
+    opacity: 0;
+    visibility: hidden;
+    transition-timing-function: linear;
+
+    [class*='offcanvas'] & {
+        transition-timing-function: ease;
+        opacity: 1;
+        visibility: visible;
+        overflow: auto;
+        position: absolute;
+    }
+
+    [class*='offcanvas-right'] & {
+        transform: translateX(100%);
+        top: 0;
+        right: 0;
+        height: 100%;
+    }
+
+    [class*='offcanvas-left'] & {
+        transform: translateX(-100%);
+        top: 0;
+        left: 0;
+        height: 100%;
+    }
+
+    .#{$ya-modal-class-active} & {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+}
+
+.ya-modal__container {
+    padding: $ya-modal-container-padding;
+}
+
+html {
+
+    &.ya-modal-open {
+        overflow: hidden;
+    }
+}

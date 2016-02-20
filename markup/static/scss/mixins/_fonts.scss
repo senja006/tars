@@ -1,0 +1,22 @@
+@mixin font-face($font-name, $file-name, $weight: 400, $style: normal, $path-font: "../fonts/") {
+    @font-face {
+        font-weight: $weight;
+        font-style: $style;
+        font-family: $font-name;
+        src: url($path-font + $file-name + ".woff2") format("woff2"),
+        url($path-font + $file-name + ".woff") format("woff");
+    }
+}
+
+@mixin font-face-old($font-name, $file-name, $weight: 400, $style: normal, $path-font: "../fonts/") {
+    @font-face {
+        font-weight: $weight;
+        font-style: $style;
+        font-family: $font-name;
+        src: url($path-font + $file-name + ".eot");
+        src: url($path-font + $file-name + ".eot?#iefix")format("embedded-opentype"),
+        url($path-font + $file-name + ".woff") format("woff"),
+        url($path-font + $file-name + ".ttf") format("truetype");
+    }
+}
+// @include font-face("OpenSans", "opensans");

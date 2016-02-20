@@ -1,0 +1,111 @@
+@import "ya-slider-core";
+
+// главный контейнер для слайдера
+.ya-slider-container {
+
+}
+
+// настройки обертки для слайдов (ul)
+.ya-slider__wrapper {
+
+    .ya-slider-container--reviews & {
+        @include cols(100%, 0, 'li');
+        // height: 260px; // для эффекта fade
+
+        // для кастомных эффектов
+        // ----------------------
+        transition: background 0s linear 0.3s;
+        background: #eeeeee; // цвет фона чтобы не видны были элементы других слайдов
+    }
+
+    // для кастомных эффектов
+    // ----------------------
+    .ya-slider-container--reviews.ya-slider-ready & {
+        background: none;
+    }
+
+    .ya-slider-container--nav & {
+        @include cols(25%, 20px, 'li', 'true');
+    }
+}
+
+// настройки слайдов (li)
+.ya-slider__slide {
+
+}
+
+// настройки обертки контента слайдов (li > div)
+.ya-slider__slide-in {
+
+    .ya-slider-container--nav & {
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border: 3px solid transparent;
+        }
+    }
+
+    .ya-slider-container--nav .ya-slide-active & {
+
+        &:after {
+            border-color: blue;
+        }
+    }
+}
+
+// точки
+.ya-slider__dots-ul {
+    @include cols(default, 3px, 'li');
+}
+
+.ya-slider__dots-button {
+    width: 7px;
+    height: 7px;
+    background: black;
+    display: block;
+    border-radius: 50%;
+
+    &.ya-slide-active {
+        background: green;
+    }
+}
+
+// настройки кнопок
+.ya-slider__button {
+
+    &.ya-slider-disable {
+        opacity: 0.5;
+        cursor: default;
+    }
+}
+
+// для счетчика слайдов
+.ya-slider__counter {
+    
+}
+
+// для кастомных эффектов
+.ya-slider-custom-anim {
+    transition: all 0s linear;
+
+    .ya-slider-ready & {
+        opacity: 0;
+        transition: all 0.3s linear;
+    }
+
+    .ya-slide-active & {
+        opacity: 1;
+    }
+}
+
+.ya-slider-custom-anim-no {
+    @extend .ya-slider-custom-anim;
+
+    transition: all 0s linear;
+}

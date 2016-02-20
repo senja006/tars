@@ -1,0 +1,97 @@
+@mixin icon($class, $img, $img-hover: $img, $img-active: $img-hover, $elementsAction: (''), $classesActive: (''), $transition-duration: $global-transition-duration-icons) {
+
+    .ya-icon--#{$class} {
+
+        &:before {
+            @include bg($img);
+
+            transition: opacity $transition-duration - 0.1s linear;
+        }
+
+        &:after {
+            @include bg($img-hover);
+
+            transition: opacity $transition-duration linear;
+        }
+
+        @if nth($elementsAction, 1) != '' {
+            @for $i from 1 through length($elementsAction) {
+
+                .#{nth($elementsAction, $i)}:hover & {
+                    @include bg-trh($transition-duration);
+                }
+
+                @if $img-active != '' {
+                    .#{nth($elementsAction, $i)}:active & {
+                        @include bg-tra($img-active);
+                    }
+                }
+
+            }
+        }
+
+        @if nth($classesActive, 1) != '' {
+            @for $i from 1 through length($classesActive) {
+
+                @if $img-active != $img-hover {
+
+                    .#{nth($classesActive, $i)} &:before {
+                        @include bg($img-active);
+                        transition-duration: 0s !important;
+                    }
+                    .#{nth($classesActive, $i)} &:after {
+                        @include bg($img-active);
+                        transition-duration: 0s !important;
+                    }
+                }@else{
+                    .#{nth($classesActive, $i)} &:before {
+                        @include bg($img-hover);
+                        transition-duration: 0s !important;
+                    }
+                    .#{nth($classesActive, $i)} &:after {
+                        @include bg($img-hover);
+                        transition-duration: 0s !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin bg-trh($transition-duration: $global-transition-duration-icons) {
+
+    &:before {
+        opacity: 0;
+        transition: opacity $transition-duration + 0.4s linear;
+    }
+    &:after {
+        opacity: 1;
+        transition: opacity $transition-duration linear;
+    }
+}
+
+@mixin bg-tra($img) {
+
+    &:after {
+        @include bg($img);
+    }
+}
+
+// эффект наведения
+@mixin icon-hover($duration: $global-transition-duration-icons, $delay: 0s) {
+    @include bg-trh($duration, $delay);
+}
+
+// установка задержки смены иконок
+@mixin icon-delay($delay) {
+
+    &:before {
+        transition-delay: $delay;
+    }
+
+    &:after {
+        transition-delay: $delay;
+    }
+}
+
+//@include bg-tr($class, $img, $img-hover, $img-active, $elements, $transition-duration);

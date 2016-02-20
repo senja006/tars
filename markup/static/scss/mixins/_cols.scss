@@ -1,0 +1,102 @@
+// создание пробелов между колонками
+@mixin gutter($gutter, $selector-cols: 'div', $sizing-content-box: 'false') {
+    margin-left: 0 - $gutter / 2 !important;
+    margin-right: 0 - $gutter / 2 !important;
+
+    & > #{$selector-cols} {
+        padding-left: $gutter / 2;
+        padding-right: $gutter / 2;
+    }
+
+    @if $sizing-content-box == 'true' {
+        width: calc(100% + #{$gutter});
+    }
+}
+
+// установка ширины колонок
+@mixin cols($sizes, $gutter: 0, $selector-cols: 'div', $sizing-content-box: 'false') {
+    display: flex;
+
+    @if length($sizes) < 2 {
+        @if $sizes == 'auto' {
+            & > #{$selector-cols} {
+                flex: 1 1 auto;
+            }
+        } @else if $sizes == 'auto-shrink' {
+            & > #{$selector-cols} {
+                flex: 1 0 auto;
+            }
+        }@else if $sizes == 'default' {
+            & > #{$selector-cols} {
+                flex: 0 1 auto;
+            }
+        }@else if $sizes == 'shrink' {
+            & > #{$selector-cols} {
+                flex: 0 0 auto;
+            }
+        } @else {
+            @if str-index(inspect($sizes), 'px') {
+                $size: $sizes;
+            }@else{
+                $size: 100% / $sizes;
+            }
+
+            & > #{$selector-cols} {
+                @if $sizing-content-box == 'true' {
+                    max-width: calc(#{$size} - #{$gutter});
+                    flex: 0 0 calc(#{$size} - #{$gutter});
+                }@else{
+                    max-width: $size;
+                    flex: 0 0 $size;
+                }
+            }
+        }
+    } @else {
+        @for $i from 1 through length($sizes) {
+            @if nth($sizes, $i) == 'auto' {
+                & > #{$selector-cols}:nth-child(#{$i}) {
+                    flex: 1 1 auto;
+                }
+            } @else if nth($sizes, $i) == 'auto-shrink' {
+                & > #{$selector-cols}:nth-child(#{$i}) {
+                    flex: 1 0 auto;
+                }
+            }@else if nth($sizes, $i) == 'default' {
+                & > #{$selector-cols}:nth-child(#{$i}) {
+                    flex: 0 1 auto;
+                }
+            }@else if nth($sizes, $i) == 'shrink' {
+                & > #{$selector-cols}:nth-child(#{$i}) {
+                    flex: 0 0 auto;
+                }
+            } @else {
+                & > #{$selector-cols}:nth-child(#{$i}) {
+                    @if $sizing-content-box == 'true' {
+                        // не настроено для box-sizing: content-box;
+                        max-width: nth($sizes, $i);
+                        flex: 0 0 nth($sizes, $i);
+                    }@else{
+                        max-width: nth($sizes, $i);
+                        flex: 0 0 nth($sizes, $i);
+                    }
+                }
+            }
+
+        }
+    }
+
+    @if $gutter > 0 {
+        @include gutter($gutter, $selector-cols, $sizing-content-box);
+    }
+
+}
+
+// точки изменения колонок для изображений
+@mixin cols-images($start, $end, $img-width, $gutter, $list: 'li', $page-padding: $global-padding) {
+    @for $i from $start through $end {
+        $page-width: ($i - 1) * $img-width + $gutter * ($i - 2) + $page-padding * 2;
+        @include breakpoint($page-width) {
+            @include cols($i, $gutter, $list);
+        }
+    }
+}

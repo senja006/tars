@@ -1,0 +1,48 @@
+$ya-modal-attr-not-toggle: 'data-ya-modal-not-toggle';
+
+$ya-modal-overlay-bg: rgba(0, 0, 0, .3);
+
+$ya-modal-wrapper-in-padding: 10px;
+
+$ya-modal-width: auto;
+$ya-modal-max-width: auto;
+$ya-modal-bg: white;
+
+$ya-modal-container-padding: 10px;
+
+@import "yaModal-core";
+
+// подложка
+.ya-modal-overlay {
+
+}
+
+// контейнер
+.ya-modal-wrapper {
+
+}
+
+// контейнер окна
+.ya-modal-wrapper__in {
+
+}
+
+// окно
+.ya-modal {
+
+}
+
+// контейнер внутри окна
+.ya-modal__container {
+
+}
+
+// заголовок
+.ya-modal__title {
+
+}
+
+// подзаголовок
+.ya-modal__subtitle {
+
+}

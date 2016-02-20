@@ -1,0 +1,59 @@
+{{> head/head head.index}}
+{{> header/header header.default}}
+
+<div class="ya-container">
+    <span class="ya-title">Заголовок</span>
+
+    <div class="ya-text">
+        <ul>
+            <li>Текст</li>
+            <li>Текст</li>
+            <li>Текст</li>
+            <li>Текст
+                <ul>
+                    <li>Текст</li>
+                    <li>Текст</li>
+                    <li>Текст</li>
+                    <li>Текст</li>
+                </ul>
+            </li>
+        </ul>
+        <ol>
+            <li>Текст</li>
+            <li>Текст</li>
+            <li>Текст</li>
+            <li>Текст</li>
+        </ol>
+        <p>Параграф</p>
+    </div>
+
+    <a class="ya-button ya-button--red" href="#" class="button">Кнопка с тегом а</a>
+    <button class="ya-button ya-button--red">Кнопка с тегом button</button>
+
+    <a href="#" class="ya-link">Ссылка</a>
+
+    <form id="ya-form-contacts">
+        <!-- <input class="ya-field" type="text" placeholder="Имя"/> -->
+
+        <div class="ya-field-container ya-error">
+            <input class="ya-field" type="text" placeholder="Имя ошибка"/>
+        </div>
+
+        <div class="ya-field-container">
+            <input class="ya-field" type="text" placeholder="Фамилия"/>
+        </div>
+
+        <!-- группа -->
+        <div class="ya-field-container ya-field-group ya-width-auto">
+            <input class="ya-field" type="number" name="tel" placeholder="Телефон"/>
+            <button class="ya-button ya-button--white ya-medium" type="submit">Да</button>
+        </div>
+        
+        <textarea class="ya-field" name="message"></textarea>
+    </form>
+
+    {{> yaModal/template}}
+</div>
+
+{{> footer/footer footer.default}}
+{{> foot/foot}}

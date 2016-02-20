@@ -1,0 +1,64 @@
+.ya-slider-container {
+    position: relative;
+}
+
+.ya-slider__wrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    box-sizing: content-box;
+
+    .ya-slider-small & {
+        justify-content: center;
+    }
+}
+
+.ya-slider {
+    overflow: hidden;
+}
+
+.ya-slider__slide {
+    flex-shrink: 0;
+    transition: all 0s linear;
+    height: 100%;
+
+    .ya-effect-fade & {
+        position: absolute;
+        z-index: $z-index-base;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0; // закомментировать для кастомных эффектов
+        visibility: hidden; // закомментировать для кастомных эффектов
+
+        &.ya-slide-active {
+            opacity: 1; // закомментировать для кастомных эффектов
+            visibility: visible; // закомментировать для кастомных эффектов
+            z-index: $z-index-base + 1;
+        }
+    }
+}
+
+.ya-slider__slide-in {
+    width: 100%;
+    box-sizing: border-box;
+
+    .ya-slide-clicked & {
+        cursor: pointer;
+    }
+}
+
+.ya-slider__button {
+    opacity: 0;
+    visibility: hidden;
+
+    .ya-slider-ready & {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .ya-slider-small & {
+        display: none;
+    }
+}

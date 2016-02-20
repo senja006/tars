@@ -1,0 +1,237 @@
+%offcanvas {
+    position: absolute !important;
+    top: 0;
+    overflow: auto;
+}
+
+.remodal-overlay {
+    background: $remodal-overlay-background;
+    display: block !important;
+    transition: all $remodal-animation-duration linear;
+    z-index: $z-index-popup - 1;
+
+    &.remodal-is-closed {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &.remodal-is-opening {
+        opacity: 1;
+        transition-duration: $remodal-overlay-open-duration;
+    }
+
+    &.remodal-is-closing {
+        opacity: 0;
+        transition-duration: $remodal-overlay-close-duration;
+    }
+
+    [class*="#{$remodal-class-hidden-overlay}"] & {
+        display: none !important;
+    }
+}
+
+.remodal-wrapper {
+    @include vertical-align('.remodal');
+
+    padding: $remodal-wrapper-padding;
+    overflow: auto !important;
+    z-index: $z-index-popup;
+    transition: all $remodal-animation-duration linear;
+
+    &:after {
+        display: none !important;
+    }
+
+    &.remodal-is-opening,
+    &.remodal-is-opened {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    [class*='remodal-offcanvas'] & {
+        overflow: hidden !important;
+    }
+}
+
+.remodal {
+    position: relative;
+    text-align: left;
+    color: $remodal-color;
+    width: $remodal-width;
+    min-width: $remodal-min-width;
+    max-width: $remodal-max-width;
+    background-color: $remodal-background;
+    border-radius: $remodal-border-radius;
+    padding: $remodal-padding;
+
+    &.remodal-is-opening,
+    &.remodal-is-closing {
+        animation-fill-mode: forwards;
+    }
+
+    &.remodal-is-opening {
+        animation: $remodal-open-animation-name $remodal-open-duration;
+    }
+
+    &.remodal-is-closing {
+        animation: $remodal-close-animation-name $remodal-close-duration;
+    }
+
+    &--offcanvas-right {
+        @extend %offcanvas;
+        right: 0;
+        height: 100%;
+
+        &.remodal-is-opening {
+            animation: offcanvas-right-open $remodal-open-duration;
+        }
+
+        &.remodal-is-closing {
+            animation: offcanvas-right-close $remodal-open-duration;
+        }
+    }
+
+    &--offcanvas-left {
+        @extend %offcanvas;
+        left: 0;
+        height: 100%;
+
+        &.remodal-is-opening {
+            animation: offcanvas-left-open $remodal-open-duration;
+        }
+
+        &.remodal-is-closing {
+            animation: offcanvas-left-close $remodal-open-duration;
+        }
+    }
+
+    &--offcanvas-top {
+        @extend %offcanvas;
+        left: 0;
+        height: auto;
+        width: 100%;
+
+        &.remodal-is-opening {
+            animation: offcanvas-top-open $remodal-open-duration;
+        }
+
+        &.remodal-is-closing {
+            animation: offcanvas-top-close $remodal-open-duration;
+        }
+    }
+
+    &--offcanvas-bottom {
+        @extend %offcanvas;
+        left: 0;
+        height: auto;
+        width: 100%;
+        bottom: 0;
+        top: auto;
+
+        &.remodal-is-opening {
+            animation: offcanvas-bottom-open $remodal-open-duration;
+        }
+
+        &.remodal-is-closing {
+            animation: offcanvas-bottom-close $remodal-open-duration;
+        }
+    }
+}
+
+.remodal__container {
+    width: $remodal-container-width;
+    min-width: $remodal-container-min-width;
+    max-width: $remodal-container-max-width;
+    margin: 0 auto;
+}
+
+// анимация
+@keyframes remodal-open {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes remodal-close {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes offcanvas-right-open {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes offcanvas-right-close {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes offcanvas-left-open {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes offcanvas-left-close {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes offcanvas-top-open {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes offcanvas-top-close {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+@keyframes offcanvas-bottom-open {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes offcanvas-bottom-close {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}

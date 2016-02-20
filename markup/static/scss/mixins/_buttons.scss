@@ -1,0 +1,38 @@
+@mixin button-color($color, $color-hover: $color, $color-active: $color-hover) {
+    color: $color;
+
+    &:hover,
+    &:focus {
+        color: $color-hover;
+    }
+
+    &:active {
+        color: $color-active;
+    }
+}
+
+@mixin button-background($background, $background-hover: $background, $background-active: $background-hover) {
+    background: $background;
+
+    &:hover,
+    &:focus {
+        background: $background-hover;
+    }
+
+    &:active {
+        background: $background-active;
+    }
+}
+
+@mixin button-border-color($border-color, $border-color-hover: $border-color, $border-color-active: $border-color-hover) {
+    border-color: $border-color;
+
+    &:hover,
+    &:focus {
+        border-color: $border-color-hover;
+    }
+
+    &:active {
+        border-color: $border-color-active;
+    }
+}
