@@ -29,10 +29,14 @@ module.exports = {
      *     }
      * ]
      */
-    postcss: [],
+    postcss: [
+        {
+            name: 'postcss-flexbugs-fixes'
+        }
+    ],
 
     svg: {
-        active: true,
+        active: false,
         // symbols, sprite
         workflow: 'sprite',
         symbolsConfig: {
@@ -54,7 +58,7 @@ module.exports = {
      * Example: ['./markup/controller/** /*.js']
      * @type {Array}
      */
-    jsPathsToConcatBeforeModulesJs: [],
+    jsPathsToConcatBeforeModulesJs: ['./markup/modules/**/*.concat-before.js'],
 
     /**
      * Lint additional js before modules
@@ -66,7 +70,7 @@ module.exports = {
      * Path-strings to js-files, which have to be included before modules' js-files
      * @type {Array}
      */
-    jsPathsToConcatAfterModulesJs: [],
+    jsPathsToConcatAfterModulesJs: ['./markup/static/js/main.js'],
 
     /**
      * Lint additional js after modules
@@ -78,7 +82,7 @@ module.exports = {
      * Use babel for ES6(ES7-ESNext) syntax support
      * @type {Boolean}
      */
-    useBabel: false,
+    useBabel: true,
 
     /**
      * Write sourcemaps
@@ -90,11 +94,11 @@ module.exports = {
     sourcemaps: {
         js: {
             active: true,
-            inline: true
+            inline: false
         },
         css: {
             active: true,
-            inline: true
+            inline: false
         }
     },
 
@@ -108,7 +112,7 @@ module.exports = {
          * Do you need to use notify?
          * @type {Boolean}
          */
-        useNotify: true,
+        useNotify: false,
 
         /**
          * Title for notifier
@@ -177,7 +181,7 @@ module.exports = {
          * Example: ['google chrome', 'firefox']
          * Avalible: safari, internet explorer, google chrome, firefox, opera
          */
-        browser: 'default',
+        browser: 'google chrome',
 
         /**
          * Choose the page to open in browser at first opening
@@ -196,7 +200,7 @@ module.exports = {
          * Inject CSS changes
          * @type {Boolean}
          */
-        injectChanges: false
+        injectChanges: true
     },
 
     /**
@@ -210,7 +214,7 @@ module.exports = {
      * If is set to false, compiled html will be prettified
      * @type {Boolean}
      */
-    minifyHtml: false,
+    minifyHtml: true,
 
     /**
      * Beginning of path for static files
@@ -234,13 +238,13 @@ module.exports = {
      * Build version is a date ot building
      * @type {Boolean}
      */
-    useBuildVersioning: true,
+    useBuildVersioning: false,
 
     /**
      * Use archiver for your build
      * @type {Boolean}
      */
-    useArchiver: true,
+    useArchiver: false,
 
     /**
      * Set ulimit. Topical for Linux-family OS and OSX.
@@ -284,7 +288,7 @@ module.exports = {
      * and delete unused.
      * @type {Array}
      */
-    useImagesForDisplayWithDpi: [96],
+    useImagesForDisplayWithDpi: [96, 192],
 
     ////////////////////////////////////////////////
     ////////////////////////////////////////////////

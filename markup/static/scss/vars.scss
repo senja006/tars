@@ -24,7 +24,7 @@ $class-link: 'ya-link';
 $class-icon: 'ya-icon';
 $class-hidden: 'ya-hidden';
 
-$global-path: "%=staticPrefixForCss=%"; // путь к изображениям
+$global-path: "__static__"; // путь к изображениям
 $global-padding: 10px; // отступы по краям страницы
 $global-width: 980px; // ширина основного контейнера. 0 для ширины 100%
 $global-font-size: 14px;

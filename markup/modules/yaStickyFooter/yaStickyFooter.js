@@ -13,7 +13,7 @@ yaModules.yaStickyFooter = (function () {
     function checkSupportMinHeight() {
         let heightPage = $page.outerHeight();
 
-        if(offsetTopFooter + heightFooter < heightPage) {
+        if (offsetTopFooter + heightFooter < heightPage) {
             return false;
         }
 

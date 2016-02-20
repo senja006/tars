@@ -34,3 +34,6 @@ gulp.task('update-deps', () => gulp.start('service:update-deps'));
 
 // Default task. Just start build task
 gulp.task('default', () => gulp.start('build'));
+
+// Деплой проекта
+gulp.task('deploy', () => gulp.start('deploy'));
