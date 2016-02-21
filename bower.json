@@ -1,0 +1,22 @@
+{
+  "name": "tars",
+  "description": "Powerfull markup builder",
+  "main": "gulpfile.js",
+  "authors": [
+    "Sergey Yarkevich"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "gulp",
+    "makeup",
+    "markup"
+  ],
+  "homepage": "https://github.com/senja006/tars",
+  "moduleType": [],
+  "dependencies": {
+    "es6-promise": "~3.1.2",
+    "picturefill": "^3.0.2",
+    "jquery": "^2.2.0",
+    "magnific-popup": "^1.1.0"
+  }
+}
