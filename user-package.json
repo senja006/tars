@@ -1,5 +1,6 @@
 {
     "dependencies": {
-        "postcss-flexbugs-fixes": "^1.1.0"
+        "postcss-flexbugs-fixes": "^1.1.0",
+        "vinyl-ftp": "^0.4.5"
     }
 }

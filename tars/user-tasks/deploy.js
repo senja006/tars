@@ -1,39 +1,95 @@
 'use strict';
 
-// This is example of task function
-
 const gulp = tars.packages.gulp;
 const plumber = tars.packages.plumber;
-const notifier = tars.helpers.notifier;
-
+const notify = tars.packages.notify;
 const tarsConfig = tars.config;
-// Include browserSync, if you need to reload browser:
-// const browserSync = tars.packages.browserSync;
+const ftp = require( 'vinyl-ftp' );
+const fs = require('fs');
+const del = tars.packages.del;
 
 /**
- * Task description
+ * Деплой проекта
+ * Для запуска
+ * tars start deploy --flags '--dev/--build, --html, --frontend/--backend/--local/--server, --deploywatcher'
  */
+
+let folderMarkup = getFolderMarkup();
+// let tasks = [tars.flags.dev ? 'dev': 'build'];
+let config = getConfig();
+let localFilesGlob = [
+    '!' + folderMarkup + '/temp/**',
+    folderMarkup + '/**'
+];
+
+function getFolderMarkup() {
+    let folderMarkup = tars.flags.dev ? 'dev': 'builds';
+
+    if(tars.flags.backend) {
+        folderMarkup += '/static';
+    }
+
+    if(tars.flags.server) {
+        folderMarkup = 'server';
+    }
+
+    return folderMarkup;
+}
+
+function getConfig() {
+    if(tars.flags.frontend) {
+        return tarsConfig.deploy.frontend;
+    }else if(tars.flags.backend) {
+        return tarsConfig.deploy.backend;
+    }else if(tars.flags.local) {
+        return tarsConfig.deploy.local;
+    }else if(tars.flags.server) {
+        return tarsConfig.deploy.server;
+    }
+}
+
+function getPassword(path) {
+    if(fs.existsSync(path)) {
+        return fs.readFileSync(path, 'utf8');
+    }else{
+        return '';
+    }
+}
+
+function getFtpConnection() {
+    return ftp.create({
+        host: config.host,
+        user: config.user,
+        password: getPassword(config.password),
+        parallel: config.parallel
+    });
+}
+
 module.exports = function () {
 
-    return gulp.task('deploy', /*['required-task-name'],*/ function (cb) {
-        return gulp.src(/* path-string or array of path-strings to files */)
-            .pipe(plumber({
-                errorHandler: function (error) {
-                    notifier.error('An error occurred while something.', error);
-                }
-            }))
-            // Do stuff here, like
-            // .pipe(less())
-            .pipe(gulp.dest(/* path-string to destination directory. Only directory, not a file! */))
+    return gulp.task('deploy', function (cb) {
+        if(tars.flags.local) {
+            del.sync([config.remoteFolder + '/static']);
 
-            // If you need to reload browser, uncomment the row below
-            // .pipe(browserSync.reload({ stream:true }))
-            .pipe(
-                // You can change text of success message
-                notifier.success('Example task has been finished')
-            );
+            if(tars.flags.html) {
+                return gulp.src([
+                    '!' + folderMarkup + '/robots.txt',
+                    '!' + folderMarkup + '/p.html',
+                    folderMarkup + '/**'
+                ])
+                    .pipe(gulp.dest(config.remoteFolder ));
+            }else{
+                return gulp.src(folderMarkup + '/static/**')
+                    .pipe(gulp.dest(config.remoteFolder + '/static'));
+            }
 
-        // You can return callback, if you can't return pipe
-        // cb(null);
+        }else{
+            let conn = getFtpConnection();
+
+            return gulp.src(localFilesGlob, { base: folderMarkup + '/', buffer: false })
+                .pipe( conn.newer( config.remoteFolder ) ) // only upload newer files
+                .pipe( conn.dest( config.remoteFolder + '/' ) )
+                .pipe(notify('Загрузка завершена!'));
+        }
     });
 };

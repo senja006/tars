@@ -4,6 +4,23 @@
 
 # ![Tars](https://raw.githubusercontent.com/artem-malko/artwork/master/tars/logo.png)
 
+alias deployFrontBuild="tars start deploy --flags '--build --frontend'"
+alias deployFrontDev="tars dev --custom-flags '--deploywatcher --dev --frontend'"
+
+alias deployBackBuild="tars start deploy --flags '--build --backend'"
+alias deployBackDev="tars dev --custom-flags '--deploywatcher --dev --backend'"
+
+alias tarsDevLocalServer="tars dev --custom-flags '--deploywatcher --dev --local'"
+alias tarsBuildLocalServer="tars start deploy --flags '--build --local'"
+
+alias tarsDevLocalServerHtml="tars dev --custom-flags '--deploywatcher --dev --local --html'"
+alias tarsBuildLocalServerHtml="tars start deploy --flags '--build --local --html'"
+
+alias tarsDeployServer="tars start deploy --flags '--server'"
+
+alias tarsInit="tars init --silent --source https://github.com/senja006/tars/archive/senja006.zip"
+alias tarsUpdateProject="tars update-project --source https://github.com/senja006/tars/archive/senja006.zip"
+
 [![Mac/Linux Build Status](https://img.shields.io/travis/tars/tars/master.svg?label=Mac%20OSX%20%26%20Linux&style=flat-square)](https://travis-ci.org/tars/tars) [![Windows Build status](https://img.shields.io/appveyor/ci/artem-malko/tars/master.svg?label=Windows&style=flat-square)](https://ci.appveyor.com/project/artem-malko/tars/branch/master) [![Gitter](https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg?style=flat-square)](https://gitter.im/tars/tars?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Сборщик html-верстки, основанный на [Gulp](http://gulpjs.com/). Облегчает и ускоряет процесс html-верстки любой сложности.

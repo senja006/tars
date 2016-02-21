@@ -1,6 +1,6 @@
 // шаблон на самостоятельное управление открытием и закрытием окна
 
-yaModules. = (function () {
+yaModules.template = (function () {
 
     let buttonOpenModal = '.ya-callback__open'; // изменить класс
     let remodalCallback = undefined; // изменить название переменной

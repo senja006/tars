@@ -51,7 +51,7 @@ module.exports = {
      * Use linting and hinting of js-files
      * @type {Boolean}
      */
-    useJsLintAndHint: true,
+    useJsLintAndHint: false,
 
     /**
      * Path-strings to js-files, which have to be included before modules' js-files
@@ -319,8 +319,38 @@ module.exports = {
          * @type {String}
          */
         imagesFolderName: 'img'
-    }
+    },
 
     ////////////////////////////////////////////////////
     ////////////////////////////////////////////////////
+
+    /**
+     * Настройки деплоя проекта
+     */
+    deploy: {
+        frontend: { // настройки для фронтенда
+            host:     'sra.webhost1.ru', // host ftp
+            user:     'senja006', // login
+            password: 'pass-ftp-front.txt', // в этом файле хранится пароль
+            parallel: 10, // количество одовременных загрузок
+            remoteFolder: '.yarkevich.ru',
+        },
+        backend: { // настройки для бэкенда
+            host:     'sra.webhost1.ru', // host ftp
+            user:     'senja006', // login
+            password: 'pass-ftp-front.txt', // в этом файле хранится пароль
+            parallel: 10, // количество одовременных загрузок
+            remoteFolder: '.yarkevich.ru', // не менять
+        },
+        local: {
+            remoteFolder: 'server' // путь до папки static (без названия папки static)
+        },
+        server: {
+            host:     'sra.webhost1.ru', // host ftp
+            user:     'senja006', // login
+            password: 'pass-ftp-front.txt', // в этом файле хранится пароль
+            parallel: 10, // количество одовременных загрузок
+            remoteFolder: '.yarkevich.ru',
+        }
+    }
 };
