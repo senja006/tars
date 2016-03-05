@@ -1,6 +1,20 @@
 {
     "dependencies": {
         "postcss-flexbugs-fixes": "^1.1.0",
-        "vinyl-ftp": "^0.4.5"
-    }
+        "vinyl-ftp": "^0.4.5",
+        "css-mqpacker": "^4.0.0",
+        "backstopjs": "^1.1.0"
+    },
+  "scripts": {
+    "deployFrontDev": "tars dev --custom-flags '--deploywatcher --dev --frontend'",
+    "deployFrontBuild": "tars build --min && tars start deploy --flags '--build --frontend'",
+    "deployBackDev": "tars dev --custom-flags '--deploywatcher --dev --backend'",
+    "deployBackBuild": "tars build --min && tars start deploy --flags '--build --backend'",
+    "deployLocalDev": "tars dev --custom-flags '--deploywatcher --dev --local'",
+    "deployLocalHtmlDev": "tars dev --custom-flags '--deploywatcher --dev --local --html'",
+    "deployLocalBuild": "tars build --min && tars start deploy --flags '--build --local'",
+    "deployLocalHtmlBuild": "tars build --min && tars start deploy --flags '--build --local --html'",
+    "deployServer": "tars start deploy --flags '--server'",
+    "updateProject": "tars update-project --source https://github.com/senja006/tars/archive/senja006.zip"
+  }
 }
