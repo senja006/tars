@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "postcss-flexbugs-fixes": "^1.1.0",
+        "postcss-flexbugs-fixes": "^2.0.0",
         "vinyl-ftp": "^0.4.5",
         "css-mqpacker": "^4.0.0",
         "backstopjs": "^1.1.0"
@@ -15,6 +15,8 @@
     "deployLocalBuild": "tars build --min && tars start deploy --flags '--build --local'",
     "deployLocalHtmlBuild": "tars build --min && tars start deploy --flags '--build --local --html'",
     "deployServer": "tars start deploy --flags '--server'",
-    "updateProject": "tars update-project --source https://github.com/senja006/tars/archive/senja006.zip"
+    "updateProject": "tars update-project --source https://github.com/senja006/tars/archive/senja006.zip",
+    "backstopTest": "cd node_modules/backstopjs && gulp test && cd ../..",
+    "backstopScreen": "cd node_modules/backstopjs && gulp reference && cd ../.."
   }
 }
