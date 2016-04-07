@@ -1,15 +1,27 @@
 // создание пробелов между колонками
+// @include gutter((20px in), 'li');
+// если добавить in к размеру, то отступы только внутри колонок, но не снаружи. Снаружи необходимы только при переносе колонок на другую строку
 @mixin gutter($gutter, $selector-cols: 'div', $sizing-content-box: 'false') {
-    margin-left: 0 - $gutter / 2 !important;
-    margin-right: 0 - $gutter / 2 !important;
 
     & > #{$selector-cols} {
-        padding-left: $gutter / 2;
-        padding-right: $gutter / 2;
+        padding-left: nth($gutter, 1) / 2;
+        padding-right: nth($gutter, 1) / 2;
+    }
+
+    @if length($gutter) == 1 {
+        margin-left: 0 - nth($gutter, 1) / 2 !important;
+        margin-right: 0 - nth($gutter, 1) / 2 !important;
+    } @else {
+        & > #{$selector-cols}:first-child {
+            padding-left: 0;
+        }
+        & > #{$selector-cols}:last-child {
+            padding-right: 0;
+        }
     }
 
     @if $sizing-content-box == 'true' {
-        width: calc(100% + #{$gutter});
+        width: calc(100% + #{nth($gutter, 1)});
     }
 }
 
@@ -85,7 +97,7 @@
         }
     }
 
-    @if $gutter > 0 {
+    @if nth($gutter, 1) > 0 {
         @include gutter($gutter, $selector-cols, $sizing-content-box);
     }
 

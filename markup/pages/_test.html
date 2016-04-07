@@ -5,26 +5,52 @@
     <span class="ya-title">Заголовок</span>
 
     <div class="ya-text">
+        <h1></h1>
+
+        <p></p>
+
+        <h2></h2>
+
+        <p></p>
+
+        <h3></h3>
+
+        <p></p>
+
+        <h4></h4>
+
+        <p></p>
+
+        <p></p>
+
         <ul>
-            <li>Текст</li>
-            <li>Текст</li>
-            <li>Текст</li>
-            <li>Текст
-                <ul>
-                    <li>Текст</li>
-                    <li>Текст</li>
-                    <li>Текст</li>
-                    <li>Текст</li>
-                </ul>
-            </li>
+            <li></li>
         </ul>
+
+        <p></p>
+
         <ol>
-            <li>Текст</li>
-            <li>Текст</li>
-            <li>Текст</li>
-            <li>Текст</li>
+            <li></li>
         </ol>
-        <p>Параграф</p>
+
+        <blockquote></blockquote>
+
+        <p></p>
+
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <p></p>
     </div>
 
     <a class="ya-button ya-button--red" href="#" class="button">Кнопка с тегом а</a>
@@ -40,7 +66,7 @@
         </div>
 
         <div class="ya-field-container">
-            <input class="ya-field" type="text" placeholder="Фамилия"/>
+            <input class="ya-field" type="text" name="" placeholder="Фамилия"/>
         </div>
 
         <!-- группа -->
@@ -48,8 +74,31 @@
             <input class="ya-field" type="number" name="tel" placeholder="Телефон"/>
             <button class="ya-button ya-button--white ya-medium" type="submit">Да</button>
         </div>
-        
+
         <textarea class="ya-field" name="message"></textarea>
+
+        <!-- группа checkbox или radio -->
+        <div class="ya-group-checkbox">
+            <div class="ya-field-container">
+                <label>
+                    <input type="radio" name="time-of-day" value="morning" hidden/>
+                    <span class="ya-group-checkbox__text">Утром</span>
+                </label>
+            </div>
+            <div class="ya-field-container">
+                <label>
+                    <input type="radio" name="time-of-day" value="daytime" hidden/>
+                    <span class="ya-group-checkbox__text">Днем</span>
+                </label>
+            </div>
+            <div class="ya-field-container">
+                <label>
+                    <input type="radio" name="time-of-day" value="nights" hidden/>
+                    <span class="ya-group-checkbox__text">Вечером</span>
+                </label>
+            </div>
+        </div>
+
     </form>
 
     {{> yaModal/template}}

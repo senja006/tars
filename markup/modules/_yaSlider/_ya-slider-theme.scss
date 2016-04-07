@@ -57,6 +57,10 @@
             border-color: blue;
         }
     }
+
+    .ya-slide-active & {
+        cursor: default;
+    }
 }
 
 // точки

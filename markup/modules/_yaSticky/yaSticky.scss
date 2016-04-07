@@ -1,0 +1,7 @@
+.ya-sticky {
+    z-index: $z-index-hover;
+
+    &.ya-is-bottom {
+        left: 0 !important;
+    }
+}

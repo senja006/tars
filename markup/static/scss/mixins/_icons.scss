@@ -17,7 +17,8 @@
         @if nth($elementsAction, 1) != '' {
             @for $i from 1 through length($elementsAction) {
 
-                .#{nth($elementsAction, $i)}:hover & {
+                .#{nth($elementsAction, $i)}:hover &,
+                .#{nth($elementsAction, $i)}:focus & {
                     @include bg-trh($transition-duration);
                 }
 

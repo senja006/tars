@@ -1,7 +1,7 @@
-yaTabs: {
+data = {yaTabs: {
     template: {
         tabsButtons: [
             { text: '' }
         ]
     }
-}
+}};

@@ -6,17 +6,21 @@
         "backstopjs": "^1.1.0"
     },
   "scripts": {
-    "deployFrontDev": "tars dev --custom-flags '--deploywatcher --dev --frontend'",
+    "deployFrontDev": "tars start deploy --flags '--dev --frontend'",
+    "deployFrontDevWatch": "tars dev --custom-flags '--deploywatcher --dev --frontend'",
     "deployFrontBuild": "tars build --min && tars start deploy --flags '--build --frontend'",
-    "deployBackDev": "tars dev --custom-flags '--deploywatcher --dev --backend'",
+    "deployBackDev": "tars start deploy --flags '--dev --backend'",
+    "deployBackDevWatch": "tars dev --custom-flags '--deploywatcher --dev --backend'",
     "deployBackBuild": "tars build --min && tars start deploy --flags '--build --backend'",
     "deployLocalDev": "tars dev --custom-flags '--deploywatcher --dev --local'",
     "deployLocalDevHtml": "tars dev --custom-flags '--deploywatcher --dev --local --html'",
     "deployLocalBuild": "tars build --min && tars start deploy --flags '--build --local'",
     "deployLocalBuildHtml": "tars build --min && tars start deploy --flags '--build --local --html'",
     "deployServer": "tars start deploy --flags '--server'",
+    "deployServerBuildHtml": "npm run deployLocalBuildHtml && tars start deploy --flags '--server'",
     "updateProject": "tars update-project --source https://github.com/senja006/tars/archive/senja006.zip",
+    "backstopScreen": "cd node_modules/backstopjs && gulp reference && cd ../..",
     "backstopTest": "cd node_modules/backstopjs && gulp test && cd ../..",
-    "backstopScreen": "cd node_modules/backstopjs && gulp reference && cd ../.."
+    "backstopTestRm": "rm -rf backstop_data/bitmaps_test && rm -rf node_modules/backstopjs/bitmaps_test && rm -rf node_modules/backstopjs/bitmaps_reference"
   }
 }

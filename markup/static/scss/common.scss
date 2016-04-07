@@ -17,10 +17,18 @@
     }
 
     padding: 0 $global-padding;
+
+    .ya-content__row &,
+    .remodal & {
+        padding: 0;
+        width: 100%;
+    }
 }
 
 .#{$class-container-page} {
     min-width: $global-width + $global-padding * 2;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .#{$class-title} {
@@ -162,6 +170,8 @@ body {
     font-size: $global-font-size;
     line-height: $global-lineheight;
     font-weight: $global-weight-normal;
+    // background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 23px, red 23px, red 24px);
+    // background-position: 0 -6px;
 
     @if ($body-antialiased) {
         -webkit-font-smoothing: antialiased;
@@ -185,4 +195,3 @@ b,
 strong {
     font-weight: $global-weight-bold;
 }
-

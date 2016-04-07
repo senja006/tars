@@ -1,0 +1,20 @@
+.ya-sidebar__block {
+
+    .ya-sidebar--left & {
+        margin-right: 20px;
+    }
+
+    .ya-sidebar--right & {
+        margin-left: 20px;
+    }
+}
+
+.ya-content__row {
+    @include cols(shrink auto shrink);
+}
+
+.ya-content__main {
+    max-width: 100%;
+    min-width: 0%;
+    flex-basis: 0% !important;
+}

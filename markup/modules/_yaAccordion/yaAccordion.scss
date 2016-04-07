@@ -1,0 +1,59 @@
+@import "jquery.accordion";
+
+[data-control] {
+
+    [data-accordion] & {
+        cursor: pointer;
+        transition: color $global-transition-duration linear;
+
+        &:hover {
+            color: $anchor-color-hover;
+        }
+    }
+}
+
+.ya-accordion__content {
+    padding: 0 $sidebar-container-padding-x;
+}
+
+.ya-accordion__content-ul {
+    //padding: 14px 0 0;
+    //margin-bottom: 12px;
+}
+
+.ya-accordion__content-li {
+    font-family: $font-helvetica;
+    font-size: 14px;
+    line-height: normal;
+    margin-bottom: 26px;
+
+    &:first-child {
+        padding-top: 14px;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 12px;
+    }
+}
+
+.ya-accordion__open {
+    display: inline-block;
+    font-family: $font-helvetica;
+    color: #3b5bf9;
+    margin-bottom: 14px;
+    margin-top: 7px;
+}
+
+.ya-accordion__open-text {
+    margin-left: 5px;
+}
+
+.ya-icon {
+
+    .ya-accordion__open & {
+        margin: 0;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}

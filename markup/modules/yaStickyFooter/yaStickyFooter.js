@@ -3,7 +3,6 @@ yaModules.yaStickyFooter = (function () {
     let $page = $('.ya-page');
     let heightHeader = $('.ya-header').outerHeight();
     let heightFooter = $('.ya-footer').outerHeight();
-    let offsetTopFooter = $('.ya-footer').offset().top;
     let $content = $('.ya-content');
 
     function addEventListeners() {
@@ -12,6 +11,7 @@ yaModules.yaStickyFooter = (function () {
 
     function checkSupportMinHeight() {
         let heightPage = $page.outerHeight();
+        let offsetTopFooter = $('.ya-footer').offset().top;
 
         if (offsetTopFooter + heightFooter < heightPage) {
             return false;
@@ -22,14 +22,15 @@ yaModules.yaStickyFooter = (function () {
 
     function setMinHeightContent() {
         let heightWindow = $(window).height();
-        let height = heightWindow - heightHeader - heightFooter;
+        let headerMarginBottom = $('.ya-header').css('margin-bottom').replace(/[^-\d.]/g, '');
+        let height = heightWindow - heightHeader - heightFooter - headerMarginBottom;
 
         $content.css('min-height', height);
     }
 
     return {
         init() {
-            if (!checkSupportMinHeight()) {
+            if ($('.ya-footer').offset() && !checkSupportMinHeight()) {
                 setMinHeightContent();
                 addEventListeners();
             }

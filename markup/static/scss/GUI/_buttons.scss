@@ -39,3 +39,8 @@
         @include button-border-color(black, green);
     }
 }
+
+.ya-button__text {
+    vertical-align: middle;
+    line-height: normal;
+}

@@ -27,7 +27,7 @@
       ],
       "readyEvent": null,
       "delay": 0,
-      "misMatchThreshold" : 0.1
+      "misMatchThreshold" : 0.0001
     }
   ],
   "paths": {

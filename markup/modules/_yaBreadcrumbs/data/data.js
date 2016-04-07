@@ -1,4 +1,4 @@
-yaBreadcrumbs: {
+data = {yaBreadcrumbs: {
     template: {
         list: [
             {
@@ -7,4 +7,4 @@ yaBreadcrumbs: {
             }
         ]
     }
-}
+}};

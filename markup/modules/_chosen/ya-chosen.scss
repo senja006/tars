@@ -1,0 +1,51 @@
+@import "chosen";
+
+.chosen-container {
+    font-size: $field-font-size;
+    width: 208px !important;
+    z-index: $z-index-hover;
+}
+
+.chosen-container-single .chosen-single {
+    height: $field-height;
+    line-height: $field-height;
+    border: $field-border-width $field-border-style $field-border-color !important;
+    border-radius: $field-border-radius !important;
+    background: $field-background !important;
+    box-shadow: none !important;
+    padding: 0 $field-padding;
+}
+
+.chosen-container-single .chosen-drop {
+    border-radius: $field-border-radius;
+    margin-top: 0;
+    overflow: hidden;
+    border: $field-border-width $field-border-style $field-border-color !important;
+}
+
+.chosen-container .chosen-results {
+    padding: 8px 0;
+    margin: 0;
+    color: $field-color;
+    font-size: 14px;
+}
+
+.chosen-container .chosen-results li {
+    padding: 3px $field-padding;
+}
+
+.chosen-container .chosen-results li.highlighted {
+    background: $anchor-color !important;
+}
+
+.chosen-container-single .chosen-single div {
+    width: $field-height;
+}
+
+.chosen-container-single .chosen-single div b {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    @include bg($pointer-down);
+}

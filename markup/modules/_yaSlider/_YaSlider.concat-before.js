@@ -22,6 +22,9 @@ class YaSlider {
             markOnlySlideClick: false, // пометка активного слайда только при клике на слайд (плохо работает управление другим слайдером в режиме loop)
             slidesPerScroll: 1, // количество прокручиваемых слайдов
             numClone: 0, // количество комплектов клонов для режима loop. При значении 0 определяется автоматически
+            responsive: false, // сдвиг wraper при изменении ширины экрана
+            delayAfterClick: 0, // блокировка элементов управления после клика
+            autoplay: 0, // слайдшоу
             onBefore: function() {}, // callback перед слайдингом
             onAfter: function() {}, // callback после слайдинга
         };
@@ -73,6 +76,8 @@ class YaSlider {
         self.nextActiveSlide = null; // следующий слайд при клике на слайд
         self.clickSlide = false; // обработка клика на слайд
         self.sliderSmall = self.$slides.length <= self.slidesPerView; // количество слайдов меньше чем помещается на экран
+        self.windowWidth = 0; // ширина экрана для responsive
+        self.intervalAutoplay = null; // таймер слайдшоу
 
         // пометка контейнера слайдера при малом количестве слайдов
         if(self.sliderSmall) {
@@ -187,6 +192,9 @@ class YaSlider {
             self._setTransitionDuration(self.$wrapper, self.options.duration);
             self._setTransitionDuration($('.' + self.classes.customAnim), self.options.duration);
 
+            // старт слайдшоу
+            self._startAutoplay();
+
             // сброс флага первоначального старта при инициализации
             self.isStart = false;
         }, 0);
@@ -216,6 +224,10 @@ class YaSlider {
             self.$wrapper.on('touchend', self._handlerTouchEnd.bind(self));
             self.$wrapper.on('touchmove', self._handlerTouchMove.bind(self));
         }
+
+        if(self.options.responsive) {
+            $(window).on('resize', self._moveWrapperResizeWindow.bind(self));
+        }
     }
 
     /**
@@ -227,8 +239,10 @@ class YaSlider {
         let self = this;
         let $target = $(ev.target);
 
-        // проверка окончания анимации в режиме loop эффекта carousel
+        // проверка окончания анимации в режиме loop эффекта carousel или установленной задержке
         if(self.isAnim) return;
+
+        clearInterval(self.intervalAutoplay);
 
         // проверка активности элемента или блокировки
         if($target.closest('.' + self.classes.active).length || $target.closest('.' + self.classes.disable).length) return;
@@ -245,13 +259,29 @@ class YaSlider {
         }
 
         // установка направления
-        self.options.loop ? undefined : self._setDirection(numNextSlide);
+        //self.options.loop ? undefined : self._setDirection(numNextSlide);
+        self._setDirection(numNextSlide);
 
         // корректировка выхода за пределы длины слайдов
         numNextSlide = self._adjustmentNumNextSlide(numNextSlide);
 
         // показ следующего слайда
         self._showNextSlide(numNextSlide);
+
+        self._startAutoplay();
+    }
+
+    /**
+     * Слайдшоу
+     * @private
+     */
+    _startAutoplay() {
+        let self = this;
+        if(!self.options.autoplay) return;
+
+        self.intervalAutoplay = setInterval(() => {
+            self.$container.find('.' +self.classes.buttonNext).click();
+        }, self.options.autoplay);
     }
 
     /**
@@ -335,6 +365,7 @@ class YaSlider {
         let self = this;
 
         if(self.isAnim) return;
+        clearInterval(self.intervalAutoplay);
 
         self.touchStartEvent = true;
 
@@ -420,6 +451,7 @@ class YaSlider {
 
             self._showNextSlide(numNextSlide, true);
             self.touchStartEvent = false;
+            self._startAutoplay();
         }
     }
 
@@ -535,6 +567,11 @@ class YaSlider {
         // проверка первоначального срабатывания при инициализации
         self.isStart ? self._setTransitionDuration(self.$wrapper, 0) : self._setTransitionDuration(self.$wrapper, duration);
 
+        // установка задержки для событий
+        if(self.options.delayAfterClick) {
+            self.isAnim = true;
+        }
+
         // сдвиг карусели
         if(self.options.effect == 'carousel' && !self.sliderSmall) {
             let $activeSlide = self.$slides.eq(self.numActiveSlide); // текущий активный слайд
@@ -614,6 +651,7 @@ class YaSlider {
 
         self.numActiveSlide = numNextSlide;
         self.clickSlide = false;
+        self.windowWidth = $(window).width();
 
         self._updateDots();
         self._updateButtons();
@@ -796,5 +834,21 @@ class YaSlider {
         }
 
         return newNumNextSlide;
+    }
+
+    /**
+     * Сдвиг wrapper при ресайзе окна браузера, если эффект карусель и слайдер на всю ширину экрана
+     * @private
+     */
+    _moveWrapperResizeWindow() {
+        let self = this;
+        let slideWidth = self.$slides.outerWidth();
+        let translate = self.numActiveSlide * slideWidth;
+        if(self.options.loop) {
+            translate += self.numClone * self.$slides.length * slideWidth;
+        }
+        self.translateWrapper = translate;
+        self._setTransitionDuration(self.$wrapper, 0);
+        self._moveWrapper(translate);
     }
 }

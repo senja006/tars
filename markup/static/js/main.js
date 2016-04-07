@@ -3,9 +3,17 @@
 */
 function initModules() {
 	if(pageReady) {
-		
+
 		for(var key in yaModules) {
-            yaModules[key].init();
+            if(yaModules[key].init) yaModules[key].init();
+        }
+
+        smoothScroll.init();
+
+        if(scriptsForLoad.length) {
+            scriptsForLoad.forEach(function(el) {
+                $.getScript(el);
+            });
         }
 
 	}else{

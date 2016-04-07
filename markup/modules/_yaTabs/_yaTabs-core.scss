@@ -1,18 +1,24 @@
 .ya-tabs__list-ul {
-    @include cols(100%, 0, 'li');
+    @include cols(1, 0, 'li');
 
+    max-width: 100%;
     overflow: hidden;
     position: relative;
+    z-index: $z-index-base - 1;
 }
 
 .ya-tabs__list-li {
     flex-shrink: 0;
+    display: none;
+
+    &:first-child {
+        display: block;
+    }
 
     .ya-tabs-ready & {
-        display: block;
+        display: none;
         opacity: 0;
         visibility: hidden;
-        position: absolute;
         z-index: $z-index-base;
         top: 0;
         left: 0;
@@ -23,5 +29,6 @@
         z-index: $z-index-base + 1;
         opacity: 1;
         visibility: visible;
+        display: block;
     }
 }

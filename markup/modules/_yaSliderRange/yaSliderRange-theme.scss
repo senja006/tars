@@ -1,0 +1,75 @@
+@import "jquery.range";
+
+.ya-slider-range {
+    margin-bottom: 26px;
+}
+
+.ya-slider-range__row {
+    @include cols(84px auto 84px, 7px in);
+    align-items: center;
+    text-align: center;
+
+    &.ya-order {
+        @include cols(94px 215px, 22px in);
+    }
+}
+
+.ya-slider-range__input-container {
+    padding: 17px 0;
+    margin-bottom: 12px;
+}
+
+.ya-field {
+
+    .ya-slider-range & {
+        text-align: center;
+    }
+}
+
+.theme-skl {
+
+    .back-bar {
+        height: 2px;
+        background-color: #eee;
+        z-index: $z-index-base;
+
+        //#gradient > .vertical(#eeeeee, #dddddd);
+
+        .selected-bar {
+            //border-radius: 2px;
+            //#gradient > .vertical(#b1d1f9, #64a8f9);
+            background-color: #838d8f;
+        }
+
+        .pointer {
+            top: 50%;
+            transform: translateY(-50%);
+            box-sizing: border-box;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 2px solid #838d8f;
+            cursor: pointer;
+
+            //#gradient > .vertical(#eeeeee, #dddddd);
+
+        }
+        .pointer-label {
+            display: none;
+            color: #999;
+        }
+        .focused {
+            color: #333;
+        }
+    }
+    .scale {
+        display: none;
+        span {
+            border-left: 1px solid #e5e5e5;
+        }
+        ins {
+            color: #999;
+        }
+    }
+}

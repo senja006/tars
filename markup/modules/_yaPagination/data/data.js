@@ -1,4 +1,4 @@
-pagination: {
+data = {yaPagination: {
     template: {
         list: [
             {
@@ -33,4 +33,4 @@ pagination: {
             }
         ]
     }
-}
+}};
