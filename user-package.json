@@ -2,7 +2,7 @@
     "dependencies": {
         "postcss-flexbugs-fixes": "^2.0.0",
         "vinyl-ftp": "^0.4.5",
-        "css-mqpacker": "^4.0.0",
+        "css-mqpacker": "^4.0.1",
         "backstopjs": "^1.1.0"
     },
   "scripts": {

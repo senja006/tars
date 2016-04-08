@@ -195,3 +195,8 @@ b,
 strong {
     font-weight: $global-weight-bold;
 }
+
+// инерционный скролл в мобильных
+.element {
+    -webkit-overflow-scrolling: touch;
+}

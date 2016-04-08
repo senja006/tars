@@ -133,7 +133,7 @@ $field-error-background: $field-background;
 // -----------------
 
 $breakpoints: (
-    xsmall: 0,
+    start: 320px,
     small: 480px,
     medium: 768px, // 510px + $global-padding-medium-down * 2
     large: 992px, // $global-max-width + $global-padding-medium-down * 2

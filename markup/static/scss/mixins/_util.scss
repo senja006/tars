@@ -32,6 +32,10 @@
 }
 
 /// очистка числа от букв (например, strip-units(10px) => 10)
-@mixin strip-units($number) {
-    @return $number / ($number * 0 + 1);
+// @mixin strip-units($number) {
+//     @return $number / ($number * 0 + 1);
+// }
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
 }

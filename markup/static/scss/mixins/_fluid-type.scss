@@ -1,6 +1,40 @@
 // Плавное изменение css свойств в зависимости от размеров экрана
 
-@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
+@mixin fluid-type($properties, $breakpoints-fluid-type, $values) {
+    & {
+
+        @each $property in $properties {
+            @each $breakpoint-fliud-type in $breakpoints-fluid-type {
+                $i: index($breakpoints-fluid-type, $breakpoint-fliud-type);
+                $min-value: nth($values, $i);
+                $min-vw: $breakpoint-fliud-type;
+
+                @if type-of($min-vw) == 'string' {
+                    $min-vw: map-get($breakpoints, $min-vw);
+                }
+
+                @if length($breakpoints-fluid-type) == $i {
+                    @include breakpoint($breakpoint-fliud-type) {
+                        #{$property}: $min-value;
+                    }
+                }@else{
+                    $max-value: nth($values, $i+1);
+                    $max-vw: nth($breakpoints-fluid-type, $i+1);
+
+                    @if type-of($max-vw) == 'string' {
+                        $max-vw: map-get($breakpoints, $max-vw);
+                    }
+
+                    @include breakpoint($breakpoint-fliud-type) {
+                        #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin original-fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
     & {
         @each $property in $properties {
             #{$property}: $min-value;
@@ -20,22 +54,24 @@
     }
 }
 
-@function strip-unit($value) {
-    @return $value / ($value * 0 + 1);
-}
+//@function strip-unit($value) {
+//    @return $value / ($value * 0 + 1);
+//}
 
 // пример
+
+//@include fluid-type(font-size margin-bottom, 320px medium large, 14px 30px 60px);
 
 /* Single property */
 /*
 html {
-  @include fluid-type(font-size, 320px, 1366px, 14px, 18px);
+  @include original-fluid-type(font-size, 320px, 1366px, 14px, 18px);
 }
 */
 
 /* Multiple properties with same values */
 /*
 h1 {
-  @include fluid-type(padding-bottom padding-top, 20em, 70em, 2em, 4em);
+  @include original-fluid-type(padding-bottom padding-top, 20em, 70em, 2em, 4em);
 }
 */
