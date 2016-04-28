@@ -1,4 +1,4 @@
-yaMenu: {
+data = {menu: {
     template: {
         modMenu: '',
         list: [
@@ -9,4 +9,4 @@ yaMenu: {
             }
         ]
     }
-}
+}};

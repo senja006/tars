@@ -18,8 +18,9 @@
 
     padding: 0 $global-padding;
 
-    .ya-content__row &,
-    .remodal & {
+    // .ya-content__row &,
+    .remodal &,
+    [class*=ya-sidebar] & {
         padding: 0;
         width: 100%;
     }
@@ -27,8 +28,7 @@
 
 .#{$class-container-page} {
     min-width: $global-width + $global-padding * 2;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 .#{$class-title} {
@@ -199,4 +199,43 @@ strong {
 // инерционный скролл в мобильных
 .element {
     -webkit-overflow-scrolling: touch;
+}
+
+.ya-full-window {
+
+    $correct-width: 1px; // для ликвидации полоски шириной 1px по краям браузера
+
+    @if $global-width == 0 {
+        & {
+            margin-left: 0 - $global-padding;
+            margin-right: 0 - $global-padding;
+        }
+    } @else {
+        @include breakpoint($global-width + $global-padding * 2) {
+            width: 50vw;
+            margin-left: 50%;
+
+            & > div {
+                width: 100vw; /* включает в себя полосу прокрутки от body */
+                margin-left: -100%;
+            }
+        }
+        @include breakpoint($global-width + $global-padding * 2 - 1 down) {
+
+            & > div {
+                margin-left: 0 - $global-padding - $correct-width;
+                margin-right: 0 - $global-padding - $correct-width;
+            }
+        }
+    }
+
+    //.ya-container {
+    //    padding: 0 $global-padding !important;
+    //
+    //    @if $global-width == 0 {
+    //        width: 100%;
+    //    } @else {
+    //        width: $global-width + $global-padding * 2;
+    //    }
+    //}
 }

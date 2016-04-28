@@ -41,18 +41,18 @@ textarea.#{$field-class} {
     padding: $field-textarea-padding $field-padding;
 }
 
-::-webkit-input-placeholder {
-    color: $field-placeholder-color;
-    //@include field-error;
-}
-::-moz-placeholder {
-    color: $field-placeholder-color;
-    //@include field-error;
-}
-:-ms-input-placeholder {
-    color: $field-placeholder-color;
-    //@include field-error;
-}
+// ::-webkit-input-placeholder {
+//     color: $field-placeholder-color;
+//     //@include field-error;
+// }
+// ::-moz-placeholder {
+//     color: $field-placeholder-color;
+//     //@include field-error;
+// }
+// :-ms-input-placeholder {
+//     color: $field-placeholder-color;
+//     //@include field-error;
+// }
 
 @if $field-placeholder-hide-focus {
 
@@ -120,6 +120,7 @@ textarea.#{$field-class} {
     display: inline-flex;
     align-items: center;
     transition: color $global-transition-duration linear;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
         color: $anchor-color-hover;
@@ -163,4 +164,12 @@ textarea.#{$field-class} {
     input:checked ~ & {
         cursor: default;
     }
+}
+
+.ya-field-container {
+    margin-bottom: $field-margin-bottom;
+}
+
+.ya-form-margin {
+    margin-bottom: $field-margin-bottom;
 }

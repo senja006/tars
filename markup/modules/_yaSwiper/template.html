@@ -1,34 +1,36 @@
 <!-- http://www.idangero.us/swiper -->
 
-<div class="swiper-container swiper-container-main">
-    <ul class="swiper-wrapper">
-        
-    {{#each list}}
-        <li class="swiper-slide">
-            
-        </li>
-    {{/each}}
-        
-    </ul>
+<div class="swiper-container-main">
+    <div class="swiper-container">
+        <ul class="swiper-wrapper">
 
-    <!-- If we need pagination -->
-    <div class="swiper-pagination"></div>
+            {{#each list}}
+                <li class="swiper-slide">
 
-    <!-- If we need navigation buttons -->
-    <button class="swiper-button swiper-button-prev">
-        <span class="ya-icon"></span>
-    </button>
-    <button class="swiper-button swiper-button-next">
-        <span class="ya-icon"></span>
-    </button>
+                </li>
+            {{/each}}
 
-    <!-- If we need scrollbar -->
-    <!--<div class="swiper-scrollbar"></div>-->
+        </ul>
+
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <button class="swiper-button swiper-button-prev">
+            <span class="ya-icon"></span>
+        </button>
+        <button class="swiper-button swiper-button-next">
+            <span class="ya-icon"></span>
+        </button>
+
+        <!-- If we need scrollbar -->
+        <!--<div class="swiper-scrollbar"></div>-->
+    </div>
 </div>
 
 <div class="swiper-container-thumbs">
     <!-- Slider thumbs container -->
-    <div class="swiper-container swiper-container-thumbs">
+    <div class="swiper-container">
         <!-- Additional required wrapper -->
         <ul class="swiper-wrapper">
             <!-- Slides -->

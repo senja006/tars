@@ -97,6 +97,10 @@
         }
     }
 
+    & > #{$selector-cols} {
+        min-width: 1px;
+    }
+
     @if nth($gutter, 1) > 0 {
         @include gutter($gutter, $selector-cols, $sizing-content-box);
     }

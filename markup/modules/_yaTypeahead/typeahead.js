@@ -48,6 +48,19 @@ yaModules.typeahead = (function () {
                 source: substringMatcher(currentData)
             }
         );
+
+        //inputs.on('typeahead:select typeahead:autocomplete', (ev, suggestion) => {
+        //    console.log(suggestion);
+        //});
+        //inputs.typeahead('destroy');
+        //
+        //inputs.typeahead(options,
+        //    {
+        //        name: 'states',
+        //        limit: 1000,
+        //        source: substringMatcher(['Мой город', 'Мой город'])
+        //    }
+        //);
     }
 
     return {

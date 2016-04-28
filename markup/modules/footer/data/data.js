@@ -1,8 +1,8 @@
-footer: {
-	template: {
-
-	},
+data = {footer: {
+    template: {
+        
+    },
     default: {
-
+        
     }
-}
+}};

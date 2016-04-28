@@ -26,6 +26,8 @@ button {
     padding: 0;
     border: 0;
     text-transform: none;
+    display: block;
+    -webkit-tap-highlight-color: transparent;
 
     &[disabled] {
         cursor: default;
@@ -50,6 +52,7 @@ input {
     font: inherit;
     line-height: normal;
     word-break: normal;
+    -webkit-appearance: none;
 
     &::-ms-clear {
         display: none;
@@ -122,6 +125,7 @@ textarea {
     font-weight: inherit;
     font-size: inherit;
     display: block;
+    -webkit-appearance: none;
 }
 
 [hidden] {
@@ -182,6 +186,7 @@ img {
 a {
     background-color: transparent;
     outline: none !important;
+    -webkit-tap-highlight-color: transparent;
 
     &:active,
     &:hover {

@@ -1,1 +1,10 @@
-yaSlider: {}
+data = {yaSwiper: {
+    template: {
+        list: [
+            {}
+        ]
+    },
+    default: {
+
+    }
+}};

@@ -1,8 +1,8 @@
-header: {
+data = {header: {
     template: {
-    	
+
     },
     default: {
-    	
+
     }
-}
+}};

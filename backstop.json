@@ -27,7 +27,8 @@
       ],
       "readyEvent": null,
       "delay": 0,
-      "misMatchThreshold" : 0.0001
+      "misMatchThreshold" : 0.0001,
+      "onReadyScript": "open-menu-header.js"
     }
   ],
   "paths": {

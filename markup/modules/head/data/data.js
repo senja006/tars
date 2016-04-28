@@ -1,3 +1,3 @@
-head: {
-	index: { title: 'Главная' }
-}
+data = {head: {
+    index: { title: 'Главная' },
+}};

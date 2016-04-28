@@ -8,8 +8,6 @@ function initModules() {
             if(yaModules[key].init) yaModules[key].init();
         }
 
-        smoothScroll.init();
-
         if(scriptsForLoad.length) {
             scriptsForLoad.forEach(function(el) {
                 $.getScript(el);
@@ -19,6 +17,6 @@ function initModules() {
 	}else{
 		setTimeout(initModules, 100);
 	}
-};
+}
 
 initModules();
