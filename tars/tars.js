@@ -11,19 +11,28 @@
  */
 function tarsRequire(packageName) {
 
+    // Log for TARS debug
+    if (process.env.TARS_DEBUG) {
+        console.log('Module required: ', packageName);
+    }
+
     if (process.env.npmRoot) {
         try {
             return require(process.env.npmRoot + packageName);
         } catch (error) {
-            console.log('\n\n');
-            tars.say('It seems, that TARS in current project is not compatible with current TARS-CLI!');
-            tars.say(`'Package ${packageName} is not available.`);
-            tars.say('Update TARS-CLI via "tars update" and your project via "tars update-project"');
-            tars.say('Please, write to the tars.builder@gmail.com, if update did\'t help you.');
+            const util = require('util');
 
-            throw new Error(`'Package ${packageName} is not available.`);
+            console.log('\n');
+            util.inspect.styles.string = 'red';
+            console.log('---------------------------------------------------------------------------------');
+            console.dir('It seems, that TARS in current project is not compatible with current TARS-CLI!', { colors: true });
+            console.dir(`Package "${packageName}" is not available.`, { colors: true });
+            console.dir('Update TARS-CLI via "tars update" and your project via "tars update-project"', { colors: true });
+            console.dir('Please, write to the tars.builder@gmail.com, if update did\'t help you.', { colors: true });
+            console.log('---------------------------------------------------------------------------------\n');
+
+            throw new Error(`Package ${packageName} is not available.`);
         }
-
     }
 
     return require(packageName);
@@ -34,6 +43,7 @@ global.tars = {
     require: tarsRequire,
     cli: (process.env.npmRoot ? true : false),
     root: __dirname,
+    packageInfo: require('../package.json'),
     config: require('../tars-config')
 };
 
@@ -50,6 +60,10 @@ tars.flags = gutil.env;
 
 // Dev mode flag
 tars.isDevMode = !tars.flags.release && !tars.flags.min;
+tars.useLiveReload = tars.flags.lr || tars.flags.tunnel;
+
+// Package name
+tars.packageInfo.name = !tars.packageInfo.name ? 'awesome_project' : tars.packageInfo.name.replace(/[\s?+<>:*|"\\]/g, '_');
 
 /**
  * Log messages from TARS
@@ -142,6 +156,7 @@ tars.options = {
         version: useBuildVersioning ? buildVersion : ''
     },
     watch: {
+        isActive: false,
         ignored: '',
         persistent: true,
         ignoreInitial: true
@@ -182,7 +197,8 @@ tars.helpers = {
     notifier: require(helpersDirPath + '/notifier'),
     watcherLog: require(helpersDirPath + '/watcher-log'),
     skipTaskWithEmptyPipe: require(helpersDirPath + '/skip-task-with-empty-pipe'),
-    stringHelper: require(helpersDirPath + '/string-helper')
+    stringHelper: require(helpersDirPath + '/string-helper'),
+    filterFilesByPath: require(helpersDirPath + '/filter-files-by-path')
 };
 
 /**
@@ -200,7 +216,12 @@ switch (cssPreprocName) {
             mainExt: 'styl',
             preprocessor: () => tars.require('gulp-stylus')({
                 'resolve url': true,
-                'include css': true
+                'include css': true,
+                'include': [
+                    process.cwd(),
+                    process.cwd() + '/node_modules/',
+                    process.cwd() + '/bower_components/'
+                ]
             })
         };
         break;
@@ -210,7 +231,11 @@ switch (cssPreprocName) {
             ext: 'less',
             mainExt: 'less',
             preprocessor: () => tars.require('gulp-less')({
-                path: [process.cwd()]
+                paths: [
+                    process.cwd(),
+                    process.cwd() + '/node_modules/',
+                    process.cwd() + '/bower_components/'
+                ]
             })
         };
         break;
@@ -222,7 +247,11 @@ switch (cssPreprocName) {
             mainExt: 'scss',
             preprocessor: () => tars.require('gulp-sass')({
                 outputStyle: 'expanded',
-                includePaths: process.cwd()
+                includePaths: [
+                    process.cwd(),
+                    process.cwd() + '/node_modules/',
+                    process.cwd() + '/bower_components/'
+                ]
             })
         };
         break;

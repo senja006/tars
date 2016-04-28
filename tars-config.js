@@ -50,42 +50,61 @@ module.exports = {
         }
     },
 
-    /**
-     * Use linting and hinting of js-files
-     * @type {Boolean}
-     */
-    useJsLintAndHint: false,
+    js: {
+        // concat, modular
+        workflow: 'concat',
 
-    /**
-     * Path-strings to js-files, which have to be included before modules' js-files
-     * Example: ['./markup/controller/** /*.js']
-     * @type {Array}
-     */
-    jsPathsToConcatBeforeModulesJs: ['./markup/modules/**/*.concat-before.js'],
+        // Only webpack is available right now
+        bundler: 'webpack',
 
-    /**
-     * Lint additional js before modules
-     * @type {Boolean}
-     */
-    lintJsCodeBeforeModules: false,
+        /**
+         * Use linting of js-files
+         * @type {Boolean}
+         */
+        lint: false,
 
-    /**
-     * Path-strings to js-files, which have to be included before modules' js-files
-     * @type {Array}
-     */
-    jsPathsToConcatAfterModulesJs: ['./markup/static/js/main.js'],
+        /**
+         * Use babel for ES6(ES7-ESNext) syntax support
+         * @type {Boolean}
+         */
+        useBabel: true,
 
-    /**
-     * Lint additional js after modules
-     * @type {Boolean}
-     */
-    lintJsCodeAfterModules: false,
+        /**
+         * Remove console.log and debugger from js code in release mode
+         * @type {Boolean}
+         */
+        removeConsoleLog: true,
 
-    /**
-     * Use babel for ES6(ES7-ESNext) syntax support
-     * @type {Boolean}
-     */
-    useBabel: true,
+        // Special config for webpack
+        webpack: {
+            useHMR: false
+        },
+
+        /**
+         * Path-strings to js-files, which have to be included before modules' js-files
+         * Example: ['./markup/controller/** /*.js']
+         * @type {Array}
+         */
+        jsPathsToConcatBeforeModulesJs: ['./markup/modules/**/*.concat-before.js'],
+
+        /**
+         * Lint additional js before modules
+         * @type {Boolean}
+         */
+        lintJsCodeBeforeModules: false,
+
+        /**
+         * Path-strings to js-files, which have to be included before modules' js-files
+         * @type {Array}
+         */
+        jsPathsToConcatAfterModulesJs: ['./markup/static/js/initYaModules.js'],
+
+        /**
+         * Lint additional js after modules
+         * @type {Boolean}
+         */
+        lintJsCodeAfterModules: false
+    },
 
     /**
      * Write sourcemaps
@@ -205,12 +224,6 @@ module.exports = {
          */
         injectChanges: true
     },
-
-    /**
-     * Remove console.log and debugger from js code in release mode
-     * @type {Boolean}
-     */
-    removeConsoleLog: true,
 
     /**
      * Minify result html in build version

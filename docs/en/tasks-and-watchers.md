@@ -14,7 +14,6 @@ In general, TARS works in developer-mode as follows:
 All built-in tasks are in the `tars/tasks` directory. They are divided into folders according to the task type. built-in watchers are in the `tars/watchers` directory. You can add your own tasks and watchers in `tars/user-tasks`/`tars/user-watchers`.
 
 When you add tasks or watchers it is recommended to use:
-
 * tars.config.fs.staticFolderName - for the name of the folder with statics;
 * tars.config.fs.imagesFolderName - for the name of the folder with images; 
 * tars.templater.ext - contains an extensions for files of the selected templater;
@@ -33,6 +32,8 @@ tars/user-tasks/html/minify-html.js
 ```
 
 In that case only user's task will be included in gulpfile.js
+
+If you need to use your own task in exist task-chain, for example in dev-task, you have to override main:dev task by your custom version of it with chain, that will useful for you.
 
 Also, you can switch-off any task/watcher by adding `_` sign in the begginng of the name of that task/watcher.
 

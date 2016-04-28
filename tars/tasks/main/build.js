@@ -8,9 +8,8 @@ const runSequence = tars.packages.runSequence.use(gulp);
  * Build release version
  */
 module.exports = () => {
-    return gulp.task('main:build', () => {
+    return gulp.task('main:build', ['main:build-dev'], () => {
         runSequence(
-            'main:build-dev',
             [
                 'html:modify-html', 'images:minify-images'
             ],
@@ -24,7 +23,7 @@ module.exports = () => {
                     gutil.colors.black.bold('\n------------------------------------------------------------')
                 );
                 tars.say(
-                    gutil.colors.green('✔') + gutil.colors.green.bold(' Build has been created successfully!')
+                    gutil.colors.green.bold(' Build has been created successfully!')
                 );
 
                 if (tars.config.useBuildVersioning) {
