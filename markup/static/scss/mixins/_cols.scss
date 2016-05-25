@@ -47,7 +47,10 @@
                 flex: 0 0 auto;
             }
         } @else {
+            $size: 0;
             @if str-index(inspect($sizes), 'px') {
+                $size: $sizes;
+            } @else if str-index(inspect($sizes), 'em') {
                 $size: $sizes;
             }@else{
                 $size: 100% / $sizes;

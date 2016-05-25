@@ -11,11 +11,12 @@
 
     @if $global-width == 0 {
         width: 100%;
+        max-width: $global-max-width + $global-padding * 2;
     } @else {
         width: $global-width + $global-padding * 2;
-        margin: 0 auto;
     }
-
+    
+    margin: 0 auto;
     padding: 0 $global-padding;
 
     // .ya-content__row &,
@@ -29,76 +30,6 @@
 .#{$class-container-page} {
     min-width: $global-width + $global-padding * 2;
     overflow: hidden;
-}
-
-.#{$class-title} {
-    display: block;
-    font-family: $header-font-family;
-    font-size: $header-font-size;
-    font-weight: $header-font-weight;
-    font-style: $header-font-style;
-    color: $header-color;
-    line-height: $header-lineheight;
-    margin-bottom: $header-margin-bottom;
-    max-height: 100%;
-}
-
-.#{$class-container-text} {
-    max-height: 100%;
-
-    p {
-        line-height: $paragraph-lineheight;
-        margin-bottom: $paragraph-margin-bottom;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-
-    ul {
-        list-style: $list-style-position $list-style-type;
-    }
-
-    ul,
-    ol {
-        margin-bottom: $paragraph-margin-bottom;
-        margin-left: $list-side-margin;
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-
-        li {
-            line-height: $list-lineheight;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-    }
-
-    ul ul,
-    ol ol,
-    ul ol,
-    ol ul {
-        margin-left: $list-nested-side-margin;
-    }
-
-    img {
-        margin: 20px;
-    }
-
-    &.ya-margin-collapse {
-
-        p {
-            margin-bottom: 0;
-        }
-
-        ul,
-        ol {
-            margin-bottom: 0;
-        }
-    }
 }
 
 .#{$class-icon} {

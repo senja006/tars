@@ -2,7 +2,7 @@ data = {footer: {
     template: {
         
     },
-    default: {
+    defaulst: {
         
     }
 }};

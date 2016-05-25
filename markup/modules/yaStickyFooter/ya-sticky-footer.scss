@@ -5,7 +5,13 @@ html, body {
 .#{$class-container-page} {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+}
+
+// этот контейнер для прижатия футера в ie11
+.#{$class-container-page}__in {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .#{$class-footer} {

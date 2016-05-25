@@ -27,6 +27,7 @@ $class-hidden: 'ya-hidden';
 $global-path: "__static__"; // путь к изображениям
 $global-padding: 10px; // отступы по краям страницы
 $global-width: 980px; // ширина основного контейнера. 0 для ширины 100%
+$global-max-width: 100%; // при responsive
 $global-font-size: 14px;
 $global-lineheight: 1.3;
 $global-font-color: #323232;

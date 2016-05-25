@@ -27,7 +27,7 @@ class YaTabs {
                 maxHeight = $(this).outerHeight();
             }
         });
-        self.$container.find('.ya-tabs__list-ul').height(maxHeight);
+        //self.$container.find('.ya-tabs__list-ul').height(maxHeight);
 
         // подписка на события
         self._addEventListener();
@@ -35,8 +35,13 @@ class YaTabs {
         // класс готовности
         self.$container.addClass(self.classes.ready);
 
-        // показ первого таба
-        self.$buttons.first().click();
+        // показ необходимого таба
+        let $currentTabButton = self.$buttons.filter('.' + self.classes.active);
+        if($currentTabButton.length) {
+            $currentTabButton.click();
+        }else{
+            self.$buttons.first().click();
+        }
     }
 
     _addEventListener() {
@@ -58,5 +63,7 @@ class YaTabs {
         // активный класс кнопке
         self.$buttons.removeClass(self.classes.active);
         $button.addClass(self.classes.active);
+
+        $('body').trigger('ya-tabs-changed');
     }
 }

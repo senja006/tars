@@ -1,14 +1,3 @@
-.ya-sidebar__block {
-
-    .ya-sidebar--left & {
-        margin-right: 20px;
-    }
-
-    .ya-sidebar--right & {
-        margin-left: 20px;
-    }
-}
-
 .ya-content__row {
     @include cols(shrink auto shrink);
 }
@@ -17,4 +6,19 @@
     max-width: 100%;
     min-width: 0%;
     flex-basis: 0% !important;
+}
+
+.ya-sidebar__container {
+
+    .ya-sidebar:first-child & {
+        margin-right: 20px;
+    }
+
+    .ya-sidebar:last-child & {
+        margin-left: 20px;
+    }
+}
+
+.ya-sidebar__block {
+    width: 300px;
 }

@@ -43,7 +43,7 @@ div.jfilestyle label {
     //border-radius: 4px;
     //font-weight: normal;
     @extend .ya-button;
-    @extend .ya-button--gray-transparent-dark;
+    @extend .ya-button--red;
 }
 
 div.jfilestyle.jfilestyle-corner input:first-child {

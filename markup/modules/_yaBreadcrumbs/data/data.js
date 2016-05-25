@@ -2,7 +2,7 @@ data = {yaBreadcrumbs: {
     template: {
         list: [
             {
-                href: '#',
+                href: '#', // опция
                 text: ''
             }
         ]

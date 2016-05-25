@@ -1,0 +1,142 @@
+.ya-text {
+    max-height: 100%;
+
+    & *:first-child {
+        margin-top: 0;
+    }
+
+    margin: $text-margin;
+
+    p {
+        margin: $text-p-margin;
+    }
+
+    @for $i from 1 through 6 {
+        h#{$i} {
+            $headlines-styles: map-get($headlines, 'h#{$i}');
+
+            font-family: $text-h-font-family;
+            color: $text-h-color;
+            line-height: $text-h-line-height;
+            font-size: map-get($headlines-styles, 'font-size');
+            margin: map-get($headlines-styles, 'margin');
+        }
+    }
+
+    ul,
+    ol {
+        margin: $text-list-margin;
+
+        li {
+            padding-left: $text-list-li-padding-left;
+            position: relative;
+        }
+    }
+
+    ol {
+        counter-reset: item;
+
+        li {
+            display: block;
+
+            &:before {
+                content: counter(item) ". ";
+                counter-increment: item;
+                color: $text-list-color-counter;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    }
+
+    ul {
+
+        li {
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 9px;
+                background: $text-list-color-counter;
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    img {
+        margin: $text-img-margin;
+    }
+
+    blockquote {
+        border-top: 1px solid #E3E3E3;
+        border-bottom: 1px solid #E3E3E3;
+        margin: 49px 0;
+        padding: 28px 78px;
+        font-family: $font-main;
+        font-size: 32px;
+        color: #3B3D40;
+        line-height: 1.3;
+        position: relative;
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+        margin-bottom: 30px;
+    }
+
+    td,
+    th {
+        height: 44px;
+        padding: 0 15px;
+        text-align: left;
+    }
+
+    th {
+        background: #2E2E30;
+        border: 1px solid #626262;
+        font-family: $font-main;
+        font-weight: 700;
+        font-size: 16px;
+        color: #FFFFFF;
+    }
+
+    td {
+        border: 1px solid #DDDDDD;
+        color: #272727;
+        font-size: 14px;
+
+        &:first-child {
+            font-family: $font-main;
+            font-size: 16px;
+            color: #080808;
+            font-weight: 700;
+        }
+    }
+
+    tr {
+
+        &:nth-child(2n+2) td {
+            background: #EFEFEF;
+        }
+    }
+
+    a {
+        color: $anchor-color;
+        text-decoration: none;
+        transition: all $global-transition-duration linear;
+
+        &:hover {
+            color: $anchor-color-hover;
+        }
+
+        &:visited {
+            color: #D31BE7;
+        }
+    }
+}
+

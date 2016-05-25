@@ -5,7 +5,6 @@
     "devDependencies": {
         "postcss-flexbugs-fixes": "^2.0.0",
         "vinyl-ftp": "^0.4.5",
-        "css-mqpacker": "^4.0.1",
         "backstopjs": "^1.1.0"
     },
   "scripts": {
@@ -25,6 +24,7 @@
     "updateProject": "tars update-project --source https://github.com/senja006/tars/archive/senja006.zip",
     "backstopScreen": "cd node_modules/backstopjs && gulp reference && cd ../..",
     "backstopTest": "cd node_modules/backstopjs && gulp test && cd ../..",
-    "backstopTestRm": "rm -rf backstop_data/bitmaps_test && rm -rf node_modules/backstopjs/bitmaps_test && rm -rf node_modules/backstopjs/bitmaps_reference"
+    "backstopTestRm": "rm -rf backstop_data/bitmaps_test && rm -rf node_modules/backstopjs/bitmaps_test && rm -rf node_modules/backstopjs/bitmaps_reference",
+    "backstopBless": "cd node_modules/backstopjs && npm run bless && npm run test && cd ../..",
   }
 }

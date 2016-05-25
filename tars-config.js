@@ -32,9 +32,6 @@ module.exports = {
     postcss: [
         {
             name: 'postcss-flexbugs-fixes'
-        },
-        {
-            name: 'css-mqpacker'
         }
     ],
 
@@ -209,13 +206,13 @@ module.exports = {
          * Choose the page to open in browser at first opening
          * @type {String}
          */
-        startUrl: '/index.html',
+        startUrl: '/p.html',
 
         /**
          * If you don't need to see notification in browser, switch to false
          * @type {Boolean}
          */
-        useNotifyInBrowser: true,
+        useNotifyInBrowser: false,
 
 
         /**
