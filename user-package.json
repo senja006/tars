@@ -25,6 +25,6 @@
     "backstopScreen": "cd node_modules/backstopjs && gulp reference && cd ../..",
     "backstopTest": "cd node_modules/backstopjs && gulp test && cd ../..",
     "backstopTestRm": "rm -rf backstop_data/bitmaps_test && rm -rf node_modules/backstopjs/bitmaps_test && rm -rf node_modules/backstopjs/bitmaps_reference",
-    "backstopBless": "cd node_modules/backstopjs && npm run bless && npm run test && cd ../..",
+    "backstopBless": "cd node_modules/backstopjs && npm run bless && npm run test && cd ../.."
   }
 }
