@@ -2,7 +2,7 @@
     @font-face {
         font-weight: $weight;
         font-style: $style;
-        font-family: $font-name;
+        font-family: $font-name, 'Arial', sans-serif;
         src: url($path-font + $file-name + ".woff2") format("woff2"),
         url($path-font + $file-name + ".woff") format("woff");
     }
@@ -12,7 +12,7 @@
     @font-face {
         font-weight: $weight;
         font-style: $style;
-        font-family: $font-name;
+        font-family: $font-name, 'Arial', sans-serif;
         src: url($path-font + $file-name + ".eot");
         src: url($path-font + $file-name + ".eot?#iefix")format("embedded-opentype"),
         url($path-font + $file-name + ".woff") format("woff"),

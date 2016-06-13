@@ -119,3 +119,14 @@
         }
     }
 }
+
+// сброс стилей колонок
+@mixin reset-cols($selector-cols: 'div') {
+    display: block;
+
+    & > #{$selector-cols} {
+        max-width: none;
+    }
+
+    @include gutter(0, $selector-cols);
+}

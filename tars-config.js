@@ -117,7 +117,7 @@ module.exports = {
         },
         css: {
             active: true,
-            inline: false
+            inline: true
         }
     },
 

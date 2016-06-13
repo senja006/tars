@@ -1,4 +1,4 @@
-data = {yaBreadcrumbs: {
+data = {breadcrumbs: {
     template: {
         list: [
             {

@@ -52,29 +52,52 @@ $z-index-hidden: -1;
 // 2. Типографика //
 // -----------------
 
-$anchor-color: blue;
-$anchor-color-hover: red;
+$text-margin: 0 0 2em; // отступ контейнера для текста
+
+$text-p-margin: 0 0 1.5em;
+
+$text-h-font-family: $font-main;
+$text-h-color: $global-font-color;
+$text-h-line-height: $global-lineheight;
+
+$headlines: (
+    h1: (
+        margin: 28px 0 15px,
+        font-size: 24px
+    ),
+    h2: (
+        margin: 26px 0 13px,
+        font-size: 22px
+    ),
+    h3: (
+        margin: 24px 0 11px,
+        font-size: 18px
+    ),
+    h4: (
+        margin: 24px 0 11px,
+        font-size: 18px
+    ),
+    h5: (
+        margin: 24px 0 11px,
+        font-size: 18px
+    ),
+    h6: (
+        margin: 24px 0 11px,
+        font-size: 18px
+    )
+);
+
+$text-list-margin:  0 0 15px 50px;
+$text-list-li-padding-left: 24px;
+$text-list-color-counter: $global-font-color;
+
+$text-img-margin: 20px 0;
+
+$anchor-color: inherit;
+$anchor-color-hover: #d51b1b;
 $anchor-transition-duration: $global-transition-duration;
-$anchor-border: none;
+$anchor-border: 1px dotted;
 $anchor-border-color-hover: transparent;
-
-$header-font-family: $font-main;
-$header-font-size: 32px;
-$header-font-weight: $global-weight-normal;
-$header-font-style: normal;
-$header-color: inherit;
-$header-lineheight: $global-lineheight;
-$header-margin-bottom: 0px;
-
-$paragraph-lineheight: $global-lineheight;
-$paragraph-margin-bottom: 20px;
-
-$list-lineheight: $paragraph-lineheight;
-$list-margin-bottom: $paragraph-margin-bottom;
-$list-style-type: disc;
-$list-style-position: inside;
-$list-side-margin: 0px; // отступ слева
-$list-nested-side-margin: 10px; // отступ вложенного списка
 
 // 3. Кнопки //
 // ------------

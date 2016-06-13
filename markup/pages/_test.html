@@ -114,6 +114,43 @@
     </form>
 
     {{> yaModal/template}}
+
+    <!-- автозаполнение -->
+    <form method="post" id="usrForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" autocomplete="name">
+        <label for="jobtitle">Job Title</label>
+        <input type="text" id="jobtitle" name="jobtitle" autocomplete="organization-title">
+        <label for="company">Organization</label>
+        <input type="text" id="company" name="company" autocomplete="organization">
+        <label for="tel">Telephone Number</label>
+        <input type="tel" id="tel" name="tel" autocomplete="home tel">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="home email">
+        <h4>Shipping Address</h4>
+        <label for="address">Street Address</label>
+        <textarea id="address" name="address" rows="3" autocomplete="shipping street-address"></textarea>
+        <label for="address-level2">City (Address Level 2)</label>
+        <input type="text" id="address-level2" name="city" autocomplete="shipping address-level2">
+        <label for="state">State/Province (Address Level 1)</label>
+        <input type="text" id="state" name="state" autocomplete="shipping address-level1">
+        <label for="country-name">Country Name</label>
+        <input type="text" id="country-name" name="country-name" autocomplete="shipping country-name">
+        <label for="postal-code">Postal Code</label>
+        <input type="text" id="postal-code" name="postal-code" autocomplete="shipping postal-code">
+        <h4>Do not use a real card</h4>
+        <label for="nameoncard">Name on Card</label>
+        <input type="text" id="nameoncard" name="nameoncard" autocomplete="cc-name">
+        <label for="ccnumber">Credit Card Number</label>
+        <input type="text" id="ccnumber" name="ccnumber" autocomplete="cc-number"
+        <label for="cc-exp-month">Expiration Month</label>
+        <input type="number" id="cc-exp-month" name="cc-exp-month" autocomplete="cc-exp-month">
+        <label for="cc-exp-year">Expiration Year</label>
+        <input type="number" id="cc-exp-year" name="cc-exp-year" autocomplete="cc-exp-year">
+        <label for="cvv2">CVV</label>
+        <input type="text" id="cvv2" name="cvv2" autocomplete="cc-csc">
+        <input type="submit" value="Submit" name="submit">
+    </form>
 </div>
 
 {{> footer/footer footer.default}}
