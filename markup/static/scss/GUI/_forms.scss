@@ -1,3 +1,79 @@
+input {
+    -webkit-border-radius: 0; // iOS 8+
+    outline: none;
+    color: inherit;
+    line-height: normal;
+    word-break: normal;
+    // -webkit-appearance: none;
+
+    &::-ms-clear {
+        display: none;
+    }
+
+    &[type="button"], &[type="reset"], &[type="submit"] {
+        -webkit-appearance: none;
+        cursor: pointer;
+    }
+
+    &[type="number"] {
+        -moz-appearance: textfield;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            height: auto;
+            -webkit-appearance: none;
+        }
+    }
+
+    &[type="search"] {
+        -webkit-appearance: textfield; // Chrome 45+, Safari 9+
+    }
+
+    html & {
+
+        &[disabled] {
+            cursor: default;
+        }
+    }
+}
+
+input[placeholder]          {text-overflow:ellipsis;}
+input::-moz-placeholder     {text-overflow:ellipsis;}
+input:-moz-placeholder      {text-overflow:ellipsis;}
+input:-ms-input-placeholder {text-overflow:ellipsis;}
+
+textarea {
+    resize: none;
+    outline: none;
+    color: inherit;
+    display: block;
+    -webkit-appearance: none;
+}
+
+select {
+    -moz-appearance: none;    // Firefox 40+
+    -webkit-appearance: none; // Chrome 45+
+    color: inherit;
+    width: 100%;
+    text-transform: none;
+    outline: none;
+    cursor: pointer;
+
+    &::-ms-expand {
+        display: none;        // Edge 12+, Internet Explorer 11-
+    }
+
+    &::-ms-value {
+        color: currentColor;  // Edge 12+, Internet Explorer 11-
+    }
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
 @mixin field-error {
 
     .#{$field-class-error} &,

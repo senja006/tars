@@ -67,31 +67,26 @@
     }
 }
 
-.#{$class-link} {
-    color: $anchor-color;
-    transition: all $anchor-transition-duration linear;
-    border-bottom: $anchor-border;
-    text-decoration: none;
-
-    &:hover,
-    &:focus {
-        color: $anchor-color-hover;
-        border-color: $anchor-border-color-hover;
-    }
-}
-
-.#{$class-hidden} {
-    display: none;
-}
-
 .ya-rouble {
     // font-family: $font-rouble;
 }
 
 ///////////////////////////////////////////////////
 
+*,
+:before,
+:after {
+    box-sizing: inherit;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html {
-    font-size: 10px;
+    overflow-y: scroll;
+    font-size: 16px;
 }
 
 body {
@@ -101,6 +96,9 @@ body {
     font-size: $global-font-size;
     line-height: $global-lineheight;
     font-weight: $global-weight-normal;
+    word-wrap: break-word; /* для ie */
+    overflow-wrap: break-word;
+    word-break: break-word;
     // background-image: repeating-linear-gradient(to bottom, transparent 0px, transparent 23px, red 23px, red 24px);
     // background-position: 0 -6px;
 
