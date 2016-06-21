@@ -1,12 +1,15 @@
+$button-line-height: 1.5;
+
 .#{$button-class} {
 
     // основные стили //
 
     display: inline-block;
-    padding: 0 $button-padding;
-    line-height: $button-height - $button-border-width * 2;
+    padding: (($button-height - $button-border-width * 2) - ($button-font-size * $button-line-height)) / 2 $button-padding;
+    // line-height: $button-height - $button-border-width * 2;
+    line-height: $button-line-height;
     width: $button-width;
-    vertical-align: middle;
+    vertical-align: top;
     transition: all $button-transition-duration linear;
     font-size: $button-font-size;
     border-radius: $button-radius;
