@@ -1,0 +1,11 @@
+<div class="ya-sidebar__block">
+    {{#if title}}
+        <span class="ya-sidebar__title">
+            {{title}}
+            {{#if subTitle}}
+                <span class="ya-sidebar__sub-title">{{subTitle}}</span>
+            {{/if}}
+        </span>
+    {{/if}}
+    {{#if name-modules}} {{> name-modules/name-modules name-modules}} {{/if}}
+</div>

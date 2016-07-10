@@ -1,5 +1,5 @@
 .swiper-container {
-    height: 300px;
+    // height: 300px;
 }
 
 .swiper-wrapper {
@@ -12,10 +12,27 @@
         justify-content: center;
         box-sizing: border-box;
     }
+
+    .ya-not-ready & {
+        justify-content: flex-start;
+    }
 }
 
 .swiper-slide {
     background: white;
+
+    .swiper-container-- & {
+        opacity: 0 !important;
+
+        &.swiper-slide-active {
+            opacity: 1 !important;
+        }
+    }
+
+    .ya-not-slider &,
+    .ya-not-ready & {
+        opacity: 1 !important;
+    }
 }
 
 .swiper-button {
@@ -41,7 +58,8 @@
 
     }
 
-    .ya-not-slider & {
+    .ya-not-slider &,
+    .ya-not-ready & {
         display: none;
     }
 }

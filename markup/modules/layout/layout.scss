@@ -1,24 +1,35 @@
 .ya-content__row {
-    @include cols(shrink auto shrink);
+    display: flex;
 }
 
 .ya-content__main {
-    // max-width: 100%;
-    // min-width: 0%;
-    // flex-basis: 0% !important;
+    //max-width: 100%;
+    min-width: 1px;
+    flex-grow: 1;
+    //flex-basis: 0% !important;
+}
+
+.ya-sidebar {
+    flex-shrink: 0;
 }
 
 .ya-sidebar__container {
-
-    .ya-sidebar:first-child & {
-        margin-right: 20px;
-    }
-
-    .ya-sidebar:last-child & {
-        margin-left: 20px;
-    }
+    padding-left: 21px;
+    padding-right: 21px;
 }
 
 .ya-sidebar__block {
-    width: 300px;
+    width: 250px;
+
+    & + & {
+        margin-top: 25px;
+    }
+
+    .ya-sidebar:first-child & {
+        margin-right: 30px;
+    }
+
+    .ya-sidebar:last-child & {
+        margin-left: 30px;
+    }
 }

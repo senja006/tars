@@ -2,26 +2,25 @@
     <div class="ya-container">
         {{#if pageTitle}} <span class="ya-page__title">{{pageTitle}}</span> {{/if}}
         <div class="ya-content__row">
-            <div class="ya-sidebar">
-                {{#if sidebar}}
-                    <div class="ya-sidebar__block">
-                        <div class="ya-sidebar__container">
-                            <span class="ya-sidebar__title">{{menuSidebar.title}}</span>
-                            {{> yaMenu/yaMenu menuSidebar.data}}
-                        </div>
-                    </div>
-                {{/if}}
-            </div>
-            <div class="ya-content__main">
-
-            </div>
-            <div class="ya-sidebar">
-                <div class="ya-sidebar__block">
-                    <div class="ya-sidebar__container">
-                        <span class="ya-sidebar__title">{{menuSidebar.title}}</span>
-                    </div>
+           {{#if sidebar-blocks-left}}
+                <div class="ya-sidebar">
+                    {{#each sidebar-blocks-left}}
+                        {{> sidebar-block/sidebar-block sidebar-block}}
+                    {{/each}}
                 </div>
+            {{/if}}
+            <div class="ya-content__main">
+                {{#each components}}
+                    {{#if name}} {{> name/name name}} {{/if}}
+                {{#each}}
             </div>
+            {{#if sidebar-blocks-right}}
+                <div class="ya-sidebar">
+                    {{#each sidebar-blocks-right}}
+                        {{> sidebar-block/sidebar-block sidebar-block}}
+                    {{/each}}
+                </div>
+            {{/if}}
         </div>
     </div>
 </div>

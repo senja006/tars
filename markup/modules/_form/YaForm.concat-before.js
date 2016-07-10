@@ -20,11 +20,13 @@ class YaForm {
 	 */
 	constructor(form) {
 		if(typeof form == 'string') {
-			this.form = document.getElementById(form.substring(1));
+            let selector = form + ' form';
+			this.form = document.querySelector(selector);
+            this.$form = $(selector);
 		}else{
 			this.form = form;
+            this.$form = $(form);
 		}
-		this.$form = $(form);
 		this.options = {
             classFieldContainer: 'ya-field-container',
 			classError: 'ya-error',
@@ -111,6 +113,7 @@ class YaForm {
 		} else {
 			this.$success = $(this.$form.data('success'));
 			this.$success.addClass(this.options.classShowSuccess);
+            console.log(this.$form);
             this.$form.addClass(this.options.classShowSuccess);
 
 			$(`.${this.options.btnCloseSuccess}`).on('click', (ev) => {

@@ -22,6 +22,8 @@ class YaSwiper {
             let options = $.extend({}, self.options);
             let numSlides = options.slidesPerView || 1;
 
+            $container.removeClass('ya-not-ready');
+
             if(self.checkNum && $container.find('.swiper-slide').length < numSlides + 1) {
                 $container.addClass('ya-not-slider');
                 return;

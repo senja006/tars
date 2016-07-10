@@ -1,4 +1,4 @@
-data = {yaPagination: {
+data = {pagination: {
     template: {
         list: [
             {
@@ -7,7 +7,7 @@ data = {yaPagination: {
             }
         ]
     },
-    default: {
+    defaults: {
         list: [
             {
                 text: '1'

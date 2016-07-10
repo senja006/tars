@@ -4,6 +4,8 @@ builds
 bower_components
 pass*
 server
+server-frontend
+server-backend
 bitmaps_test
 .DS_Store
 ._.DS_Store

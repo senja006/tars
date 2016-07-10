@@ -1,5 +1,6 @@
 .ya-pagination {
-    margin-bottom: 32px;
+    font-size: 16px;
+    margin-bottom: em(32px);
 }
 
 .ya-pagination__list {
@@ -7,40 +8,40 @@
     justify-content: center;
 }
 
-.ya-pagination__ul {
-    @include cols(default, 14px, 'li');
+.ya-pagination__list-ul {
+    @include cols(default, em(32px), 'li');
 
     align-items: center;
 }
 
-.ya-pagination__li {
+.ya-pagination__list-li {
 
     &:first-child {
-        margin-right: 16px;
+        margin-right: em(16px);
     }
 
     &:last-child {
-        margin-left: 16px;
+        margin-left: em(16px);
     }
 }
 
-.ya-pagination__a {
+.ya-pagination__list-text {
     display: block;
     text-decoration: none;
     color: #5a5a5a;
-    font-size: 18px;
+    font-size: em(18px);
     font-weight: 700;
     transition: all $global-transition-duration linear;
 
     .ya-active & {
         color: $anchor-color;
-        font-size: 20px;
+        font-size: em(20px);
         cursor: default;
         pointer-events: none;
     }
 }
 
-a.ya-pagination__a {
+a.ya-pagination__list-text {
 
     &:hover {
         color: $anchor-color;
