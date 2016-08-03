@@ -37,6 +37,7 @@
         } @else if $sizes == 'auto-shrink' {
             & > #{$selector-cols} {
                 flex: 1 0 auto;
+                max-width: 100%;
             }
         }@else if $sizes == 'default' {
             & > #{$selector-cols} {
@@ -45,6 +46,7 @@
         }@else if $sizes == 'shrink' {
             & > #{$selector-cols} {
                 flex: 0 0 auto;
+                max-width: 100%;
             }
         } @else {
             $size: 0;
@@ -75,6 +77,7 @@
             } @else if nth($sizes, $i) == 'auto-shrink' {
                 & > #{$selector-cols}:nth-child(#{$i}) {
                     flex: 1 0 auto;
+                    max-width: 100%;
                 }
             }@else if nth($sizes, $i) == 'default' {
                 & > #{$selector-cols}:nth-child(#{$i}) {
@@ -83,6 +86,7 @@
             }@else if nth($sizes, $i) == 'shrink' {
                 & > #{$selector-cols}:nth-child(#{$i}) {
                     flex: 0 0 auto;
+                    max-width: 100%;
                 }
             } @else {
                 & > #{$selector-cols}:nth-child(#{$i}) {

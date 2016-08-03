@@ -3,7 +3,7 @@
         {{#if pageTitle}} <span class="ya-page__title">{{pageTitle}}</span> {{/if}}
         <div class="ya-content__row">
            {{#if sidebar-blocks-left}}
-                <div class="ya-sidebar">
+                <div class="ya-sidebar ya-reset-typography-styles">
                     {{#each sidebar-blocks-left}}
                         {{> sidebar-block/sidebar-block sidebar-block}}
                     {{/each}}
@@ -15,7 +15,7 @@
                 {{#each}}
             </div>
             {{#if sidebar-blocks-right}}
-                <div class="ya-sidebar">
+                <div class="ya-sidebar ya-reset-typography-styles">
                     {{#each sidebar-blocks-right}}
                         {{> sidebar-block/sidebar-block sidebar-block}}
                     {{/each}}

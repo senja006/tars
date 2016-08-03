@@ -22,7 +22,18 @@ yaModules.template = (function () {
                 }
             }, 1000);
 
+            // let data = {};
+            // let inputs = this.elements;
+            // Array.prototype.forEach.call(inputs, function(input) {
+            //     if(input.name) {
+            //         data[input.name] = input.value;
+            //     }
+            // });
+            // data['action'] = 'send_contacts_form';
+            // data['nonce'] = ajaxdata.nonce;
+
             // let data = $(this).serialize();
+
             // $.ajax({
             //     url: '/order-form.php',
             //     type: 'POST',
@@ -33,6 +44,9 @@ yaModules.template = (function () {
             //             form.showSuccess();
             //             yaModules.yaMetrics.controlGoal(form.getJquery());
             //         }else{
+            //             if(res.errors) {
+            //                  form.addErrors(res.errors);
+            //             }
             //             console.log('Ошибка отправки заявки!');
             //         }
             //         form.enable();

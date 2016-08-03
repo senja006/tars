@@ -1,0 +1,43 @@
+@mixin add-typography-styles() {
+    max-height: 100%;
+    font-family: $text-font-family;
+    font-size: $text-font-size;
+
+    $tags: map_keys($typography);
+
+    @for $i from 1 through length($tags) {
+        $rules: map-get($typography, nth($tags, $i));
+        $rules-keys: map_keys($rules);
+
+        #{nth($tags, $i)} {
+            @for $r from 1 through length($rules-keys) {
+                $rule: nth($rules-keys, $r);
+                $values: map-get($rules, $rule);
+
+                #{$rule}: #{nth($values, 1)};
+            }
+        }
+    }
+
+}
+
+@mixin reset-typography-styles() {
+    font-family: $font-main;
+    font-size: $global-font-size;
+
+    $tags: map_keys($typography);
+
+    @for $i from 1 through length($tags) {
+        $rules: map-get($typography, nth($tags, $i));
+        $rules-keys: map_keys($rules);
+
+        #{nth($tags, $i)} {
+            @for $r from 1 through length($rules-keys) {
+                $rule: nth($rules-keys, $r);
+                $values: map-get($rules, $rule);
+
+                #{$rule}: #{nth($values, 2)};
+            }
+        }
+    }
+}

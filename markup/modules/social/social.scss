@@ -1,0 +1,32 @@
+.ya-social {
+
+    .ya-sidebar & {
+        padding: 5px 0 0;
+    }
+}
+
+.ya-social__list-ul {
+    @include cols(default, 19px, 'li');
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ya-social__list-li {
+    margin-bottom: 5px;
+}
+
+.ya-social__list-a {
+    display: table-cell;
+    width: 46px;
+    height: 46px;
+    //padding-top: 2px;
+    line-height: 1;
+    border-radius: 5px;
+    vertical-align: middle;
+    color: white !important;
+    font-size: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}

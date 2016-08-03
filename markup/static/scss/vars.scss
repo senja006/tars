@@ -55,35 +55,143 @@ $z-index-hidden: -1;
 // $text-margin: 0 0 2em; // отступ контейнера для текста
 
 $text-margin: 1.5em;
+$text-font-size: 18px;
+$text-font-family: $font-main;
 
 $text-h-font-family: $font-main;
 $text-h-color: $global-font-color;
 $text-h-line-height: $global-lineheight;
 
-$headlines: (
+$anchor-color: inherit;
+$anchor-color-hover: #d51b1b;
+$anchor-color-visited: #d51b1b;
+$anchor-transition-duration: $global-transition-duration;
+$anchor-border: 1px dotted;
+$anchor-border-color-hover: transparent;
+
+$typography: (
+    p: (
+        margin-bottom: ($text-margin, 0)
+    ),
+   'blockquote p': (
+        margin: (0, 0)
+    ),
     h1: (
-        margin: em(28px) 0 em(15px),
-        font-size: em(24px)
+        margin: (em(28px, 18px) 0 em(15px, 18px), 0),
+        font-size: (em(24px, 18px), inherit),
+        font-family: ($text-h-font-family, inherit),
+        color: ($text-h-color, inherit),
+        line-height: ($text-h-line-height, inherit)
     ),
     h2: (
-        margin: em(26px) 0 em(13px),
-        font-size: em(22px)
+        margin: (em(26px, 18px) 0 em(13px, 18px), 0),
+        font-size: (em(22px, 18px), inherit),
+        font-family: ($text-h-font-family, inherit),
+        color: ($text-h-color, inherit),
+        line-height: ($text-h-line-height, inherit)
     ),
     h3: (
-        margin: em(24px) 0 em(11px),
-        font-size: em(18px)
+        margin: (em(29px, 18px) 0 em(15px, 18px), 0),
+        font-size: (em(11px, 18px), inherit),
+        font-family: ($text-h-font-family, inherit),
+        color: ($text-h-color, inherit),
+        line-height: ($text-h-line-height, inherit),
+        text-transform: (uppercase, none),
+        letter-spacing: (2px, normal)
     ),
     h4: (
-        margin: em(24px) 0 em(11px),
-        font-size: em(18px)
+        margin: (em(24px, 18px) 0 em(11px, 18px), 0),
+        font-size: (em(18px, 18px), inherit),
+        font-family: ($text-h-font-family, inherit),
+        color: ($text-h-color, inherit),
+        line-height: ($text-h-line-height, inherit)
     ),
     h5: (
-        margin: em(24px) 0 em(11px),
-        font-size: em(18px)
+        margin: (em(24px, 18px) 0 em(11px, 18px), 0),
+        font-size: (em(18px, 18px), inherit),
+        font-family: ($text-h-font-family, inherit),
+        color: ($text-h-color, inherit),
+        line-height: ($text-h-line-height, inherit)
     ),
     h6: (
-        margin: em(24px) 0 em(11px),
-        font-size: em(18px)
+        margin: (em(24px, 18px) 0 em(11px, 18px), 0),
+        font-size: (em(18px, 18px), inherit),
+        font-family: ($text-h-font-family, inherit),
+        color: ($text-h-color, inherit),
+        line-height: ($text-h-line-height, inherit)
+    ),
+    'ul, ol': (
+        margin: ($text-margin 0, 0)
+    ),
+    'ol li': (
+        list-style: (decimal inside, none)
+    ),
+    'ul li': (
+        list-style: (disc inside, none)
+    ),
+    img: (
+        margin: (em(43px, 18px) 0, 0),
+        display: (block, block),
+        border: (0, 0)
+    ),
+    blockquote: (
+        border-top: (1px solid #E3E3E3, none),
+        border-bottom: (1px solid #E3E3E3, none),
+        margin: (em(24px, 18px) 0, 0),
+        padding: (em(14px, 18px) 0, 0),
+        font-size: (em(32px, 18px), inherit),
+        line-height: (1.35, inherit),
+        color: (#3B3D40, inherit),
+        position: (relative, static)
+    ),
+    table: (
+        width: (100%, 100%),
+        table-layout: (fixed, fixed),
+        margin-bottom: ($text-margin, 0),
+        border-collapse: (collapse, collapse),
+        border-spacing: (0, 0)
+    ),
+    'td, th': (
+        height: (em(44px), auto),
+        padding: (0 em(15px), 0),
+        text-align: (left, left)
+    ),
+    th: (
+        background: (#2E2E30, none),
+        border: (1px solid #626262, none),
+        font-family: ($font-main, inherit),
+        font-weight: (700, 700),
+        font-size: (em(16px), inherit),
+        color: (#fff, #fff)
+    ),
+    td: (
+        border: (1px solid #DDDDDD, 1px solid #DDDDDD),
+        color: (#272727, #272727),
+        font-size: (em(14px), inherit)
+    ),
+    'td:first-child': (
+        font-family: ($font-main, inherit),
+        font-size: (em(16px), inherit),
+        color: (#080808, #080808),
+        font-weight: (700, 700)
+    ),
+    'tr:nth-child(2n+2) td': (
+        background: (#EFEFEF, #EFEFEF)
+    ),
+    a: (
+        color: ($anchor-color, $anchor-color),
+        text-decoration: (none, none),
+        transition: (all $global-transition-duration linear, all $global-transition-duration linear),
+        -webkit-tap-highlight-color: (transparent, transparent)
+    ),
+    'a:hover': (
+        color: ($anchor-color-hover, $anchor-color-hover)
+    ),
+    pre: (
+        overflow: (auto, auto)
+    ),
+    'b, strong': (
+        color: (#3b3d40, currentColor)
     )
 );
 
@@ -93,12 +201,6 @@ $headlines: (
 
 // $text-img-margin: em(20px) 0;
 
-$anchor-color: inherit;
-$anchor-color-hover: #d51b1b;
-$anchor-color-visited: #d51b1b;
-$anchor-transition-duration: $global-transition-duration;
-$anchor-border: 1px dotted;
-$anchor-border-color-hover: transparent;
 
 // 3. Кнопки //
 // ------------

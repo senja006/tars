@@ -1,5 +1,7 @@
 data = {text: {
     template: {
-        text: ""
+        rows: [
+            { text: "" }, // html
+        ]
     }
 }};

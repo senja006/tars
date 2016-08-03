@@ -321,4 +321,15 @@ class YaForm {
         this.$form.on(event, cb);
     }
 
+    /**
+     * Указание на ошибочные поля после проверки на сервере
+     */
+    addErrors(fieldsNames) {
+        let self = this;
+        fieldsNames.forEach(function(fieldName) {
+            $field = self.$form.find(`[name=${fieldName}]`);
+            self._addErrorToField($field);
+        });
+    }
+
 }

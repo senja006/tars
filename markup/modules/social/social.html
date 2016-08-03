@@ -1,0 +1,11 @@
+<div class="ya-social">
+    <div class="ya-social__list">
+        <ul class="ya-social__list-ul">
+            {{#each list}}
+                <li class="ya-social__list-li">
+                    <a {{#if sharer}}{{else}}href="#"{{/if}} class="ya-social__list-a {{#if sharer}} sharer {{/if}}" style="background-color: {{bgColor}}" {{#if sharer}} data-sharer="{{sharer.source}}" data-title="{{sharer.title}}" data-hashtags="{{sharer.hashtags}}" data-url="{{sharer.url}}" {{/if}}>{{buttonText}}</a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
