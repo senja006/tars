@@ -142,7 +142,6 @@ img {
 
 button {
     outline: none;
-    cursor: pointer;
 }
 
 a {
@@ -152,6 +151,10 @@ a {
 // инерционный скролл в мобильных
 .element {
     -webkit-overflow-scrolling: touch;
+}
+
+:disabled, [disabled], [aria-disabled="true"] {
+    cursor: not-allowed;
 }
 
 .ya-full-window {

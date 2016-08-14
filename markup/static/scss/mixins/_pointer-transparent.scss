@@ -1,3 +1,5 @@
+// Прозрачные стрелки
+
 @mixin pointer-transparent($height, $background, $skew, $margin, $position: 'bottom') {
     position: relative;
     overflow: hidden;

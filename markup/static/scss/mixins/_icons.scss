@@ -1,3 +1,5 @@
+// Создание иконок
+
 @mixin icon($class, $img, $img-hover: $img, $img-active: $img-hover, $elementsAction: (''), $classesActive: (''), $transition-duration: $global-transition-duration-icons) {
 
     .ya-icon--#{$class} {

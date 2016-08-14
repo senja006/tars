@@ -1,6 +1,5 @@
-// создание пробелов между колонками
-// @include gutter((20px in), 'li');
-// если добавить in к размеру, то отступы только внутри колонок, но не снаружи. Снаружи необходимы только при переносе колонок на другую строку
+// Создание колонок
+// Для создания пробелов между колонками @include gutter(20px in). Если добавить in к размеру, то отступы только внутри колонок, но не снаружи. Снаружи необходимы только при переносе колонок на другую строку
 @mixin gutter($gutter, $selector-cols: 'div', $sizing-content-box: 'false') {
 
     & > #{$selector-cols} {
@@ -115,8 +114,8 @@
 }
 
 // точки изменения колонок для изображений
-@mixin cols-images($start, $end, $img-width, $gutter, $list: 'li', $page-padding: $global-padding) {
-    @for $i from $start through $end {
+@mixin cols-images($min-cols, $max-cols, $img-width, $gutter, $list: 'li', $page-padding: $global-padding) {
+    @for $i from $min-cols through $max-cols {
         $page-width: ($i - 1) * $img-width + $gutter * ($i - 2) + $page-padding * 2;
         @include breakpoint($page-width) {
             @include cols($i, $gutter, $list);

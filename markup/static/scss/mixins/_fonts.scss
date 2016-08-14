@@ -1,3 +1,5 @@
+// Подключение шрифтов
+
 @mixin font-face($font-name, $file-name, $weight: 400, $style: normal, $path-font: "../fonts/") {
     @font-face {
         font-weight: $weight;
