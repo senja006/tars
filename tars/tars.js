@@ -5,7 +5,7 @@
  */
 
 /**
- * Reqiure modules from TARS-CLI, if tars was executed via CLI and from local node_modules instead
+ * Reqiure node-modules from TARS-CLI, if tars was executed via CLI and from local node_modules instead
  * @param  {String} packageName Name of the required package
  * @return {Object}             Required package
  */
@@ -28,7 +28,7 @@ function tarsRequire(packageName) {
             console.dir('It seems, that TARS in current project is not compatible with current TARS-CLI!', { colors: true });
             console.dir(`Package "${packageName}" is not available.`, { colors: true });
             console.dir('Update TARS-CLI via "tars update" and your project via "tars update-project"', { colors: true });
-            console.dir('Please, write to the tars.builder@gmail.com, if update did\'t help you.', { colors: true });
+            console.dir('Please, write to the tars.builder@gmail.com, if update did not help you.', { colors: true });
             console.log('---------------------------------------------------------------------------------\n');
 
             throw new Error(`Package ${packageName} is not available.`);
@@ -55,15 +55,18 @@ const templaterName = require(helpersDirPath + '/get-templater-name')(tars.confi
 const buildVersion = require(helpersDirPath + '/set-build-version')();
 const useBuildVersioning = tars.config.useBuildVersioning;
 
+// Config for plugins and packages, which is used in TARS
+tars.pluginsConfig = require(helpersDirPath + '/plugins-config-processing')();
+
 // Flags
 tars.flags = gutil.env;
 
 // Dev mode flag
 tars.isDevMode = !tars.flags.release && !tars.flags.min;
-tars.useLiveReload = tars.flags.lr || tars.flags.tunnel;
+tars.useLiveReload = tars.flags.lr || tars.flags.livereload || tars.flags.tunnel;
 
 // Package name
-tars.packageInfo.name = !tars.packageInfo.name ? 'awesome_project' : tars.packageInfo.name.replace(/[\s?+<>:*|"\\]/g, '_');
+tars.packageInfo.name = tars.packageInfo.name || 'awesome_project';
 
 /**
  * Log messages from TARS
@@ -94,7 +97,7 @@ if (os.platform() !== 'win32') {
  * @param  {String} reason   Reason ot the skip
  */
 tars.skipTaskLog = function skipTaskLog(taskName, reason) {
-    gutil.log(gutil.colors.white.bold('Skipped  \'' + gutil.colors.cyan(taskName) + '\' ' + reason));
+    gutil.log(gutil.colors.white.bold(`Skipped  '${gutil.colors.cyan(taskName)}' ${reason}`));
 };
 
 /**
@@ -104,7 +107,7 @@ tars.skipTaskLog = function skipTaskLog(taskName, reason) {
  * Will be replaced to background: url('../img/logo.png');
  * %=staticPrefixForCss=% prefix works, but it is deprecated!
  */
-tars.config.staticPrefixForCss = '../' + tars.config.fs.imagesFolderName + '/';
+tars.config.staticPrefixForCss = `../${tars.config.fs.imagesFolderName}/`;
 
 // Fix svg config
 if (tars.config.hasOwnProperty('useSVG')) {
@@ -152,7 +155,7 @@ tars.options = {
     notify: true,
     build: {
         hash: tars.flags.release ? Math.random().toString(36).substring(7) : '',
-        path: useBuildVersioning ? tars.config.buildPath + 'build' + buildVersion + '/' : tars.config.buildPath,
+        path: useBuildVersioning ? `${tars.config.buildPath}build${buildVersion}/` : tars.config.buildPath,
         version: useBuildVersioning ? buildVersion : ''
     },
     watch: {
@@ -214,15 +217,7 @@ switch (cssPreprocName) {
             name: 'stylus',
             ext: 'styl',
             mainExt: 'styl',
-            preprocessor: () => tars.require('gulp-stylus')({
-                'resolve url': true,
-                'include css': true,
-                'include': [
-                    process.cwd(),
-                    process.cwd() + '/node_modules/',
-                    process.cwd() + '/bower_components/'
-                ]
-            })
+            preprocessor: () => tars.require('gulp-stylus')(tars.pluginsConfig['gulp-stylus'])
         };
         break;
     case 'less':
@@ -230,13 +225,7 @@ switch (cssPreprocName) {
             name: 'less',
             ext: 'less',
             mainExt: 'less',
-            preprocessor: () => tars.require('gulp-less')({
-                paths: [
-                    process.cwd(),
-                    process.cwd() + '/node_modules/',
-                    process.cwd() + '/bower_components/'
-                ]
-            })
+            preprocessor: () => tars.require('gulp-less')(tars.pluginsConfig['gulp-less'])
         };
         break;
     case 'scss':
@@ -245,14 +234,7 @@ switch (cssPreprocName) {
             name: 'scss',
             ext: '{scss,sass}',
             mainExt: 'scss',
-            preprocessor: () => tars.require('gulp-sass')({
-                outputStyle: 'expanded',
-                includePaths: [
-                    process.cwd(),
-                    process.cwd() + '/node_modules/',
-                    process.cwd() + '/bower_components/'
-                ]
-            })
+            preprocessor: () => tars.require('gulp-sass')(tars.pluginsConfig['gulp-sass'])
         };
         break;
 }
@@ -269,10 +251,16 @@ switch (templaterName) {
         tars.templater = {
             name: 'handlebars',
             ext: '{html,hbs}',
-            fn: modulesData => tars.require('gulp-compile-handlebars')(modulesData, {
-                batch: ['./markup/modules'],
-                helpers: require('./tasks/html/helpers/handlebars-helpers.js')
-            })
+            fn: mocksData => tars.require('gulp-compile-handlebars')(
+                mocksData,
+                Object.assign(
+                    {},
+                    tars.pluginsConfig['gulp-compile-handlebars'],
+                    {
+                        helpers: require('./tasks/html/helpers/handlebars-helpers')
+                    }
+                )
+            )
         };
         break;
     case 'jade':
@@ -280,10 +268,15 @@ switch (templaterName) {
         tars.templater = {
             name: 'jade',
             ext: 'jade',
-            fn: modulesData => tars.require('gulp-jade')({
-                pretty: true,
-                locals: modulesData
-            })
+            fn: mocksData => tars.require('gulp-jade')(
+                Object.assign(
+                    {},
+                    tars.pluginsConfig['gulp-jade'],
+                    {
+                        locals: mocksData
+                    }
+                )
+            )
         };
         break;
 }

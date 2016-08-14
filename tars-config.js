@@ -10,12 +10,6 @@ module.exports = {
     ///////////////////////////////////////////////////
 
     /**
-     * Autoprefixer config
-     * @type {Array}
-     */
-    autoprefixerConfig: ['> 1%', 'last 2 versions', 'Firefox ESR', 'android 4'],
-
-    /**
      * Postprocessors for TARS
      * @type {Array}
      * Example:
@@ -45,6 +39,11 @@ module.exports = {
             usePolyfillForExternalSymbols: true,
             pathToExternalSymbolsFile: ''
         }
+    },
+
+    css: {
+        // concat, manual
+        workflow: 'concat'
     },
 
     js: {
@@ -169,60 +168,6 @@ module.exports = {
     },
 
     /**
-     * Config for browser-sync module
-     * @type {Object}
-     */
-    browserSyncConfig: {
-
-        /**
-         * dir to serve files from
-         * @type {String}
-         */
-        baseDir: './dev',
-
-        /**
-         * Port of local server for browser-sync
-         * You can set port via env var BROWSERSYNC_PORT
-         * This var will override port from config
-         * @type {Number}
-         */
-        port: 3004,
-
-        /**
-         * Switch to false, if you don't need to open browser in dev mode
-         * @type {Boolean}
-         */
-        open: true,
-
-        /**
-         * Choose browser to open
-         * @type {String|Array}
-         * Example: ['google chrome', 'firefox']
-         * Avalible: safari, internet explorer, google chrome, firefox, opera
-         */
-        browser: 'google chrome',
-
-        /**
-         * Choose the page to open in browser at first opening
-         * @type {String}
-         */
-        startUrl: '/p.html',
-
-        /**
-         * If you don't need to see notification in browser, switch to false
-         * @type {Boolean}
-         */
-        useNotifyInBrowser: false,
-
-
-        /**
-         * Inject CSS changes
-         * @type {Boolean}
-         */
-        injectChanges: true
-    },
-
-    /**
      * Minify result html in build version
      * If is set to false, compiled html will be prettified
      * @type {Boolean}
@@ -230,14 +175,11 @@ module.exports = {
     minifyHtml: true,
 
     /**
-     * Beginning of path for static files
-     * You have to use %=static=% or __static__ placeholder in paths to static
-     * Example: %=static=%img/logo.png or __static__img/logo.png
-     * Will be replaced to '/static/img/logo.png'
-     * %=staticPrefix=% prefix works, but it is deprecated!
-     * @type {String}
+     * TARS will generate relative path from current page
+     * to static files in case of true value
+     * @type {Boolean}
      */
-    staticPrefix: 'static/',
+    generateStaticPath: true,
 
     /**
      * Path to build version of project
@@ -331,8 +273,15 @@ module.exports = {
          * 'img' by default
          * @type {String}
          */
-        imagesFolderName: 'img'
-    },
+        imagesFolderName: 'img',
+
+        /**
+         * Name of folder with modules
+         * 'modules' by default
+         * @type {String}
+         */
+        componentsFolderName: 'components'
+    }
 
     ////////////////////////////////////////////////////
     ////////////////////////////////////////////////////

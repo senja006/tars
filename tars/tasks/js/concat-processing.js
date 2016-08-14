@@ -11,22 +11,21 @@ const notifier = tars.helpers.notifier;
 const browserSync = tars.packages.browserSync;
 const cwd = process.cwd();
 const path = require('path');
-
+let generateSourceMaps = false;
 const staticFolderName = tars.config.fs.staticFolderName;
-const destFolder = './dev/' + staticFolderName + '/js';
+const destFolder = `./dev/${staticFolderName}/js`;
 const compressJs = tars.flags.release || tars.flags.min;
-const generateSourceMaps = tars.config.sourcemaps.js.active && tars.options.watch.isActive;
 const sourceMapsDest = tars.config.sourcemaps.js.inline ? '' : '.';
 const jsPaths = [].concat.apply([], [
-    '!./markup/modules/**/data/data.js',
-    '!./markup/modules/**/_*.js',
-    './markup/' + staticFolderName + '/js/framework/**/*.js',
-    './markup/' + staticFolderName + '/js/libraries/**/*.js',
-    './markup/' + staticFolderName + '/js/plugins/**/*.js',
+    `!./markup/${tars.config.fs.componentsFolderName}/**/data/data.js`,
+    `!./markup/${tars.config.fs.componentsFolderName}/**/_*.js`,
+    `./markup/${staticFolderName}/js/framework/**/*.js`,
+    `./markup/${staticFolderName}/js/libraries/**/*.js`,
+    `./markup/${staticFolderName}/js/plugins/**/*.js`,
     tars.config.js.jsPathsToConcatBeforeModulesJs,
-    './markup/modules/*/*.js',
+    `./markup/${tars.config.fs.componentsFolderName}/**/*.js`,
     tars.config.js.jsPathsToConcatAfterModulesJs,
-    '!./markup/' + staticFolderName + '/js/separate-js/**/*.js'
+    `!./markup/${staticFolderName}/js/separate-js/**/*.js`
 ]);
 
 /**
@@ -65,17 +64,7 @@ function base() {
 function compress() {
     if (compressJs) {
         return streamCombiner(
-            tars.require('gulp-uglify')(
-                {
-                    mangle: false,
-                    compress: {
-                        /* eslint-disable camelcase */
-                        drop_console: tars.config.js.removeConsoleLog,
-                        drop_debugger: tars.config.js.removeConsoleLog
-                        /* eslint-enable camelcase */
-                    }
-                }
-            ),
+            tars.require('gulp-uglify')(tars.pluginsConfig['gulp-uglify']),
             rename({ suffix: '.min' }),
             gulp.dest(destFolder)
         );
@@ -99,6 +88,8 @@ module.exports = () => {
      *  - reloading browser's page.
      */
     return gulp.task('js:concat-processing', () => {
+        generateSourceMaps = tars.config.sourcemaps.js.active && tars.options.watch.isActive;
+
         return gulp.src(jsPaths, { base: cwd })
             .pipe(plumber({
                 errorHandler(error) {

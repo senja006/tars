@@ -4,6 +4,38 @@ English description | <a href="../ru/changelog.md">Описание на рус�
 
 # Changelog
 
+## Version 1.8.3
+
+* Fix bug with svg2png in 2.0.0 Use 1.0.2
+
+## Version 1.8.2
+
+* Fix watcher for templates with _ in the begining of the name;
+* Default scheme for Jade component has been changed. 
+* Dependencies update. Eslint has been updated to version 3.x.x.
+
+## Version 1.8.1
+
+* Init process without user-package.json fixed.
+* Autoprefixer was added for IE9.
+* Pathes for IE entry points were fixed.
+* Dependencies update.
+
+## Version 1.8.0
+
+* Modules directory was renamed to components. This is optional, you can change it in [tars-config](options.md#componentsfoldername). 
+* Task concat-modules-data was renamed to concat-mocks-data.
+* Log fixing for case, when there is problems with sprite generation.
+* You can configure gulp-plugins by using [plugins-config.js](plugins-options.md).
+* Jade recompilation became faster.
+* You can crate components inside another components.
+* All images from assets of component will be moved to static/img/assets. Images are files with extensions svg, png, jpg, jpeg, jpe, gif, tiff and bmp.
+Other files will be moved to static/components-assets.
+* staticPrefix was removed from tars-config.
+* Option [generateStaticPath](options.md#generatestaticpath) was added.
+* Build name is based on local date.
+* TARS works in NodeJs 6.x.x version.
+
 ## Version 1.7.1
 
 * Rebuild process of jade-templates became faster.
