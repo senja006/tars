@@ -1,4 +1,4 @@
-data = {yaSwiper: {
+data = {swiper: {
     template: {
         list: [
             {}

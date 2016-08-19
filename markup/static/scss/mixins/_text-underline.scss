@@ -2,27 +2,25 @@
 // https://codepen.io/jonneal/pen/PzGYEE
 
 @mixin decorative-text-underline(
-	text-underline-opacity: 0.5,
-	text-underline-color: currentColor,
-	text-underline-background-color: #f5f5f5,
-	text-underline-position: -.14em,
-	text-underline-size: .02em,
-	text-underline-gap: .05em,
-	text-underline-gap-minimum: 1.5px
+    $text-underline-opacity: 0.5,
+    $text-underline-color: currentColor,
+    $text-underline-background-color: #f5f5f5,
+    $text-underline-position: -.14em,
+    $text-underline-size: .02em,
+    $text-underline-gap: .05em, 
+    $text-underline-gap-minimum: 1.5px
 ) {
-	box-shadow:
-		inset 0 calc(text-underline-position + text-underline-size) 0 0 text-underline-background-color,
-		// inset 0 text-underline-position 0 0 color( var(--text-underline-background-color) alpha( calc( 1 - text-underline-opacity * 100% ) ) ),
-		inset 0 text-underline-position 0 0 text-underline-background-color * ( (1 - text-underline-opacity) * 100% ),
-		inset 0 text-underline-position 0 0 text-underline-color;
-	text-decoration: none;
-	text-shadow:
-		text-underline-gap 0 text-underline-background-color,
-		calc(-text-underline-gap) 0 text-underline-background-color,
-		text-underline-gap-minimum 0 text-underline-background-color,
-		calc(-text-underline-gap-minimum) 0 text-underline-background-color;
+    box-shadow: inset 0 calc(#{$text-underline-position} + #{$text-underline-size}) 0 0 $text-underline-background-color,
+        // inset 0 $text-underline-position 0 0 color( var(--$text-underline-background-color) alpha( calc( 1 - $text-underline-opacity * 100% ) ) ),
+    inset 0 $text-underline-position 0 0 $text-underline-background-color * ( (1 - $text-underline-opacity) * 100% ),
+    inset 0 $text-underline-position 0 0 $text-underline-color;
+    text-decoration: none;
+    text-shadow: $text-underline-gap 0 $text-underline-background-color,
+    calc(0 - #{$text-underline-gap}) 0 $text-underline-background-color,
+    $text-underline-gap-minimum 0 $text-underline-background-color,
+    calc(0 - #{$text-underline-gap-minimum}) 0 $text-underline-background-color;
 
-	&::selection {
-		text-shadow: none;
-	}
+    &::selection {
+        text-shadow: none;
+    }
 }

@@ -74,9 +74,11 @@
     border-radius: 50% !important;
     background: gray !important;
     border: 1px solid black;
+    transition: all $global-transition-duration linear;
 
     &.swiper-pagination-bullet-active {
         background: blue !important;
         border-color: red;
+        cursor: default;
     }
 }

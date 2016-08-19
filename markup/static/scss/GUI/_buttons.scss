@@ -3,9 +3,10 @@ $button-line-height: 1.5;
 .#{$button-class} {
 
     // основные стили //
+    $button-padding-y: ((($button-height - $button-border-width * 2) - ($button-font-size * $button-line-height)) / 2);
 
     display: inline-block;
-    padding: (($button-height - $button-border-width * 2) - ($button-font-size * $button-line-height)) / 2 $button-padding;
+    padding: ($button-padding-y - $button-correction-padding-y) $button-padding-x ($button-padding-y + $button-correction-padding-y);
     // line-height: $button-height - $button-border-width * 2;
     line-height: $button-line-height;
     width: $button-width;
@@ -18,8 +19,8 @@ $button-line-height: 1.5;
     font-family: $button-font-family;
     font-weight: $button-font-weight;
     text-align: center;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
     outline: none;
     -webkit-tap-highlight-color: transparent;
 

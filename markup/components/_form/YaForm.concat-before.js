@@ -237,7 +237,7 @@ class YaForm {
      * Проверка номера телефона при использовании маски
      */
     _checkTel() {
-        let $fields = this.$form.find('[type=tel]').filter('[data-inputmask]');
+        let $fields = this.$form.find('[type=tel], [data-type-tel]').filter('[data-inputmask]');
         let self = this;
         $fields.each(function () {
             let $field = $(this);

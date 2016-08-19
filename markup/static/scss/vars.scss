@@ -71,7 +71,7 @@ $anchor-border-color-hover: transparent;
 
 $typography: (
     p: (
-        margin-bottom: ($text-margin, 0)
+        margin: ($text-margin, 0)
     ),
    'blockquote p': (
         margin: (0, 0)
@@ -210,8 +210,9 @@ $button-class: 'ya-button';
 $button-border-width: 1px; // для выключения - 0
 $button-border-style: solid;
 $button-height: 40px;
+$button-correction-y-padding: 0; // если текст не по вертикальному центру
 $button-width: auto;
-$button-padding: 20px; // отступы слева и справа
+$button-padding-x: 20px; // отступы слева и справа
 $button-font-family: $font-main;
 $button-font-weight: $global-weight-normal;
 $button-font-size: $global-font-size;

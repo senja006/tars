@@ -159,6 +159,7 @@ a {
 
 .ya-full-window {
     width: 100vw;
+    min-width: $global-width + $global-padding * 2;
     margin-left: 50%;
     transform: translateX(-50%);
 

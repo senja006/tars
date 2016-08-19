@@ -1,0 +1,29 @@
+<div class="ya-menu">
+    <div class="ya-menu__list">
+        <ul class="ya-menu__list-ul">
+            {{#each list}}
+                <li class="ya-menu__list-li {{#if isActive}} ya-active {{/if}}">
+                    {{#if list}}
+                        <ul class="ya-menu__list-ul">
+                            {{#each list}}
+                                <li class="ya-menu__list-li {{#if isActive}} ya-active {{/if}}">
+                                    {{#if href}}
+                                        <a href="{{href}}" class="ya-menu__list-text">{{text}}</a>
+                                    {{else}}
+                                        <span class="ya-menu__list-text">{{text}}</span>
+                                    {{/if}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+
+                    {{#if href}}
+                        <a href="{{href}}" class="ya-menu__list-text">{{text}}</a>
+                    {{else}}
+                        <span class="ya-menu__list-text">{{text}}</span>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
