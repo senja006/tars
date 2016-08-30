@@ -1,15 +1,52 @@
+$sidebar-margin-x: 30px;
+$sidebar-margin-y: 50px;
+
+// отступы
+%vertical-columns-margins {
+
+    margin-bottom: $sidebar-margin-y;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    // @include breakpoint(large) {
+    //     margin-bottom: 0;
+    // }
+}
+
 .ya-content__row {
     display: flex;
+    // flex-direction: column;
+
+    // @include breakpoint(large) {
+        // flex-direction: row;
+    // }
 }
 
 .ya-content__main {
+    @extend %vertical-columns-margins;
     //max-width: 100%;
     min-width: 1px;
     flex-grow: 1;
     //flex-basis: 0% !important;
+
+    .ya-columns & {
+
+        & > *:first-child {
+            margin-top: 0 !important;
+        }
+
+        & > *:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
 }
 
 .ya-sidebar {
+    @extend %vertical-columns-margins;
+    display: flex;
+    flex-direction: column;
     flex-shrink: 0;
 }
 
@@ -19,18 +56,18 @@
 }
 
 .ya-sidebar__block {
-    margin-bottom: 25px;
-    width: 250px;
+    @extend %vertical-columns-margins;
+    width: 255px;
 
-    & + & {
-        margin-top: 25px;
+    & > * {
+        margin: 0 !important;
     }
 
     .ya-sidebar:first-child & {
-        margin-right: 30px;
+        margin-right: $sidebar-margin-x !important;
     }
 
     .ya-sidebar:last-child & {
-        margin-left: 30px;
+        margin-left: $sidebar-margin-x !important;
     }
 }

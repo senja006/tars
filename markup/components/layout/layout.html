@@ -1,26 +1,24 @@
-<div class="ya-content">
-    <div class="ya-container">
-        {{#if pageTitle}} <span class="ya-page__title">{{pageTitle}}</span> {{/if}}
-        <div class="ya-content__row">
-           {{#if sidebar-blocks-left}}
-                <div class="ya-sidebar ya-reset-typography-styles">
-                    {{#each sidebar-blocks-left}}
-                        {{> sidebar-block/sidebar-block sidebar-block}}
-                    {{/each}}
-                </div>
-            {{/if}}
-            <div class="ya-content__main">
-                {{#each components}}
-                    {{#if name}} {{> name/name name}} {{/if}}
-                {{/each}}
-            </div>
-            {{#if sidebar-blocks-right}}
-                <div class="ya-sidebar ya-reset-typography-styles">
-                    {{#each sidebar-blocks-right}}
-                        {{> sidebar-block/sidebar-block sidebar-block}}
-                    {{/each}}
-                </div>
-            {{/if}}
+{{#if pageTitle}} <span class="ya-page__title">{{pageTitle}}</span> {{/if}}
+<div class="ya-content__row">
+   {{#with sidebar-blocks-left}}
+        <div class="ya-sidebar {{mod}}">
+            {{#each sidebar-blocks}}
+                {{> sidebar-block/sidebar-block sidebar-block}}
+            {{/each}}
         </div>
-    </div>
+    {{/with}}
+    {{#with components}}
+        <div class="ya-content__main {{mod}}">
+            {{#each list}}
+                {{#if name}} {{> name/name name}} {{/if}}
+            {{/each}}
+        </div>
+    {{/with}}
+    {{#with sidebar-blocks-right}}
+        <div class="ya-sidebar {{mod}}">
+            {{#each sidebar-blocks}}
+                {{> sidebar-block/sidebar-block sidebar-block}}
+            {{/each}}
+        </div>
+    {{/with}}
 </div>

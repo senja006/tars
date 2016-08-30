@@ -200,13 +200,42 @@ a {
     //}
 }
 
-.ya-content {
+.ya-typography-styles {
     @include add-typography-styles();
 }
 
 .ya-reset-typography-styles {
     @include reset-typography-styles();
 }
+
+// изменение порядка на разных экранах
+@for $i from 0 through 10 {
+    &.ya-order-mobile-#{$i} {
+        order: #{$i};
+
+        @include breakpoint(large) {
+            order: 0;
+        }
+    }
+}
+
+// ol {
+    // counter-reset: item;
+
+    // li {
+        // display: block;
+        // list-style: decimal inside;
+
+        // &:before {
+        //     content: counter(item) ". ";
+        //     counter-increment: item;
+        //     color: $text-list-color-counter;
+        //     position: absolute;
+        //     left: 0;
+        //     top: 0;
+        // }
+    // }
+// }
 
 
 

@@ -1,14 +1,23 @@
 data = {'layout': {
     template: {
         pageTitle: '',
-        'sidebar-blocks-left': [
-            { 'sidebar-block': fullData => fullData['sidebar-block'] }
-        ],
-        components: [
-            { name: fullData => fullData.name },
-        ],
-        'sidebar-blocks-right': [
-            { 'sidebar-block': fullData => fullData['sidebar-block'] }
-        ],
+        'sidebar-blocks-left': {
+            mod: '', // опция
+            'sidebar-blocks': [
+                { 'sidebar-block': fullData => fullData['sidebar-block'] }
+            ]
+        },
+        components: {
+            mod: '', // опция
+            list: [
+                { name: fullData => fullData.name },
+            ]
+        },
+        'sidebar-blocks-right': {
+            mod: '', // опция
+            'sidebar-blocks': [
+                { 'sidebar-block': fullData => fullData['sidebar-block'] }
+            ]
+        }
     }
 }};

@@ -3,7 +3,7 @@ $button-line-height: 1.5;
 .#{$button-class} {
 
     // основные стили //
-    $button-padding-y: ((($button-height - $button-border-width * 2) - ($button-font-size * $button-line-height)) / 2);
+    $button-padding-y: em(((($button-height - $button-border-width * 2) - ($button-font-size * $button-line-height)) / 2));
 
     display: inline-block;
     padding: ($button-padding-y - $button-correction-padding-y) $button-padding-x ($button-padding-y + $button-correction-padding-y);
@@ -35,6 +35,17 @@ $button-line-height: 1.5;
 
     &:active {
         transition: all $button-active-transition-duration linear;
+    }
+
+    &.ya-lg {
+        $button-padding-y: em((((54px - $button-border-width * 2) - ($button-font-size * $button-line-height)) / 2));
+
+        padding: ($button-padding-y - $button-correction-padding-y) em(30px) ($button-padding-y + $button-correction-padding-y);
+        font-weight: 500;
+
+        @include breakpoint(large) {
+            letter-spacing: 2px;
+        }
     }
 
 

@@ -38,7 +38,9 @@
                 $rule: nth($rules-keys, $r);
                 $values: map-get($rules, $rule);
 
-                #{$rule}: #{nth($values, 2)};
+                @if length($values) > 1 {
+                    #{$rule}: #{nth($values, 2)};
+                }
             }
         }
     }

@@ -1,7 +1,10 @@
 data = {'sidebar-block': {
     template: {
+    	mod: '', // опция
         title: '', // опция
         subTitle: '', // опция
-        'name-modules': fullData => fullData['name-modules']
+        components: [
+        	{ 'name-modules': fullData => fullData['name-modules'] }
+        ]
     }
 }};

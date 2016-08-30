@@ -17,16 +17,18 @@ class MapYandex {
     constructor({
         mapContainer = 'ya-map',
         center = [],
+        moveCenter = [0, 0],
         zoom = 16,
         marker = [],
         markerSrc = '',
-        markerSize = [0,0],
-        markerOffset = [0,0],
+        markerSize = [0, 0],
+        markerOffset = [0, 0],
         controls = true
-        }) {
+    }) {
         this.options = {
             mapContainer: mapContainer,
             center: center,
+            moveCenter: moveCenter,
             zoom: zoom,
             marker: marker,
             markerSrc: markerSrc,
@@ -38,11 +40,11 @@ class MapYandex {
 
         let self = this;
         this._loadScriptMap()
-            .then(function() {
+            .then(function () {
                 self._createMap();
             })
-            .then(function() {
-                if(self.options.marker.length) {
+            .then(function () {
+                if (self.options.marker.length) {
                     self.addMarker({
                         address: self.options.marker,
                         markerSrc: self.options.markerSrc,
@@ -64,12 +66,12 @@ class MapYandex {
     addMarker({
         address,
         markerSrc = '',
-        markerSize = [0,0],
-        markerOffset = [0,0],
+        markerSize = [0, 0],
+        markerOffset = [0, 0],
         clear = true,
         draggable = false,
         events = []
-        }) {
+    }) {
 
         let self = this;
         let optionsMarker = null;
@@ -79,15 +81,15 @@ class MapYandex {
             self.placemark = null;
         }
 
-        if(!markerSrc.length) {
+        if (!markerSrc.length) {
             optionsMarker = {
                 preset: 'islands#icon',
                 iconColor: '#e7221b',
                 draggable: draggable,
-                iconImageSize: [0,0],
-                iconImageOffset: [0,0]
+                iconImageSize: [0, 0],
+                iconImageOffset: [0, 0]
             }
-        }else{
+        } else {
             optionsMarker = {
                 draggable: draggable,
                 iconLayout: 'default#image',
@@ -97,19 +99,19 @@ class MapYandex {
             }
         }
 
-        if(typeof optionsMarker.iconImageSize[0] !== 'number') {
+        if (typeof optionsMarker.iconImageSize[0] !== 'number') {
             optionsMarker.iconImageSize = self._getNumber(optionsMarker.iconImageSize);
         }
 
-        if(typeof optionsMarker.iconImageOffset[0] !== 'number') {
+        if (typeof optionsMarker.iconImageOffset[0] !== 'number') {
             optionsMarker.iconImageOffset = self._getNumber(optionsMarker.iconImageOffset);
         }
 
-        return new Promise(function(resolve, rejected) {
+        return new Promise(function (resolve, rejected) {
             MapYandex.getCoordinates(address)
-                .then(function(res) {
+                .then(function (res) {
                     let {coords, bounds} = res;
-                    if(typeof address == 'object') {
+                    if (typeof address == 'object') {
                         coords = address;
                     }
                     let placemark = new ymaps.Placemark(
@@ -120,16 +122,21 @@ class MapYandex {
                     self.placemark = placemark;
                     self._setEventListeners(placemark, events);
                     self.map.geoObjects.add(placemark);
-                    self._setCenter(coords);
-                    self._setZoom(bounds);
+                    // self._setZoom(bounds);
+                    self._setCenter(self._correctCoords(coords));
                     resolve();
                 });
         });
 
     }
 
+    _correctCoords(coordsArr) {
+        let self = this;
+        return coordsArr.map((coord, i) => coord + self.options.moveCenter[i]);
+    }
+
     _getNumber(arr) {
-        arr.forEach(function(el, i) {
+        arr.forEach(function (el, i) {
             arr[i] = +el;
         });
 
@@ -146,7 +153,7 @@ class MapYandex {
      */
     _loadScriptMap() {
         let self = this;
-        return new Promise(function(resolve, rejected) {
+        return new Promise(function (resolve, rejected) {
             $.getScript(self.options.url, function () {
                 ymaps.ready(resolve);
             });
@@ -160,14 +167,14 @@ class MapYandex {
     _createMap() {
         let self = this;
         MapYandex.getCoordinates(self.options.center)
-            .then(function(res) {
-                return new Promise(function(resolve, rejected) {
+            .then(function (res) {
+                return new Promise(function (resolve, rejected) {
                     let options = {
-                        center: res.coords,
+                        center: res.coords.map((coord, i) => coord + self.options.moveCenter[i]),
                         zoom: self.options.zoom
                     };
 
-                    if(!self.options.controls) {
+                    if (!self.options.controls) {
                         options.controls = [];
                     }
 
@@ -185,7 +192,7 @@ class MapYandex {
      * @return Promise
      */
     static getCoordinates(address) {
-        return new Promise(function(resolve, rejected) {
+        return new Promise(function (resolve, rejected) {
             if (!ymaps.geocode) return;
             ymaps.geocode(address, {
                 results: 1
@@ -231,21 +238,21 @@ class MapYandex {
      */
     clearMap() {
         let self = this;
-        if(self.map) {
+        if (self.map) {
             self.map.geoObjects.removeAll();
         }
     }
 
     _setEventListeners(placemark, events) {
-        if(!events.length) return;
-        events.forEach(function(item, i, arr) {
+        if (!events.length) return;
+        events.forEach(function (item, i, arr) {
             placemark.events.add(item.name, item.callback);
         });
     }
 
     addRoute(points) {
         let self = this;
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             ymaps.route(points, {
                 mapStateAutoApply: true
             }).then(function (route) {

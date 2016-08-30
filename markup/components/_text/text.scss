@@ -4,4 +4,8 @@
     & > .ya-col {
         flex-basis: 0% !important;
     }
+
+    & > .ya-col > *:last-child {
+        margin-bottom: 0;
+    }
 }

@@ -71,28 +71,28 @@ $anchor-border-color-hover: transparent;
 
 $typography: (
     p: (
-        margin: ($text-margin, 0)
+        margin: ($text-margin 0, 0)
     ),
    'blockquote p': (
         margin: (0, 0)
     ),
     h1: (
-        margin: (em(28px, 18px) 0 em(15px, 18px), 0),
-        font-size: (em(24px, 18px), inherit),
+        margin: (0 0 em(15px, $text-font-size), 0),
+        font-size: (em(24px, $text-font-size), inherit),
         font-family: ($text-h-font-family, inherit),
         color: ($text-h-color, inherit),
         line-height: ($text-h-line-height, inherit)
     ),
     h2: (
-        margin: (em(26px, 18px) 0 em(13px, 18px), 0),
-        font-size: (em(22px, 18px), inherit),
+        margin: (em(26px, $text-font-size) 0 em(13px, $text-font-size), 0),
+        font-size: (em(22px, $text-font-size), inherit),
         font-family: ($text-h-font-family, inherit),
         color: ($text-h-color, inherit),
         line-height: ($text-h-line-height, inherit)
     ),
     h3: (
-        margin: (em(29px, 18px) 0 em(15px, 18px), 0),
-        font-size: (em(11px, 18px), inherit),
+        margin: (em(29px, $text-font-size) 0 em(15px, $text-font-size), 0),
+        font-size: (em(11px, $text-font-size), inherit),
         font-family: ($text-h-font-family, inherit),
         color: ($text-h-color, inherit),
         line-height: ($text-h-line-height, inherit),
@@ -100,22 +100,22 @@ $typography: (
         letter-spacing: (2px, normal)
     ),
     h4: (
-        margin: (em(24px, 18px) 0 em(11px, 18px), 0),
-        font-size: (em(18px, 18px), inherit),
+        margin: (em(24px, $text-font-size) 0 em(11px, $text-font-size), 0),
+        font-size: (em(18px, $text-font-size), inherit),
         font-family: ($text-h-font-family, inherit),
         color: ($text-h-color, inherit),
         line-height: ($text-h-line-height, inherit)
     ),
     h5: (
-        margin: (em(24px, 18px) 0 em(11px, 18px), 0),
-        font-size: (em(18px, 18px), inherit),
+        margin: (em(24px, $text-font-size) 0 em(11px, $text-font-size), 0),
+        font-size: (em(18px, $text-font-size), inherit),
         font-family: ($text-h-font-family, inherit),
         color: ($text-h-color, inherit),
         line-height: ($text-h-line-height, inherit)
     ),
     h6: (
-        margin: (em(24px, 18px) 0 em(11px, 18px), 0),
-        font-size: (em(18px, 18px), inherit),
+        margin: (em(24px, $text-font-size) 0 em(11px, $text-font-size), 0),
+        font-size: (em(18px, $text-font-size), inherit),
         font-family: ($text-h-font-family, inherit),
         color: ($text-h-color, inherit),
         line-height: ($text-h-line-height, inherit)
@@ -130,16 +130,16 @@ $typography: (
         list-style: (disc inside, none)
     ),
     img: (
-        margin: (em(13px, 18px) 0, 0),
+        margin: (em(13px, $text-font-size) 0, 0),
         display: (inline-block, block),
         border: (0, 0)
     ),
     blockquote: (
         border-top: (1px solid #E3E3E3, none),
         border-bottom: (1px solid #E3E3E3, none),
-        margin: (em(24px, 18px) 0, 0),
-        padding: (em(14px, 18px) 0, 0),
-        font-size: (em(32px, 18px), inherit),
+        margin: (em(24px, $text-font-size) 0, 0),
+        padding: (em(14px, $text-font-size) 0, 0),
+        font-size: (em(32px, $text-font-size), inherit),
         line-height: (1.35, inherit),
         color: (#3B3D40, inherit),
         position: (relative, static)
@@ -213,6 +213,7 @@ $button-height: 40px;
 $button-correction-y-padding: 0; // если текст не по вертикальному центру
 $button-width: auto;
 $button-padding-x: 20px; // отступы слева и справа
+$button-correction-padding-y: 0; // если текст не по вертикальному центру
 $button-font-family: $font-main;
 $button-font-weight: $global-weight-normal;
 $button-font-size: $global-font-size;

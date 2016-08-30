@@ -33,10 +33,13 @@
 .remodal-wrapper {
     @include vertical-align('.remodal');
 
+    display: block !important;
     padding: $remodal-wrapper-padding;
     overflow: auto !important;
     z-index: $z-index-popup;
     transition: all $remodal-animation-duration linear;
+    opacity: 0;
+    visibility: hidden;
 
     &:after {
         display: none !important;
