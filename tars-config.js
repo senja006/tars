@@ -302,7 +302,7 @@ module.exports = {
             user:     'senja006', // login
             password: 'pass-ftp-front.txt', // в этом файле хранится пароль
             parallel: 10, // количество одовременных загрузок
-            remoteFolder: '/static/'
+            remoteFolder: '.yarkevich.ru/static/'
         },
         local: {
             remoteFolder: 'server' // путь до папки static (без названия папки static)

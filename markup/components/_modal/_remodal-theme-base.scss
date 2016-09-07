@@ -33,7 +33,7 @@
 .remodal-wrapper {
     @include vertical-align('.remodal');
 
-    display: block !important;
+    // display: block !important;
     padding: $remodal-wrapper-padding;
     overflow: auto !important;
     z-index: $z-index-popup;

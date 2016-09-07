@@ -1,8 +1,12 @@
-.ya-text__row {
-    @include cols(auto, 20px);
+$text-margin-cols: 20px;
 
-    & > .ya-col {
-        flex-basis: 0% !important;
+.ya-text__row {
+    @include cols(default, $text-margin-cols);
+
+    @for $i from 2 through 10 {
+        &.ya-cols-#{$i} {
+            @include cols($i, $text-margin-cols);
+        }
     }
 
     & > .ya-col > *:last-child {

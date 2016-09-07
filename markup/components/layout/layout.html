@@ -1,4 +1,4 @@
-{{#if pageTitle}} <span class="ya-page__title">{{pageTitle}}</span> {{/if}}
+{{#if pageTitle}} <span class="ya-page__title {{pageTitle.mod}}">{{pageTitle.text}}</span> {{/if}}
 <div class="ya-content__row">
    {{#with sidebar-blocks-left}}
         <div class="ya-sidebar {{mod}}">

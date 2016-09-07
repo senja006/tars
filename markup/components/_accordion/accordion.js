@@ -1,4 +1,4 @@
-yaModules.yaAccordion = (function () {
+yaModules.accordion = (function () {
 
     function addEventListeners() {
         $(document).on('accordion.open', '.accordion', {myEvent: 'open'}, setTextButtonAccordionOpen);

@@ -35,7 +35,7 @@ yaModules.template = (function () {
             // let data = $(this).serialize();
 
             // $.ajax({
-            //     url: '/order-form.php',
+            //     url: ajaxdata.url,
             //     type: 'POST',
             //     data: data,
             //     dataType: 'json',
