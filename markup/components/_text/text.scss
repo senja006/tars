@@ -9,6 +9,10 @@ $text-margin-cols: 20px;
         }
     }
 
+    & > .ya-col > *:first-child {
+        margin-top: 0;
+    }
+
     & > .ya-col > *:last-child {
         margin-bottom: 0;
     }
