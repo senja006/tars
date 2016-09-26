@@ -1,4 +1,4 @@
-data = {header: {
+var data = {header: {
     template: {
 
     },

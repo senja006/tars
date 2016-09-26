@@ -1,4 +1,4 @@
-data = {menu: {
+var data = {menu: {
     template: {
         list: [
             {

@@ -137,6 +137,7 @@ li {
 img {
     display: block;
     max-width: 100%;
+    max-height: 100%;
     -ms-interpolation-mode: bicubic;
 }
 
@@ -146,6 +147,10 @@ button {
 
 a {
     outline: none;
+}
+
+svg {
+    display: block;
 }
 
 // инерционный скролл в мобильных

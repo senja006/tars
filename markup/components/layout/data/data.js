@@ -1,9 +1,5 @@
 data = {'layout': {
     template: {
-        pageTitle: {
-            text: '',
-            mod: '', // опция
-        },
         'sidebar-blocks-left': {
             mod: '', // опция
             'sidebar-blocks': [

@@ -4,9 +4,19 @@
     & {
 
         @each $property in $properties {
+            $default-value: nth($values, 1);
+            @if length($default-value) > 1 {
+                #{$property}: nth($default-value, 1);
+            }@else{
+                #{$property}: $default-value;
+            }
+
             @each $breakpoint-fliud-type in $breakpoints-fluid-type {
                 $i: index($breakpoints-fluid-type, $breakpoint-fliud-type);
                 $min-value: nth($values, $i);
+                @if length($min-value) > 1 {
+                    $min-value: nth($min-value, 2);
+                }
                 $min-vw: $breakpoint-fliud-type;
 
                 @if type-of($min-vw) == 'string' {
@@ -19,6 +29,9 @@
                     }
                 }@else{
                     $max-value: nth($values, $i+1);
+                    @if length($max-value) > 1 {
+                        $max-value: nth($max-value, 1);
+                    }
                     $max-vw: nth($breakpoints-fluid-type, $i+1);
 
                     @if type-of($max-vw) == 'string' {

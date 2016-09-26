@@ -4,6 +4,17 @@ yaModules.template = (function () {
 
     function addEventListeners() {
         form.on('submit', controlSendForm);
+        $(document).on('change', '[data-file]', checkFile);
+    }
+
+    function checkFile() {
+        let input = this;
+        let file = input.files[0];
+
+        if (file.size > 2000000) {
+            input.value = '';
+            $('.jfilestyle-corner').find('input').val('');
+        }
     }
 
     function controlSendForm(ev) {
@@ -21,6 +32,10 @@ yaModules.template = (function () {
                     console.log('Ошибка отправки формы!');
                 }
             }, 1000);
+
+
+
+            //--- без загрузки файла
 
             // let data = {};
             // let inputs = this.elements;
@@ -53,6 +68,49 @@ yaModules.template = (function () {
             //     },
             //     error: function() {
             //         console.log('Ошибка в форме!');
+            //         form.enable();
+            //     }
+            // });
+
+
+
+            //--- с загрузкой файла
+
+            // let data = new FormData(form.getFormObject());
+            // let file = form.getJquery().find('[type=file]')[0].files[0];
+            // let inputs = this.elements;
+
+            // data.append('action', 'send_request_form');
+            // data.append('nonce', ajaxdata.nonce);
+            // data.append('file', file);
+
+            // Array.prototype.forEach.call(inputs, function (input) {
+            //     if (input.name && input.type != 'file') {
+            //         data.append(input.name, input.value);
+            //     }
+            // });
+
+            // $.ajax({
+            //     url: ajaxdata.url,
+            //     type: 'POST',
+            //     data: data,
+            //     dataType: 'json',
+            //     cache: false,
+            //     processData: false, // Не обрабатываем файлы (Don't process the files)
+            //     contentType: false, // Так jQuery скажет серверу что это строковой запрос
+            //     success: function (res) {
+            //         if (res.status == 'ok') {
+            //             form.showSuccess();
+            //         } else {
+            //             if (res.errors) {
+            //                 form.addErrors(res.errors);
+            //             }
+            //             // console.log('Ошибка отправки заявки!');
+            //         }
+            //         form.enable();
+            //     },
+            //     error: function () {
+            //         // console.log('Ошибка в форме!');
             //         form.enable();
             //     }
             // });

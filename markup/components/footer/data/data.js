@@ -1,4 +1,4 @@
-data = {footer: {
+var data = {footer: {
     template: {
         
     },

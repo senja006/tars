@@ -10,8 +10,12 @@
 // 8. Переменные проекта
 
 
-// 1. Глобальные //
-// ----------------
+// Переменные проекта
+// ------------------
+
+
+// Глобальные //
+// -------------
 
 $class-container-page: 'ya-page';
 $class-header: 'ya-header';
@@ -49,8 +53,8 @@ $z-index-fixed: 20;
 $z-index-popup: 30;
 $z-index-hidden: -1;
 
-// 2. Типографика //
-// -----------------
+// Типографика //
+// --------------
 
 // $text-margin: 0 0 2em; // отступ контейнера для текста
 
@@ -64,6 +68,7 @@ $text-h-line-height: $global-lineheight;
 
 $anchor-color: inherit;
 $anchor-color-hover: #d51b1b;
+$anchor-color-active: #577094;
 $anchor-color-visited: #d51b1b;
 $anchor-transition-duration: $global-transition-duration;
 $anchor-border: 1px dotted;
@@ -187,6 +192,12 @@ $typography: (
     'a:hover': (
         color: ($anchor-color-hover, $anchor-color-hover)
     ),
+    'a:active': (
+        color: ($anchor-color-active, $anchor-color-active)
+    ),
+    'a:visited': (
+        color: ($anchor-color-visited, currentColor)
+    ),
     pre: (
         overflow: (auto, auto)
     ),
@@ -202,8 +213,8 @@ $typography: (
 // $text-img-margin: em(20px) 0;
 
 
-// 3. Кнопки //
-// ------------
+// Кнопки //
+// ---------
 
 $button-class: 'ya-button';
 
@@ -222,8 +233,8 @@ $button-active-transition-duration: 0s;
 $button-radius: 3px;
 $button-text-transform: none;
 
-// 4. Формы //
-// -----------
+// Формы //
+// --------
 
 $field-class: 'ya-field';
 $field-group-class: 'ya-field-group';
@@ -259,8 +270,8 @@ $field-error-color: red;
 $field-error-border-color: $field-error-color;
 $field-error-background: $field-background;
 
-// 5. Breakpoints //
-// -----------------
+// Breakpoints //
+// --------------
 
 $breakpoints: (
     start: 320px,
@@ -271,20 +282,17 @@ $breakpoints: (
     xxlarge: 1440px,
 );
 
-// 6. Фиксированный header //
-// --------------------------
+// Фиксированный header //
+// -----------------------
 
 $fixed-header: false; // фиксированный header
 $class-header-container: '#{$class-header}__fixed-container'; // контейнер для фиксированного блока
 $class-fixed-header: '#{$class-header}__fixed'; // фиксированный блок
 $height-fixed-header: auto;
 
-// 7. Modular scale //
-// -------------------
+// Modular scale //
+// ----------------
 
 $ms-start-breakpoint: 992px; // начало масштабирования (вниз)
 $ms-end-breakpoint: 400px; // конец масштабирования (вниз)
 $ms-num-steps-breakpoints: 7; // количество шагов
-
-// 8. Переменные проекта
-// ---------------------

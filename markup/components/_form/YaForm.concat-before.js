@@ -328,6 +328,13 @@ class YaForm {
     }
 
     /**
+     * Native js object
+     */
+    getFormObject() {
+        return this.form;
+    }
+
+    /**
      * Возвращает id формы
      * @returns {string}
      */

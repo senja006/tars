@@ -1,4 +1,4 @@
-data = {logo: {
+var data = {logo: {
     template: {
         img: '',
         width: ''

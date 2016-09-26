@@ -1,0 +1,28 @@
+.ya-print {
+    height: 0;
+    overflow: hidden;
+
+    @media print {
+        height: auto;
+        overflow: visible;
+    }
+}
+
+.ya-print-hidden {
+
+    .ya-print & {
+        display: none;
+    }
+}
+
+.ya-print-visible {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+
+    .ya-print & {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+    }
+}
