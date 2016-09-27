@@ -13,6 +13,9 @@
         pageLoad = true;
     });
     window.isTouchScreen = 'ontouchstart' in window;
+    if(window.isTouchScreen) {
+        document.querySelector('html').classList.add('is-touch');
+    }
 </script>
 
 <script src="%=static=%js/separate-js/svg4everybody.min.js"></script>
