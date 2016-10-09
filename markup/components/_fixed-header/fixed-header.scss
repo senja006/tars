@@ -1,0 +1,15 @@
+$header-height: auto;
+
+.ya-header__fixed {
+    height: $header-height;
+}
+
+.ya-header__fixed-in {
+    position: fixed;
+    z-index: $z-index-fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $header-height;
+    min-width: $global-width + $global-padding * 2;
+}

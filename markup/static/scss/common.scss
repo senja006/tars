@@ -210,14 +210,6 @@ svg {
     //}
 }
 
-.ya-typography-styles {
-    @include add-typography-styles();
-}
-
-.ya-reset-typography-styles {
-    @include reset-typography-styles();
-}
-
 // изменение порядка на разных экранах
 @for $i from 0 through 10 {
     &.ya-order-mobile-#{$i} {

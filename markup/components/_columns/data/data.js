@@ -1,5 +1,22 @@
 var data = {columns: {
     template: {
-        layout: fullData => fullData.layout
+        'sidebar-blocks-left': {
+            mod: '', // опция
+            'sidebar-blocks': [
+                { 'sidebar-block': fullData => fullData['sidebar-block'] }
+            ]
+        },
+        components: {
+            mod: '', // опция
+            list: [
+                { 'page-title': fullData => fullData['page-title'] },
+            ]
+        },
+        'sidebar-blocks-right': {
+            mod: '', // опция
+            'sidebar-blocks': [
+                { 'sidebar-block': fullData => fullData['sidebar-block'] }
+            ]
+        }
     }
 }};

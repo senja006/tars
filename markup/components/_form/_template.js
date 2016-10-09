@@ -1,10 +1,12 @@
 yaModules.template = (function () {
 
     let form = new YaForm('selector');
+    let $checkboxToggleDisableForm = $('[data-toggle-disable-form]');
 
     function addEventListeners() {
         form.on('submit', controlSendForm);
         $(document).on('change', '[data-file]', checkFile);
+        $checkboxToggleDisableForm.on('change', toggleDisableForm);
     }
 
     function checkFile() {
@@ -117,6 +119,18 @@ yaModules.template = (function () {
 
         }else{
             console.log('Ошибка в форме!');
+        }
+    }
+
+    function toggleDisableForm() {
+        let $checkbox = $(this);
+        let checkboxIsChecked = $checkbox.is(':checked');
+        let $buttonSubmit = $checkbox.parents('form').find('[type=submit]');
+
+        if (checkboxIsChecked) {
+            $buttonSubmit.prop('disabled', false);
+        } else {
+            $buttonSubmit.prop('disabled', true);
         }
     }
 

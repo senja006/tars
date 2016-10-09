@@ -1,0 +1,119 @@
+$text-margin-cols: 20px;
+
+.ya-text {
+    // @include fluid-type(line-height, small large, $global-font-size * 1.2 $global-font-size * 1.5);
+
+    & > *:first-child {
+        margin-top: 0;
+    }
+
+    & > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.ya-text__row {
+    @include cols(default, $text-margin-cols);
+
+    @for $i from 2 through 10 {
+        &.ya-cols-#{$i} {
+            @include cols($i, $text-margin-cols);
+        }
+    }
+
+    & > .ya-col > *:first-child {
+        margin-top: 0;
+    }
+
+    & > .ya-col > *:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.ya-typography-styles {
+
+    & > * {
+        margin: em(10px) 0;
+    }
+
+    @for $i from 1 through 6 {
+
+        h#{$i} {
+            font-size: $global-font-size + $i * 2;
+            margin: 1.5em 0;
+            font-family: $font-main;
+        }
+    }
+
+    ol {
+
+        li {
+            list-style: decimal inside;
+        }
+    }
+
+    ul {
+
+        li {
+            list-style: disc inside;
+        }
+    }
+
+    blockquote {
+        border-top: 1px solid #E3E3E3;
+        border-bottom: 1px solid #E3E3E3;
+        padding: em(14px) 0;
+        font-size: em(20px);
+    }
+
+    table {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    td, th {
+        height: 44px;
+        padding: em(15px) 0;
+        text-align: left;
+    }
+
+    th {
+        background: #2E2E30;
+        border: 1px solid #626262;
+        font-size: em(17px);
+        font-weight: 700;
+        color: white;
+    }
+
+    td {
+        border: 1px solid #ddd;
+        color: #272727;
+    }
+
+    tr:nth-child(2n+2) td {
+        background: #EFEFEF;
+    }
+
+    a {
+        color: $anchor-color;
+        transition: all $global-transition-duration linear;
+
+        &:hover {
+            color: $anchor-color-hover;
+        }
+
+        &:active {
+            color: $anchor-color-active;
+        }
+
+        &:visited {
+            color: $anchor-color-visited;
+        }
+    }
+
+    pre {
+        overflow: auto;
+    }
+}

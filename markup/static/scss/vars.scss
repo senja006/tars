@@ -56,161 +56,10 @@ $z-index-hidden: -1;
 // Типографика //
 // --------------
 
-// $text-margin: 0 0 2em; // отступ контейнера для текста
-
-$text-margin: 1.5em;
-$text-font-size: 18px;
-$text-font-family: $font-main;
-
-$text-h-font-family: $font-main;
-$text-h-color: $global-font-color;
-$text-h-line-height: $global-lineheight;
-
-$anchor-color: inherit;
-$anchor-color-hover: #d51b1b;
-$anchor-color-active: #577094;
-$anchor-color-visited: #d51b1b;
-$anchor-transition-duration: $global-transition-duration;
-$anchor-border: 1px dotted;
-$anchor-border-color-hover: transparent;
-
-$typography: (
-    p: (
-        margin: ($text-margin 0, 0)
-    ),
-   'blockquote p': (
-        margin: (0, 0)
-    ),
-    h1: (
-        margin: (0 0 em(15px, $text-font-size), 0),
-        font-size: (em(24px, $text-font-size), inherit),
-        font-family: ($text-h-font-family, inherit),
-        color: ($text-h-color, inherit),
-        line-height: ($text-h-line-height, inherit)
-    ),
-    h2: (
-        margin: (em(26px, $text-font-size) 0 em(13px, $text-font-size), 0),
-        font-size: (em(22px, $text-font-size), inherit),
-        font-family: ($text-h-font-family, inherit),
-        color: ($text-h-color, inherit),
-        line-height: ($text-h-line-height, inherit)
-    ),
-    h3: (
-        margin: (em(29px, $text-font-size) 0 em(15px, $text-font-size), 0),
-        font-size: (em(11px, $text-font-size), inherit),
-        font-family: ($text-h-font-family, inherit),
-        color: ($text-h-color, inherit),
-        line-height: ($text-h-line-height, inherit),
-        text-transform: (uppercase, none),
-        letter-spacing: (2px, normal)
-    ),
-    h4: (
-        margin: (em(24px, $text-font-size) 0 em(11px, $text-font-size), 0),
-        font-size: (em(18px, $text-font-size), inherit),
-        font-family: ($text-h-font-family, inherit),
-        color: ($text-h-color, inherit),
-        line-height: ($text-h-line-height, inherit)
-    ),
-    h5: (
-        margin: (em(24px, $text-font-size) 0 em(11px, $text-font-size), 0),
-        font-size: (em(18px, $text-font-size), inherit),
-        font-family: ($text-h-font-family, inherit),
-        color: ($text-h-color, inherit),
-        line-height: ($text-h-line-height, inherit)
-    ),
-    h6: (
-        margin: (em(24px, $text-font-size) 0 em(11px, $text-font-size), 0),
-        font-size: (em(18px, $text-font-size), inherit),
-        font-family: ($text-h-font-family, inherit),
-        color: ($text-h-color, inherit),
-        line-height: ($text-h-line-height, inherit)
-    ),
-    'ul, ol': (
-        margin: ($text-margin 0, 0)
-    ),
-    'ol li': (
-        list-style: (decimal inside, none)
-    ),
-    'ul li': (
-        list-style: (disc inside, none)
-    ),
-    img: (
-        margin: (em(13px, $text-font-size) 0, 0),
-        display: (inline-block, block),
-        border: (0, 0)
-    ),
-    blockquote: (
-        border-top: (1px solid #E3E3E3, none),
-        border-bottom: (1px solid #E3E3E3, none),
-        margin: (em(24px, $text-font-size) 0, 0),
-        padding: (em(14px, $text-font-size) 0, 0),
-        font-size: (em(32px, $text-font-size), inherit),
-        line-height: (1.35, inherit),
-        color: (#3B3D40, inherit),
-        position: (relative, static)
-    ),
-    table: (
-        width: (100%, 100%),
-        table-layout: (fixed, fixed),
-        margin-bottom: ($text-margin, 0),
-        border-collapse: (collapse, collapse),
-        border-spacing: (0, 0)
-    ),
-    'td, th': (
-        height: (em(44px), auto),
-        padding: (0 em(15px), 0),
-        text-align: (left, left)
-    ),
-    th: (
-        background: (#2E2E30, none),
-        border: (1px solid #626262, none),
-        font-family: ($font-main, inherit),
-        font-weight: (700, 700),
-        font-size: (em(16px), inherit),
-        color: (#fff, #fff)
-    ),
-    td: (
-        border: (1px solid #DDDDDD, 1px solid #DDDDDD),
-        color: (#272727, #272727),
-        font-size: (em(14px), inherit)
-    ),
-    'td:first-child': (
-        font-family: ($font-main, inherit),
-        font-size: (em(16px), inherit),
-        color: (#080808, #080808),
-        font-weight: (700, 700)
-    ),
-    'tr:nth-child(2n+2) td': (
-        background: (#EFEFEF, #EFEFEF)
-    ),
-    a: (
-        color: ($anchor-color, $anchor-color),
-        text-decoration: (none, none),
-        transition: (all $global-transition-duration linear, all $global-transition-duration linear),
-        -webkit-tap-highlight-color: (transparent, transparent)
-    ),
-    'a:hover': (
-        color: ($anchor-color-hover, $anchor-color-hover)
-    ),
-    'a:active': (
-        color: ($anchor-color-active, $anchor-color-active)
-    ),
-    'a:visited': (
-        color: ($anchor-color-visited, currentColor)
-    ),
-    pre: (
-        overflow: (auto, auto)
-    ),
-    'b, strong': (
-        color: (#3b3d40, currentColor)
-    )
-);
-
-// $text-list-margin:  0 0 em(15px) em(50px);
-// $text-list-li-padding-left: em(24px);
-// $text-list-color-counter: $global-font-color;
-
-// $text-img-margin: em(20px) 0;
+$anchor-color: #909090;
+$anchor-color-hover: #01579b;
+$anchor-color-active: #063356;
+$anchor-color-visited: #01579b;
 
 
 // Кнопки //
@@ -221,7 +70,6 @@ $button-class: 'ya-button';
 $button-border-width: 1px; // для выключения - 0
 $button-border-style: solid;
 $button-height: 40px;
-$button-correction-y-padding: 0; // если текст не по вертикальному центру
 $button-width: auto;
 $button-padding-x: 20px; // отступы слева и справа
 $button-correction-padding-y: 0; // если текст не по вертикальному центру
@@ -274,23 +122,15 @@ $field-error-background: $field-background;
 // --------------
 
 $breakpoints: (
-    start: 320px,
-    small: 480px,
+    start: 0px,
+    small: 320px,
     medium: 768px, // 510px + $global-padding-medium-down * 2
     large: 992px, // $global-max-width + $global-padding-medium-down * 2
     xlarge: 1200px,
     xxlarge: 1440px,
 );
 
-// Фиксированный header //
-// -----------------------
-
-$fixed-header: false; // фиксированный header
-$class-header-container: '#{$class-header}__fixed-container'; // контейнер для фиксированного блока
-$class-fixed-header: '#{$class-header}__fixed'; // фиксированный блок
-$height-fixed-header: auto;
-
-// Modular scale //
+// Modular scale // !!!deprecated!!!
 // ----------------
 
 $ms-start-breakpoint: 992px; // начало масштабирования (вниз)

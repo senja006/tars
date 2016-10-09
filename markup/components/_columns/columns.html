@@ -1,3 +1,25 @@
 <div class="ya-columns">
-    {{> layout/layout layout}}
+    <div class="ya-content__row">
+        {{#with sidebar-blocks-left}}
+            <div class="ya-sidebar {{mod}}">
+                {{#each sidebar-blocks}}
+                    {{> sidebar-block/sidebar-block sidebar-block}}
+                {{/each}}
+            </div>
+        {{/with}}
+        {{#with components}}
+            <div class="ya-content__main {{mod}}">
+                {{#each list}}
+                    {{#if page-title}} {{> page-title/page-title page-title}} {{/if}}
+                {{/each}}
+            </div>
+        {{/with}}
+        {{#with sidebar-blocks-right}}
+            <div class="ya-sidebar {{mod}}">
+                {{#each sidebar-blocks}}
+                    {{> sidebar-block/sidebar-block sidebar-block}}
+                {{/each}}
+            </div>
+        {{/with}}
+    </div>
 </div>

@@ -1,10 +1,1 @@
-yaModal: {
-    template: {
-        id: '',
-        iconClose: '',
-        title: '',
-        subtitle: '',
-        content: '',
-        dataContent: {}
-    }
-}
+var data = {modal: {}};

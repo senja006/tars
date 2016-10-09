@@ -249,3 +249,57 @@ textarea.#{$field-class} {
 .ya-form-margin {
     margin-bottom: $field-margin-bottom;
 }
+
+.ya-label-checkbox {
+    display: inline-block;
+    cursor: pointer;
+
+    a {
+        color: currentColor;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+.ya-checkbox-row {
+    @include cols(shrink default, 13px);
+    align-items: center;
+}
+
+.ya-checkbox-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    background-color: #f6f5f3;
+    border: 1px solid #b4b4b4;
+    border-radius: 4px;
+    color: white;
+    transition: all $global-transition-duration linear;
+
+    label:hover & {
+        background-color: #e6e5e3;
+    }
+
+    input:checked ~ & {
+        background-color: #88d68f;
+        border-color: #88d68f;
+    }
+
+    label:hover input:checked ~ & {
+        background-color: #6fbb76;
+        border-color: #6fbb76;
+    }
+}
+
+.ya-checkbox-value__icon {
+    opacity: 0;
+    transition: all $global-transition-duration linear;
+
+    input:checked ~ .ya-checkbox-value & {
+        opacity: 1;
+    }
+}

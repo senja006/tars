@@ -1,46 +1,48 @@
 {
-  "viewports": [
-    {
-      "name": "small",
-      "width": 384,
-        "height": 1920
+    "viewports": [
+        {
+            "name": "small",
+            "width": 384,
+            "height": 1920
+        },
+        {
+            "name": "medium",
+            "width": 534,
+            "height": 1499
+        },
+        {
+            "name": "large",
+            "width": 964,
+            "height": 1192
+        }
+    ],
+    "scenarios": [
+        {
+            "label": "Главная",
+            "url": "http://localhost:5757/index.html",
+            "hideSelectors": [],
+            "removeSelectors": [],
+            "selectors": [
+                "body"
+            ],
+            "readyEvent": null,
+            "delay": 0,
+            "misMatchThreshold": 0.0001,
+            "onReadyScript": "open-menu-header.js"
+        }
+    ],
+    "paths": {
+        "bitmaps_reference": "../../backstop_data/bitmaps_reference",
+        "bitmaps_test": "../../backstop_data/bitmaps_test",
+        "compare_data": "../../backstop_data/bitmaps_test/compare.json",
+        "casper_scripts": "../../backstop_data/casper_scripts"
     },
-    {
-      "name": "medium",
-      "width": 534,
-        "height": 1499
-    },
-    {
-      "name": "large",
-      "width": 964,
-        "height": 1192
-    }
-  ],
-  "scenarios": [
-    {
-      "label": "Главная",
-      "url": "http://localhost:5757/index.html",
-      "hideSelectors": [],
-      "removeSelectors": [],
-      "selectors": [
-        "body"
-      ],
-      "readyEvent": null,
-      "delay": 0,
-      "misMatchThreshold" : 0.0001,
-      "onReadyScript": "open-menu-header.js"
-    }
-  ],
-  "paths": {
-    "bitmaps_reference": "../../backstop_data/bitmaps_reference",
-    "bitmaps_test": "../../backstop_data/bitmaps_test",
-    "compare_data": "../../backstop_data/bitmaps_test/compare.json",
-    "casper_scripts": "../../backstop_data/casper_scripts"
-  },
-  "engine": "phantomjs",
-  "report": ["browser"],
-  "cliExitOnFail": false,
-  "casperFlags": [],
-  "debug": false,
-  "port": 3002
+    "engine": "phantomjs",
+    "report": [
+        "browser"
+    ],
+    "cliExitOnFail": false,
+    "casperFlags": [],
+    "debug": false,
+    "port": 3002
 }

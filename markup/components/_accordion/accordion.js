@@ -14,12 +14,12 @@ yaModules.accordion = (function () {
 
     function setTextButtonAccordionOpen(ev) {
         let $accordion = $(this);
-        let $buttonAccordionOpen = $accordion.children('.ya-accordion__open');
+        let $buttonAccordionOpen = $accordion.find('.ya-accordion__open');
 
         if(!$buttonAccordionOpen.length) return;
 
         let text = $buttonAccordionOpen.data('text-' + ev.data.myEvent);
-        $buttonAccordionOpen.find('.ya-accordion__open-text').text(text);
+        $buttonAccordionOpen.text(text);
     }
 
     return {

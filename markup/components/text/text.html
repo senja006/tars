@@ -1,0 +1,15 @@
+<div class="ya-text {{mod}} {{#unless resetTypographyStyles}} ya-typography-styles {{/unless}}">
+    {{#unless cols}}
+        {{{text}}}
+    {{/unless}}
+
+    {{#with cols}}
+        <div class="ya-text__row ya-cols-{{num}}">
+            {{#each texts}}
+                <div class="ya-col">
+                    {{{text}}}
+                </div>
+            {{/each}}
+        </div>
+    {{/with}}
+</div>

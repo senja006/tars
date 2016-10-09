@@ -23,6 +23,7 @@ $button-line-height: 1.5;
     -moz-appearance: none !important;
     outline: none;
     -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
 
     @if $button-border-width != 0 {
         border: $button-border-width $button-border-style transparent;
@@ -33,7 +34,7 @@ $button-line-height: 1.5;
         pointer-events: none;
     }
 
-    &:active {
+    .is-no-touch &:active {
         transition: all $button-active-transition-duration linear;
     }
 

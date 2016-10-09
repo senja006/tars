@@ -1,39 +1,72 @@
-yaModules.yaModal = (function () {
+yaModules.modal = (function () {
 
-    let attrBodyModifier = 'data-body-modifier';
-    let activeModifiers = [];
-    let $body = $('body');
+    let remodals = {};
+    let $buttonsOpenNestedRemodal = $('[data-nested-remodal-target]');
 
     function addEventListeners() {
-        $(document).on('opening', '.remodal', {name: 'opening'}, setBodyModifier);
-        $(document).on('opened', '.remodal', {name: 'opened'}, setBodyModifier);
-        $(document).on('closing', '.remodal', {name: 'closing'}, setBodyModifier);
-        $(document).on('closed', '.remodal', {name: 'closed'}, setBodyModifier);
+        $buttonsOpenNestedRemodal.on('click', openNestedRemodal);
+        $(document).on('opened', '.remodal', unBlockOverlay);
     }
 
-    function setBodyModifier(ev) {
-        let modifiers = $(ev.target).attr(attrBodyModifier).split(' ');
-        let str = '-' + ev.data.name;
-        let delay = 0;
+    function openNestedRemodal(ev, remodalTargetId) {
+        let idRemodal = remodalTargetId;
 
-        removeBodyModifier();
+        if(ev) {
+            ev.preventDefault();
 
-        modifiers.forEach(function(el) {
-            activeModifiers.push(el += str);
-        });
-        $body.addClass(activeModifiers.join(' '));
+            idRemodal = $(this).data('nested-remodal-target');
+        }
+
+        createRemodal(idRemodal);
+        $('.remodal-overlay').addClass('is-block');
+        remodals[idRemodal].remodal.open();
     }
 
-    function removeBodyModifier() {
-        $body.removeClass(activeModifiers.join(' '));
-        activeModifiers = [];
+    function unBlockOverlay() {
+        $('.remodal-overlay').removeClass('is-block');
+    }
+
+    function openRemodal(idRemodal, onlyOverlay) {
+        createRemodal(idRemodal);
+
+        if (onlyOverlay) {
+            remodals[idRemodal].$remodal.parents('.remodal-wrapper').css({
+                zIndex: 31
+            });
+        }
+
+        remodals[idRemodal].remodal.open();
+    }
+
+    function closeRemodal(idRemodal) {
+        createRemodal(idRemodal);
+        remodals[idRemodal].remodal.close();
+    }
+
+    function createRemodal(idRemodal) {
+        if (!remodals[idRemodal]) {
+            let $remodal = $(`[data-remodal-id=${idRemodal}]`);
+            remodals[idRemodal] = {
+                $remodal: $remodal,
+                remodal: $remodal.remodal()
+            };
+        }
     }
 
     return {
         init() {
-            if ($('[' + attrBodyModifier + ']').length) {
+            if ($buttonsOpenNestedRemodal.length) {
                 addEventListeners();
             }
+        },
+        openRemodal(idRemodal, onlyOverlay = false) {
+            openRemodal(idRemodal, onlyOverlay);
+        },
+        openNestedRemodal(remodalTargetId) {
+            openNestedRemodal(null, remodalTargetId);
+        },
+        closeRemodal(idRemodal) {
+            closeRemodal(idRemodal);
         }
-    }
+    };
 }());
