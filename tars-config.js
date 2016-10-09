@@ -218,7 +218,7 @@ module.exports = {
 
     /**
      * Templater
-     * Available 'jade' and 'handlebars'
+     * Available 'pug', 'jade' and 'handlebars'
      * @type {String}
      */
     templater: 'handlebars',
