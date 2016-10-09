@@ -1,83 +1,24 @@
-input {
-    -webkit-border-radius: 0; // iOS 8+
-    outline: none;
-    color: inherit;
-    line-height: normal;
-    word-break: normal;
-    // -webkit-appearance: none;
-
-    &::-ms-clear {
-        display: none;
-    }
-
-    &[type="button"], &[type="reset"], &[type="submit"] {
-        -webkit-appearance: none;
-        cursor: pointer;
-    }
-
-    &[type="number"] {
-        -moz-appearance: textfield;
-
-        &::-webkit-inner-spin-button,
-        &::-webkit-outer-spin-button {
-            height: auto;
-            -webkit-appearance: none;
-        }
-    }
-
-    &[type="search"] {
-        -webkit-appearance: textfield; // Chrome 45+, Safari 9+
-    }
-
-    html & {
-
-        &[disabled] {
-            cursor: default;
-        }
-    }
-}
-
-input[placeholder]          {text-overflow:ellipsis;}
-input::-moz-placeholder     {text-overflow:ellipsis;}
-input:-moz-placeholder      {text-overflow:ellipsis;}
-input:-ms-input-placeholder {text-overflow:ellipsis;}
-
-textarea {
-    resize: none;
-    outline: none;
-    color: inherit;
-    display: block;
-    -webkit-appearance: none;
-}
-
-select {
-    -moz-appearance: none;    // Firefox 40+
-    -webkit-appearance: none; // Chrome 45+
-    color: inherit;
+.ya-field {
     width: 100%;
-    text-transform: none;
-    outline: none;
-    cursor: pointer;
+    padding: 0 $field-padding;
+    height: $field-height;
+    border: $field-border-width $field-border-style $field-border-color;
+    font-family: $field-font-family;
+    font-weight: $field-font-weight;
+    font-size: $field-font-size;
+    color: $field-color;
+    border-radius: $field-border-radius;
+    background: $field-background;
+    transition: all $global-transition-duration linear;
 
-    &::-ms-expand {
-        display: none;        // Edge 12+, Internet Explorer 11-
+    &:focus {
+        color: $field-focus-color;
+        background: $field-focus-background;
+        border-color: $field-focus-border-color;
     }
 
-    &::-ms-value {
-        color: currentColor;  // Edge 12+, Internet Explorer 11-
-    }
-}
-
-fieldset {
-    border: none;
-    padding: 0;
-    margin: 0;
-}
-
-@mixin field-error {
-
-    .#{$field-class-error} &,
-    &.#{$field-class-error} {
+    .ya-error &,
+    &.ya-error {
         color: $field-error-color;
 
         @if $field-error-border-color != '' {
@@ -90,59 +31,12 @@ fieldset {
     }
 }
 
-.#{$field-class} {
-    width: 100%;
-    color: $field-color;
-    border: $field-border-width $field-border-style $field-border-color;
-    height: $field-height;
-    font-family: $field-font-family;
-    font-weight: $field-font-weight;
-    font-size: $field-font-size;
-    padding: 0 $field-padding;
-    border-radius: $field-border-radius;
-    background: $field-background;
-    transition: all $field-transition-duration linear;
-
-    &:focus {
-        color: $field-focus-color;
-        background: $field-focus-background;
-        border-color: $field-focus-border-color;
-    }
-
-    @include field-error;
-}
-
-textarea.#{$field-class} {
+textarea.ya-field {
     height: $field-textarea-height;
     padding: $field-textarea-padding $field-padding;
 }
 
-// ::-webkit-input-placeholder {
-//     color: $field-placeholder-color;
-//     //@include field-error;
-// }
-// ::-moz-placeholder {
-//     color: $field-placeholder-color;
-//     //@include field-error;
-// }
-// :-ms-input-placeholder {
-//     color: $field-placeholder-color;
-//     //@include field-error;
-// }
-
-@if $field-placeholder-hide-focus {
-
-    .#{$field-class}::-webkit-input-placeholder       {opacity: 1; transition: opacity $field-placeholder-transition-duration ease;}
-    .#{$field-class}::-moz-placeholder                {opacity: 1; transition: opacity $field-placeholder-transition-duration ease;}
-    .#{$field-class}:-moz-placeholder                 {opacity: 1; transition: opacity $field-placeholder-transition-duration ease;}
-    .#{$field-class}:-ms-input-placeholder            {opacity: 1; transition: opacity $field-placeholder-transition-duration ease;}
-    .#{$field-class}:focus::-webkit-input-placeholder {opacity: 0; transition: opacity $field-placeholder-transition-duration ease;}
-    .#{$field-class}:focus::-moz-placeholder          {opacity: 0; transition: opacity $field-placeholder-transition-duration ease;}
-    .#{$field-class}:focus:-moz-placeholder           {opacity: 0; transition: opacity $field-placeholder-transition-duration ease;}
-    .#{$field-class}:focus:-ms-input-placeholder      {opacity: 0; transition: opacity $field-placeholder-transition-duration ease;}
-}
-
-.#{$field-group-class} {
+.ya-field-group {
     display: flex;
     border: 1px solid white;
     border-radius: $field-border-radius;
@@ -186,120 +80,5 @@ textarea.#{$field-class} {
         & > * {
             border-color: $field-error-border-color;
         }
-    }
-}
-
-.ya-checkbox {
-    font-family: $font-main;
-    cursor: pointer;
-    @include cols(shrink default, 20px in, 'span');
-    display: inline-flex;
-    align-items: center;
-    transition: color $global-transition-duration linear;
-    -webkit-tap-highlight-color: transparent;
-
-    &:hover {
-        color: $anchor-color-hover;
-    }
-}
-
-.ya-icon {
-
-    &--checkbox {
-        // @include bg($checkbox);
-        margin: 0 !important;
-
-        input:checked + & {
-            // @include bg($checkbox-checked);
-        }
-    }
-}
-
-.ya-group-checkbox {
-    @include cols(default, 20px in);
-    justify-content: space-between;
-}
-
-.ya-group-checkbox__text {
-    display: block;
-    border: 1px solid #d5d5d5;
-    border-radius: 18px;
-    text-align: center;
-    padding: 5px 0;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all $global-transition-duration linear;
-
-    input:checked ~ &,
-    &:hover {
-        border-color: $anchor-color-hover;
-        color: white;
-        background: $anchor-color-hover;
-    }
-
-    input:checked ~ & {
-        cursor: default;
-    }
-}
-
-.ya-field-container {
-    margin-bottom: $field-margin-bottom;
-}
-
-.ya-form-margin {
-    margin-bottom: $field-margin-bottom;
-}
-
-.ya-label-checkbox {
-    display: inline-block;
-    cursor: pointer;
-
-    a {
-        color: currentColor;
-
-        &:hover {
-            text-decoration: none;
-        }
-    }
-}
-
-.ya-checkbox-row {
-    @include cols(shrink default, 13px);
-    align-items: center;
-}
-
-.ya-checkbox-value {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 18px;
-    height: 18px;
-    background-color: #f6f5f3;
-    border: 1px solid #b4b4b4;
-    border-radius: 4px;
-    color: white;
-    transition: all $global-transition-duration linear;
-
-    label:hover & {
-        background-color: #e6e5e3;
-    }
-
-    input:checked ~ & {
-        background-color: #88d68f;
-        border-color: #88d68f;
-    }
-
-    label:hover input:checked ~ & {
-        background-color: #6fbb76;
-        border-color: #6fbb76;
-    }
-}
-
-.ya-checkbox-value__icon {
-    opacity: 0;
-    transition: all $global-transition-duration linear;
-
-    input:checked ~ .ya-checkbox-value & {
-        opacity: 1;
     }
 }

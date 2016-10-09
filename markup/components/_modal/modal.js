@@ -1,10 +1,9 @@
 yaModules.modal = (function () {
 
     let remodals = {};
-    let $buttonsOpenNestedRemodal = $('[data-nested-remodal-target]');
 
     function addEventListeners() {
-        $buttonsOpenNestedRemodal.on('click', openNestedRemodal);
+        $('[data-nested-remodal-target]').on('click', openNestedRemodal);
         $(document).on('opened', '.remodal', unBlockOverlay);
     }
 
@@ -23,6 +22,7 @@ yaModules.modal = (function () {
     }
 
     function unBlockOverlay() {
+        console.log('unblock');
         $('.remodal-overlay').removeClass('is-block');
     }
 
@@ -55,9 +55,7 @@ yaModules.modal = (function () {
 
     return {
         init() {
-            if ($buttonsOpenNestedRemodal.length) {
-                addEventListeners();
-            }
+            addEventListeners();
         },
         openRemodal(idRemodal, onlyOverlay = false) {
             openRemodal(idRemodal, onlyOverlay);

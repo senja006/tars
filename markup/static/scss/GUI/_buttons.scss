@@ -1,6 +1,6 @@
 $button-line-height: 1.5;
 
-.#{$button-class} {
+.ya-button {
 
     // основные стили //
     $button-padding-y: em(((($button-height - $button-border-width * 2) - ($button-font-size * $button-line-height)) / 2));
@@ -9,16 +9,14 @@ $button-line-height: 1.5;
     padding: ($button-padding-y - $button-correction-padding-y) $button-padding-x ($button-padding-y + $button-correction-padding-y);
     // line-height: $button-height - $button-border-width * 2;
     line-height: $button-line-height;
-    width: $button-width;
     vertical-align: top;
-    transition: all $button-transition-duration linear;
     font-size: $button-font-size;
     border-radius: $button-radius;
-    text-decoration: none;
-    text-transform: $button-text-transform;
     font-family: $button-font-family;
     font-weight: $button-font-weight;
     text-align: center;
+    text-decoration: none;
+    transition: all $global-transition-duration linear;
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
     outline: none;
@@ -34,24 +32,19 @@ $button-line-height: 1.5;
         pointer-events: none;
     }
 
-    .is-no-touch &:active {
-        transition: all $button-active-transition-duration linear;
-    }
-
-    &.ya-lg {
-        $button-padding-y: em((((54px - $button-border-width * 2) - ($button-font-size * $button-line-height)) / 2));
-
-        padding: ($button-padding-y - $button-correction-padding-y) em(30px) ($button-padding-y + $button-correction-padding-y);
-        font-weight: 500;
-
-        @include breakpoint(large) {
-            letter-spacing: 2px;
-        }
+    .ya-is-no-touch &:active {
+        transition: all 0s;
     }
 
     &--clear {
         padding: 0;
         background: 0;
+    }
+
+    &.example-lg {
+        $button-padding-y: em((((54px - $button-border-width * 2) - ($button-font-size * $button-line-height)) / 2));
+
+        padding: ($button-padding-y - $button-correction-padding-y) em(30px) ($button-padding-y + $button-correction-padding-y);
     }
 
 
@@ -62,9 +55,4 @@ $button-line-height: 1.5;
         @include button-background(white, black, blue);
         @include button-border-color(black, green);
     }
-}
-
-.ya-button__text {
-    vertical-align: middle;
-    line-height: normal;
 }

@@ -1,1 +1,37 @@
+// Класс для иконок png.
 //@include icon($class, $img, $img-hover, $img-active, $elementsAction: (), $classesActive: (), $transition-duration);
+
+.ya-icon {
+    display: block;
+    position: relative;
+    transform: translateZ(0);
+    background-repeat: no-repeat;
+    margin: 0 auto;
+
+    &:before, &:after {
+        content: '';
+        //transition: opacity 0.1s linear;
+        background-repeat: no-repeat;
+    }
+
+    &:before {
+        opacity: 1;
+        display: block;
+        //transition-duration: 0s;
+    }
+
+    &:after {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+
+    .ya-button & {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}

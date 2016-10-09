@@ -12,13 +12,13 @@
     window.addEventListener("load", function() {
         pageLoad = true;
     });
-    
+
     window.isTouchScreen = 'ontouchstart' in window;
     var html = document.querySelector('html');
     if(window.isTouchScreen) {
-        html.classList.add('is-touch');
+        html.classList.add('ya-is-touch');
     }else{
-        html.classList.add('is-no-touch');
+        html.classList.add('ya-is-no-touch');
     }
 </script>
 
