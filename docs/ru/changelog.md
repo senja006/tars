@@ -4,6 +4,14 @@
 
 # Changelog
 
+## Version 1.9.2
+
+* Исправлен баг с работой хелпера Icon в handlebars.
+
+## Version 1.9.1
+
+* Переключились на gulp-pug-inheritance из форка, так как оригинал содержит ошибки.
+
 ## Version 1.9.0
 
 * gulp-minify-html заменен на gulp-htmlmin.
