@@ -8,16 +8,16 @@
 
 {{#if example}}
     <script>
-        var timerCard;
+        var timerJquery;
 
-        function addExampleCardEventListeners() {
+        function runFunctions() {
 
         }
 
-        timerCard = setInterval(function () {
+        timerJquery = setInterval(function () {
             if (window.jQuery) {
-                clearInterval(timerCard);
-                addExampleCardEventListeners();
+                clearInterval(timerJquery);
+                runFunctions();
             }
         }, 200);
     </script>

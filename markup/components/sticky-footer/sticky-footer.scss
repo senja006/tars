@@ -2,26 +2,26 @@ html, body {
     height: 100%;
 }
 
-.#{$class-container-page} {
+.ya-page {
     display: flex;
     flex-direction: column;
 }
 
 // этот контейнер для прижатия футера в ie11
-.#{$class-container-page}__in {
+.ya-page__in {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-.#{$class-footer} {
+.ya-footer {
     flex: none;
 }
 
-.#{$class-container-content} {
+.ya-content {
     flex: 1 0 auto;
 }
 
-.#{$class-header} {
+.ya-header {
     flex: none;
 }

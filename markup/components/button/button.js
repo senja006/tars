@@ -1,4 +1,4 @@
-yaModules.buttons = (function () {
+yaModules.button = (function () {
 
     function addEventListeners() {
         $('a').on('mouseleave', {selector: 'a'}, triggerBlur);

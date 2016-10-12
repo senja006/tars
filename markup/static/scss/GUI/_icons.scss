@@ -35,3 +35,7 @@
         vertical-align: middle;
     }
 }
+
+[class*=icon] {
+    transition: color $global-transition-duration linear;
+}
