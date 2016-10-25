@@ -39,6 +39,7 @@ yaModules.template = (function () {
 
             //--- без загрузки файла
 
+            // form.disable();
             // let data = {};
             // let inputs = this.elements;
             // Array.prototype.forEach.call(inputs, function(input) {

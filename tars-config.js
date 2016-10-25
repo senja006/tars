@@ -81,7 +81,7 @@ module.exports = {
          * Example: ['./markup/controller/** /*.js']
          * @type {Array}
          */
-        jsPathsToConcatBeforeModulesJs: ['./markup/modules/**/*.concat-before.js'],
+        jsPathsToConcatBeforeModulesJs: ['./markup/**/*.concat-before.js'],
 
         /**
          * Lint additional js before modules

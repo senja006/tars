@@ -82,6 +82,10 @@ $field-error-background: $field-background;
 $breakpoints: (
     start: 0px,
     small: 320px,
+    xsmall: 480px,
+    smedium: 600px;
     medium: 768px, // 510px + $global-padding-medium-down * 2
     large: 960px, // $global-max-width + $global-padding-medium-down * 2
+    xlarge: 1200px,
+    xxlarge: 1440px
 );

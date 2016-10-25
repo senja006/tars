@@ -7,7 +7,7 @@
     $text-underline-background-color: #f5f5f5,
     $text-underline-position: -.14em,
     $text-underline-size: .02em,
-    $text-underline-gap: .05em, 
+    $text-underline-gap: .05em,
     $text-underline-gap-minimum: 1.5px
 ) {
     box-shadow: inset 0 calc(#{$text-underline-position} + #{$text-underline-size}) 0 0 $text-underline-background-color,
@@ -22,5 +22,66 @@
 
     &::selection {
         text-shadow: none;
+    }
+}
+
+//////////////////////////////
+// https://codepen.io/jimmynotjim/pen/EabQjV
+// @include link-underline($color-background, $color-text, $color-selection);
+
+@mixin text-underline-crop($background) {
+    text-shadow:  .03em 0 $background,
+    -.03em 0 $background,
+    0 .03em $background,
+    0 -.03em $background,
+    .06em 0 $background,
+    -.06em 0 $background,
+    .09em 0 $background,
+    -.09em 0 $background,
+    .12em 0 $background,
+    -.12em 0 $background,
+    .15em 0 $background,
+    -.15em 0 $background;
+}
+
+@mixin text-underline($color-bg, $color-text) {
+    background-image: linear-gradient($color-text, $color-text);
+    background-size: 1px 1px;
+    background-repeat: repeat-x;
+    background-position: 0% 95%;
+}
+
+@mixin text-selection($selection) {
+    &::selection {
+        @include text-underline-crop($selection);
+
+        background: $selection;
+    }
+
+    &::-moz-selection {
+        @include text-underline-crop($selection);
+
+        background: $selection;
+    }
+}
+
+@mixin link-underline($background, $text, $selection){
+    @include text-underline-crop($background);
+    @include text-underline($background, $text);
+    @include text-selection($selection);
+
+    color: $text;
+    text-decoration: none;
+
+    *,
+    *:after,
+    &:after,
+    *:before,
+    &:before {
+        text-shadow: none;
+    }
+
+    &:visited {
+        color: $text;
     }
 }

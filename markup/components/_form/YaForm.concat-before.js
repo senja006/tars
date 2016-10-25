@@ -5,7 +5,7 @@
 class YaForm {
 
     /**
-     * @param form - this или селектор
+     * @param form - селектор или jQuery object
      *
      * Options:
      * classFieldContainer - контейнер поля ввода
@@ -20,12 +20,12 @@ class YaForm {
      */
     constructor(form) {
         if (typeof form == 'string') {
-            let selector = form + ' form';
+            let selector = form;
             this.form = document.querySelector(selector);
             this.$form = $(selector);
         } else {
-            this.form = form;
-            this.$form = $(form);
+            this.form = form[0];
+            this.$form = form;
         }
         this.options = {
             classFieldContainer: 'ya-field-container',
@@ -190,9 +190,14 @@ class YaForm {
 
         $formControls.each(function () {
             let $field = $(this);
-            let value = $field.val().replace(/\s+/g, '');
+            let value = $field.val();
 
-            if (!$field.prop('disabled') && value === '') {
+            $field.trigger('focus').trigger('blur');
+            if (value) {
+                value.replace(/\s+/g, '');
+            }
+
+            if (!$field.prop('disabled') && value === '' || !value) {
                 self._addErrorToField($field);
             } else {
                 self._removeErrorFromField($field);
@@ -211,8 +216,12 @@ class YaForm {
         let $fieldPassword = $passwords.eq(0);
         let $fieldConfirmPassword = $passwords.eq(1);
 
+        if(!$fieldPassword.val()) {
+            return;
+        }
+
         if ($fieldPassword.val() != $fieldConfirmPassword.val()) {
-            $fieldConfirmPassword.val('');
+            // $fieldConfirmPassword.val('');
             this._addErrorToField($fieldConfirmPassword);
         }
 
@@ -223,7 +232,13 @@ class YaForm {
      */
     _checkMinLength() {
         let $fields = this.$form.find('[minlength]');
+
+        if(!$fields.length) {
+            return;
+        }
+
         let self = this;
+
         $fields.each(function () {
             let $field = $(this);
             let minLength = $field.attr('minlength');
@@ -238,10 +253,17 @@ class YaForm {
      */
     _checkTel() {
         let $fields = this.$form.find('[type=tel], [data-type-tel]').filter('[data-inputmask]');
+
+        if (!$fields.length) {
+            return;
+        }
+
         let self = this;
+        
         $fields.each(function () {
             let $field = $(this);
-            if (!$field.val() || $field.val().match('_')) {
+            $field.trigger('focus').trigger('blur');
+            if ($field.val().match('_')) {
                 self._addErrorToField($field);
             }
         });
