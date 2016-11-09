@@ -2,35 +2,23 @@ data = {pagination: {
     template: {
         list: [
             {
-                modLi: '',
+                mod: '', // опция
+                isActive: 'ya-is-active', // опция
                 text: ''
             }
         ]
     },
     defaults: {
         list: [
+            {text: '1'},
+            {text: '...'},
+            {text: '4'},
             {
-                text: '1'
-            },
-            {
-                text: '...'
-            },
-            {
-                text: '4'
-            },
-            {
-                modLi: 'ya-active',
-                text: '5'
-            },
-            {
-                text: '6'
-            },
-            {
-                text: '...'
-            },
-            {
-                text: '12'
-            }
+                isActive: 'ya-is-active', // опция
+                text: '5'},
+            {text: '6'},
+            {text: '...'},
+            {text: '12'}
         ]
     }
 }};

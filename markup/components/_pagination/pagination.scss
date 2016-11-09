@@ -33,7 +33,7 @@
     font-weight: 700;
     transition: all $global-transition-duration linear;
 
-    .ya-active & {
+    .ya-is-active & {
         color: $anchor-color;
         font-size: em(20px);
         cursor: default;

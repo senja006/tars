@@ -6,19 +6,11 @@
                     <span class="ya-icon ya-icon--pointer-left-blue-2"></span>
                 </span>
             </li>
-
-        {{#each list}}
-            <li class="ya-pagination__list-li {{modLi}}">
-
-            {{#if modLi}}
-                <span class="ya-pagination__list-text">{{text}}</span>
-            {{else}}
-                <a href="#" class="ya-pagination__list-text">{{text}}</a>
-            {{/if}}
-            
-            </li>
-        {{/each}}
-
+            {{#each list}}
+                <li class="ya-pagination__list-li {{mod}} {{isActive}}">
+                    <a {{#unless isActive}} href="#" {{/unless}} class="ya-pagination__list-text">{{text}}</a>
+                </li>
+            {{/each}}
             <li class="ya-pagination__list-li">
                 <a href="#" class="ya-pagination__list-text">
                     <span class="ya-icon ya-icon--pointer-right-blue-2"></span>
