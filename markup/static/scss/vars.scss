@@ -42,12 +42,13 @@ $anchor-color-visited: #01579b;
 
 $button-border-width: 1px; // для выключения - 0
 $button-border-style: solid;
-$button-height: 40px;
-$button-padding-x: 20px; // отступы слева и справа
-$button-correction-padding-y: 0; // если текст не по вертикальному центру
+$button-height: 44px;
+$button-padding-x: 30px; // отступы слева и справа
+$button-correction-bottom: 0; // если текст не по вертикальному центру
+$button-correction-top: 0; // если текст не по вертикальному центру
 $button-font-family: $font-main;
 $button-font-weight: $global-weight-normal;
-$button-font-size: $global-font-size;
+$button-font-size: 16px;
 $button-radius: 3px;
 
 // Формы //
@@ -83,7 +84,7 @@ $breakpoints: (
     start: 0px,
     small: 320px,
     xsmall: 480px,
-    smedium: 600px;
+    smedium: 600px,
     medium: 768px, // 510px + $global-padding-medium-down * 2
     large: 960px, // $global-max-width + $global-padding-medium-down * 2
     xlarge: 1200px,

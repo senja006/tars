@@ -18,16 +18,19 @@
         border-color: $field-focus-border-color;
     }
 
-    .ya-error &,
-    &.ya-error {
-        color: $field-error-color;
+    .ya-is-error &,
+    &.ya-is-error {
+        
+        @if $field-error-color != '' {
+            color: $field-error-color !important;
+        }
 
         @if $field-error-border-color != '' {
-            border-color: $field-error-border-color;
+            border-color: $field-error-border-color !important;
         }
 
         @if $field-error-background != '' {
-            background: $field-error-background;
+            background: $field-error-background !important;
         }
     }
 }
@@ -75,7 +78,7 @@ textarea.ya-field {
         flex: 1 1 auto;
     }
 
-    &.ya-error {
+    &.ya-is-error {
         border-color: $field-error-border-color;
 
         & > * {

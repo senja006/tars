@@ -62,6 +62,10 @@
 
   color: #2b2e38;
   background: #fff;
+
+  .ya-page & {
+    display: none;
+  }
 }
 
 .remodal.remodal-is-opening,

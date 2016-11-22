@@ -1,14 +1,13 @@
-$button-line-height: 1.5;
+$button-line-height: 1;
 
 .ya-button {
-
-    // основные стили //
-    $button-padding-y: em(((($button-height - $button-border-width * 2) - ($button-font-size * $button-line-height)) / 2));
-
     display: inline-block;
-    padding: ($button-padding-y - $button-correction-padding-y) $button-padding-x ($button-padding-y + $button-correction-padding-y);
-    // line-height: $button-height - $button-border-width * 2;
+    padding-top: $button-correction-top;
+    padding-bottom: $button-correction-bottom;
+    padding-right: $button-padding-x;
+    padding-left: $button-padding-x;
     line-height: $button-line-height;
+    height: $button-height;
     vertical-align: top;
     font-size: $button-font-size;
     border-radius: $button-radius;
@@ -42,12 +41,6 @@ $button-line-height: 1.5;
         height: auto;
     }
 
-    &.example-lg {
-        $button-padding-y: em((((54px - $button-border-width * 2) - ($button-font-size * $button-line-height)) / 2));
-
-        padding: ($button-padding-y - $button-correction-padding-y) em(30px) ($button-padding-y + $button-correction-padding-y);
-    }
-
 
     // набор кнопок //
 
@@ -56,4 +49,10 @@ $button-line-height: 1.5;
         @include button-background(white, black, blue);
         @include button-border-color(black, green);
     }
+}
+
+a.ya-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }

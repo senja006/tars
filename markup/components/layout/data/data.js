@@ -1,4 +1,4 @@
-data = {'layout': {
+var data = {'layout': {
     template: {
         'sidebar-blocks-left': {
             mod: '', // опция
