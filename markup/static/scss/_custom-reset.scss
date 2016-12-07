@@ -9,6 +9,12 @@
     padding: 0;
 }
 
+body {
+    word-wrap: break-word; /* для ie */
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
 b,
 strong {
     font-weight: bolder;
