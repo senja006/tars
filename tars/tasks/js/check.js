@@ -6,35 +6,48 @@ const plumber = tars.packages.plumber;
 const notifier = tars.helpers.notifier;
 
 const jsPathesToLint = [].concat.apply([], [
-    './markup/modules/**/*.js',
-    '!./markup/modules/**/_*.js',
-    '!./markup/modules/**/data/data.js',
-    tars.config.lintJsCodeBeforeModules ? tars.config.jsPathsToConcatBeforeModulesJs : [],
-    tars.config.lintJsCodeAfterModules ? tars.config.jsPathsToConcatAfterModulesJs : []
+    `./markup/${tars.config.fs.componentsFolderName}/**/*.js`,
+    `!./markup/${tars.config.fs.componentsFolderName}/**/_*.js`,
+    `!./markup/${tars.config.fs.componentsFolderName}/**/data/data.js`,
+    tars.config.js.lintJsCodeBeforeModules ? tars.config.js.jsPathsToConcatBeforeModulesJs : [],
+    tars.config.js.lintJsCodeAfterModules ? tars.config.js.jsPathsToConcatAfterModulesJs : []
 ]);
 
 /**
  * Check JS for style and errors (optional task)
  */
 module.exports = () => {
-    return gulp.task('js:check', cb => {
+    return gulp.task('js:check', done => {
 
-        if (tars.config.useJsLintAndHint) {
-            const eslint = tars.require('gulp-eslint');
-
-            return gulp.src(jsPathesToLint)
-                .pipe(plumber({
-                    errorHandler() {
-                        notifier.error('An error occurred while checking js.');
+        /* eslint-disable no-case-declarations */
+        if (tars.config.js.lint) {
+            switch (tars.config.js.workflow) {
+                case 'modular':
+                    switch (tars.config.js.bundler) {
+                        case 'webpack':
+                        default:
+                            tars.skipTaskLog('js:check', 'Code will be linted by built-in linter in bundler');
+                            return done(null);
                     }
-                }))
-                .pipe(cache('eslint'))
-                .pipe(eslint())
-                .pipe(eslint.formatEach())
-                .pipe(eslint.failAfterError());
+                case 'concat':
+                default:
+                    const eslint = tars.require('gulp-eslint');
+
+                    return gulp.src(jsPathesToLint)
+                        .pipe(plumber({
+                            errorHandler() {
+                                notifier.error('An error occurred while checking js.');
+                            }
+                        }))
+                        .pipe(cache('eslint'))
+                        .pipe(eslint())
+                        .pipe(eslint.formatEach())
+                        .pipe(eslint.failAfterError());
+            }
         }
+        /* eslint-enable no-case-declarations */
 
         tars.skipTaskLog('js:check', 'JavaScript check is not used');
-        cb(null);
+        done(null);
     });
 };

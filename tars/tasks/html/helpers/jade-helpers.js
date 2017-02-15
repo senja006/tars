@@ -1,6 +1,6 @@
 'use strict';
 
-const builtInJadeHelpers = {
+const builtInPugHelpers = {
 
     /**
      * Icon helper for Jade
@@ -8,6 +8,8 @@ const builtInJadeHelpers = {
      * @param  {Object} options
      * @param  {String} options.iconName    Name of the used icon
      * @param  {String} options.className   Classname for svg element
+     * @param  {String} options.iconWidth   Width for svg element
+     * @param  {String} options.iconHeight  Height for svg element
      * @return {String}                     Ready template for svg-symbols including
      */
     Icon(options) {
@@ -30,19 +32,28 @@ const builtInJadeHelpers = {
             pathToSymbolsSprite = symbolsConfig.pathToExternalSymbolsFile + symbolsSpriteFileName;
         }
 
-        pathToSymbolsSprite += '#' + iconName;
+        pathToSymbolsSprite += `#${iconName}`;
 
-        const className = options.className || 'icon__' + iconName;
-
+        const className = options.className || `icon__${iconName}`;
+        const iconWidth = options.iconWidth || iconData.width;
+        const iconHeight = options.iconHeight || iconData.height;
         return `
-            <svg class="${className}" width="${iconData.width}" height="${iconData.height}">
+            <svg class="${className}" width="${iconWidth}" height="${iconHeight}">
                 <use xlink:href="${pathToSymbolsSprite}"></use>
             </svg>
         `;
     }
 };
 
+let userHelpers;
+
+try {
+    userHelpers = require(`${tars.root}/user-tasks/html/helpers/jade-helpers`);
+} catch (error) {
+    userHelpers = {};
+}
+
 module.exports = Object.assign(
-    builtInJadeHelpers,
-    require(tars.root + '/user-tasks/html/helpers/jade-helpers')
+    builtInPugHelpers,
+    userHelpers
 );

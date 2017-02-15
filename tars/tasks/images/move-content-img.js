@@ -6,8 +6,7 @@ const plumber = tars.packages.plumber;
 const notifier = tars.helpers.notifier;
 const browserSync = tars.packages.browserSync;
 
-const contentImagesFolder = tars.config.fs.staticFolderName + '/'
-                            + tars.config.fs.imagesFolderName + '/content';
+const contentImagesFolder = `${tars.config.fs.staticFolderName}/${tars.config.fs.imagesFolderName}/content`;
 
 /**
  * Move images for content
@@ -15,10 +14,12 @@ const contentImagesFolder = tars.config.fs.staticFolderName + '/'
 module.exports = () => {
     return gulp.task('images:move-content-img', () => {
         return gulp.src(
+                /* eslint-disable indent */
                 [
-                    './markup/' + contentImagesFolder + '/**/*.*',
-                    '!./markup/' + contentImagesFolder + '/**/*.tmp'
+                    `./markup/${contentImagesFolder}/**/*.*`,
+                    `!./markup/${contentImagesFolder}/**/*.tmp`
                 ]
+                /* eslint-enable indent */
             )
             .pipe(plumber({
                 errorHandler(error) {
@@ -26,7 +27,7 @@ module.exports = () => {
                 }
             }))
             .pipe(cache('move-content-img'))
-            .pipe(gulp.dest('./dev/' + contentImagesFolder))
+            .pipe(gulp.dest(`./dev/${contentImagesFolder}`))
             .pipe(browserSync.reload({ stream: true }))
             .pipe(
                 notifier.success('Content images\'ve been moved')

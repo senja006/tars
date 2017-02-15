@@ -6,8 +6,7 @@ const plumber = tars.packages.plumber;
 const notifier = tars.helpers.notifier;
 const browserSync = tars.packages.browserSync;
 
-const generalImagesFolder = tars.config.fs.staticFolderName + '/'
-                            + tars.config.fs.imagesFolderName + '/general';
+const generalImagesFolder = `${tars.config.fs.staticFolderName}/${tars.config.fs.imagesFolderName}/general`;
 
 /**
  * Move general images
@@ -15,10 +14,12 @@ const generalImagesFolder = tars.config.fs.staticFolderName + '/'
 module.exports = () => {
     return gulp.task('images:move-general-img', () => {
         return gulp.src(
+                /* eslint-disable indent */
                 [
-                    './markup/' + generalImagesFolder + '/**/*.*',
-                    '!./markup/' + generalImagesFolder + '/**/*.tmp'
+                    `./markup/${generalImagesFolder}/**/*.*`,
+                    `!./markup/${generalImagesFolder}/**/*.tmp`
                 ]
+                /* eslint-enable indent */
             )
             .pipe(plumber({
                 errorHandler(error) {
@@ -26,7 +27,7 @@ module.exports = () => {
                 }
             }))
             .pipe(cache('move-general-img'))
-            .pipe(gulp.dest('./dev/' + generalImagesFolder))
+            .pipe(gulp.dest(`./dev/${generalImagesFolder}`))
             .pipe(browserSync.reload({ stream: true }))
             .pipe(
                 notifier.success('General images\'ve been moved')

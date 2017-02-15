@@ -4,7 +4,7 @@
 
 # HTML
 
-В качестве шаблонизатора для HTML можно использовать [Jade](http://jade-lang.com) или [Handlebars](http://handlebarsjs.com). Шаблонизатор выбирается в [tars-config.js](options.md#templater) или вов время [инициализации TARS с помощью TARS-CLI](https://github.com/tars/tars-cli/blob/master/docs/ru/commands.md#tars-init).
+В качестве шаблонизатора для HTML можно использовать [Jade](http://jade-lang.com), [Pug](https://pugjs.org/api/getting-started.html) или [Handlebars](http://handlebarsjs.com). Шаблонизатор выбирается в [tars-config.js](options.md#templater) или во время [инициализации TARS с помощью TARS-CLI](https://github.com/tars/tars-cli/blob/master/docs/ru/commands.md#tars-init).
 
 Можно использовать любые средства данных шаблонизаторов. Если вы привыкли к ламповому HTML, то смело выбирайте Handlebars и просто пишите HTML как раньше.
 
@@ -20,14 +20,14 @@
 
 **Префиксы %=staticPrefixForCss=% и %=staticPrefix=% все еще работают, но крайне не желательно его использовать, так как в будущих версиях он будет удален! Используйте просто %=static=% или \_\_static\_\_! Новый вариант префиксов работает в TARS начиная с версии 1.6.0**
 
-Очень важной фичей является использование различных данных в одном шаблоне. Например, у нас есть модуль head, в котором находится все, что стоит поместить в тег head (различные meta, тайтлы и т.д.) Предположим, что на каждой  странице должен быть свой title. Создавать копии одного и того же модуля, которые отличаются только одной строчкой — не целесообразно. Было бы логично отделить данные от представления.
+Очень важной фичей является использование различных данных в одном шаблоне. Например, у нас есть компонент head, в котором находится все, что стоит поместить в тег head (различные meta, тайтлы и т.д.) Предположим, что на каждой  странице должен быть свой title. Создавать копии одного и того же компонента, которые отличаются только одной строчкой — не целесообразно. Было бы логично отделить данные от представления.
 
-Поэтому в папке с модулем есть папка `data`, в которой находится js-файл с данными данного модуля.
+Поэтому в папке с компонентом есть папка `data`, в которой находится js-файл с данными данного компонента.
 
-Пример данных можно найти в модуле _template:
+Пример данных можно найти в компоненте _template:
 
 ```javascript
-moduleName: {
+componentName: {
     dataType: {
         property: value
     }
@@ -38,7 +38,7 @@ moduleName: {
 
 ```javascript
 data = {
-    moduleName: {
+    componentName: {
         dataType: {
             property: value
         }
@@ -48,7 +48,33 @@ data = {
 
 Оба синтаксиса поддерживаются TARS по умолчанию.
 
-По умолчанию в данных будут находится данные из модуля _template и список всех страниц проекта в виде:
+В файле data.js поддерживаются комментарии только внутри объекта с данными.
+
+С версии TARS 1.8.0 появилась возможность использовать вложенные компоненты. Может получиться такая ситуация, что вложенные компоненты в двух разных компонентах могут иметь одно название и одинаковый ключ в данных. Чтобы такого не происходило TARS генерирует уникальный ключ для вложенных компонентов следующим образом:
+
+```javascript
+'parentComponentName_anotherParentComponent_currentComponentName' = {
+    dataType: {
+        property: value
+    }
+};
+```
+
+При этом в самом вложеном компоненте вы пишете также, как и обычно:
+
+```javascript
+const data = {
+    'currentComponentName': {
+        dataType: {
+            property: value
+        }
+    }
+};
+```
+
+Все преобразования ключа происходят автоматически.
+
+По умолчанию в данных будут находится данные из компонента _template и список всех страниц проекта в виде:
 
 ```javascript
 __pages: [
@@ -61,36 +87,63 @@ __pages: [
 
 Этот массив можно использовать для генерации списка ссылок всех страниц проекта.
 
-Подключение модулей с различными данными выглядит по-разному в Jade и Handlebars.
+Также, в шаблон можно передать любые данные с помощью переменной окружения TARS_ENV. Например так можно передать простую строку:
 
-
-##Работа с модулями и данными в Handlebars
-
-Подключение модуля на странице:
-
-```handlebars
-{{> moduleFolderName/moduleName}}
+```bash
+TARS_ENV="Hello World" tars dev --silent
 ```
 
-Подключение модуля с передачей данных в шаблон:
+Затем в шаблоне (handlebars):
 
 ```handlebars
-{{> moduleFolderName/moduleName moduleName.dataType}}
+{{TARS_ENV}}
 ```
 
-Пример подключения модуля head с данными типа defaults:
+Также можно передавать объекты:
+
+```bash
+TARS_ENV="{\"name\": \"Paul\"}" tars dev --silent
+```
+
+Затем в шаблоне (handlebars):
+
+```handlebars
+{{TARS_ENV.name}}
+```
+
+**Обратите внимание, при передаче объекта в переменную окружения необходимо указывать двойные кавычки, а также экранировать их!**
+
+
+Подключение компонентов с различными данными выглядит по-разному в Jade/Pug и Handlebars.
+
+
+##Работа с компонентами и данными в Handlebars
+
+Подключение компонента на странице:
+
+```handlebars
+{{> componentFolderName/componentName}}
+```
+
+Подключение компонента с передачей данных в шаблон:
+
+```handlebars
+{{> componentFolderName/componentName componentName.dataType}}
+```
+
+Пример подключения компонента head с данными типа defaults:
 
 ```handlebars
 {{> head/head head.defaults}}
 ```
 
-Внутри самого модуля данные выводятся средствами Handlebars:
+Внутри самого компонента данные выводятся средствами Handlebars:
 
 ```handlebars
 <title>{{title}}</title>
 ```
 
-Если вы не передали данные в модуль, то модуль получает доступ в глобальный контекст. Иными словами, если мы подключим модуль head без передачи данных, то в самом шаблоне мы можем получить доступ к полю title следующим образом:
+Если вы не передали данные в компонент, то компонент получает доступ в глобальный контекст. Иными словами, если мы подключим компонент head без передачи данных, то в самом шаблоне мы можем получить доступ к полю title следующим образом:
 
 ```javascript
 // head/data/data.js
@@ -111,58 +164,58 @@ head.html
 <title>{{head.defaults.title}}</title>
 ```
 
-Если же вы передали контекст с подключением модуля, то доступ к данным других модулей вы уже не имеете внутри подключенного. Чтобы подключать модули внутри других модулей со своими данными необходимо в модуль-родитель передавать глобальный контекст (не передавать никаких данных при подключении). Тогда вы сможете передать в любой дочерный модуль необходимые данные. Либо можно воспользоваться следующим способом:
+Если же вы передали контекст с подключением компонента, то доступ к данным других компонентов вы уже не имеете внутри подключенного. Чтобы подключать компоненты внутри других компонентов со своими данными необходимо в компонент-родитель передавать глобальный контекст (не передавать никаких данных при подключении). Тогда вы сможете передать в любой дочерный компонент необходимые данные. Либо можно воспользоваться следующим способом:
 
 index.html
 ```handlebars
-{{> module1/module1 module1.main}}
+{{> component1/component1 component1.main}}
 ```
 
-module1.html
+component1.html
 ```handlebars
 
 <h1>{{title}}</h1>
 
-{{> module2/module2 module2.main}}
+{{> component2/component2 component2.main}}
 ```
 
 ```javascript
-// module1/data/data.js
-module1: {
+// component1/data/data.js
+component1: {
     main: {
-        title: 'Title of module1',
-        module2: function (fullData) {
-            return fullData.module2;
+        title: 'Title of component1',
+        component2: function (fullData) {
+            return fullData.component2;
         }
     }
 }
 ```
 
-module2.html
+component2.html
 ```handlebars
 
 <h2>{{title}}</h2>
 ```
 
 ```javascript
-// module2/data/data.js
-module2: {
+// component2/data/data.js
+component2: {
     main: {
-        title: 'Title of module2'
+        title: 'Title of component2'
     }
 }
 ```
 
-Таким образом, вы можете получить доступ к данным любого модуля из данных любого модуля простой конструкцией:
+Таким образом, вы можете получить доступ к данным любого компонента из данных любого компонента простой конструкцией:
 
 ```javascript
-// module/data/data.js
-module: {
+// component/data/data.js
+component: {
     main: {
-        title: 'Title of module',
-        innerModuleData: function (fullData) {
+        title: 'Title of component',
+        innerComponentData: function (fullData) {
             // fullData — объект, который содержит все данные проекта
-            return fullData.moduleName.ModuleType;
+            return fullData.componentName.componentType;
         }
     }
 }
@@ -171,61 +224,79 @@ module: {
 А если использовать стрелочные функции ES6, то все становится еще проще:
 
 ```javascript
-// module/data/data.js
-module: {
+// component/data/data.js
+component: {
     main: {
-        title: 'Title of module',
-        innerModuleData: fullData => fullData.moduleName.ModuleType
+        title: 'Title of component',
+        innerComponentData: fullData => fullData.componentName.componentType
         }
     }
 }
 ```
 
+Не забудьте, ключ доступа к данным вложенных компонентов будет сгенерирвоан автоматически на основе вложенности в другие компоненты.
+
 Handlebars известен, как очень простой шаблонизатор. Но использовать его в статической верстке в таком виде не очень удобно. Поэтому были добавлены различные хелперы, расширяющие возможности Handlebars.<br/>
 Описание хелперов можно прочесть [здесь](handlebars-helpers.md).
 
 
-## Работа с модулями и данными в Jade
+## Работа с компонентами и данными в Jade/Pug
 
-При использовании Jade, каждый модуль — миксин, который подключается в файл страницы. Миксины в Jade могут принимать данные, этим и воспользуемся.
+При использовании Jade/Pug, каждый компонент — миксин, который подключается в файл страницы. Миксины могут принимать данные, этим и воспользуемся.
 
-Подключение модуля на странице:
+Подключение компонента на странице:
 
 ```jade
-include ../modules/moduleFolderName/moduleName  // В начале шаблона страницы (пример — index.jade)
+include ../components/componentFolderName/componentName  // В начале шаблона страницы (пример — index.jade|pug)
 
-+moduleName()  // Подключение модуля
++componentName()  // Подключение компонента
 ```
 
-Подключение модуля с передачей данных в шаблон:
+Подключение компонента с передачей данных в шаблон:
 
 ```jade
-include ../modules/moduleFolderName/moduleName  // В начале шаблона страницы (пример — index.jade)
+include ../components/componentFolderName/componentName  // В начале шаблона страницы (пример — index.jade|pug)
 
-+moduleName(moduleName.dataType)  // Подключение модуля
++componentName(componentName.dataType)  // Подключение компонента
 ```
 
-Пример подключения модуля head с дефолтными данными:
+Пример подключения компонента head с дефолтными данными:
 
 ```jade
-include ../modules/head/head
+include ../components/head/head
 +head(head.defaults)
 ```
 
-Внутри самого модуля данные выводятся средствами Jade (например, модуль head):
+В случае использования Pug, вам необходимо указать расширение для подключаемого компонента:
+
+```jade
+include ../components/head/head.pug
++head(head.defaults)
+```
+
+Внутри самого компонента данные выводятся средствами Jade/Pug (например, компонент head):
 
 ```jade
 mixin head(data)
     <title>#{data.title}</title>
 ```
 
-Можно использовать любые средства, доступные в Jade. Вы можете подключать модули с любой сложностью, с любыми данными. Функции в data.js также доступны, как и в примерах для Handlebars.
+Можно использовать любые средства, доступные в Jade/Pug. Вы можете подключать компоненты с любой сложностью, с любыми данными. Функции в data.js также доступны, как и в примерах для Handlebars.
 
-В TARS есть один встроенный хелпер для Jade — хелпер `Icon`, который вставляет шаблон для подключения svg-symbol в HTML. Также есть возможность добавлять свои хелперы в файл /tars/user-tasks/html/helpers/jade-helpers. Там же есть пример объявления хелпера. Все хелперы доступны в шаблонах следующим образом:
+В TARS есть один встроенный хелпер для Jade/Pug — хелпер `Icon`, который вставляет шаблон для подключения svg-symbol в HTML. Также есть возможность добавлять свои хелперы в файл /tars/user-tasks/html/helpers/jade|pug-helpers. Там же есть пример объявления хелпера. Все хелперы доступны в шаблонах следующим образом:
 
+Для Jade:
 ```jade
 = jadeHelpers.helperName(params)
 
 <!-- Если необходимо вывести не заэскпейпленный HTML -->
 != jadeHelpers.helperName(params)
+```
+
+Для Pug:
+```jade
+= pugHelpers.helperName(params)
+
+<!-- Если необходимо вывести не заэскпейпленный HTML -->
+!= pugHelpers.helperName(params)
 ```

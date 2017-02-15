@@ -4,6 +4,109 @@ English description | <a href="../ru/changelog.md">Описание на рус�
 
 # Changelog
 
+## Version 1.9.7
+
+* Added webpack [ProvidePlugin](https://webpack.github.io/docs/list-of-plugins.html#provideplugin) support. This is optional, see [tars-config](https://github.com/tars/tars/blob/master/docs/en/options.md#provideplugin).
+
+## Version 1.9.4
+
+* Build won't be deleted in dev-mode.
+
+## Version 1.9.2
+
+* Fix bug with helper Icon in handlebars.
+
+## Version 1.9.1
+
+* Use gulp-pug-inheritance from fork because of errors in original.
+
+## Version 1.9.0
+
+* gulp-minify-html replaced with на gulp-htmlmin.
+* Add templater Pug support.
+* You can pass any data to templater by using env var TARS_ENV.
+* Bugfix.
+* English docs fixup and full update. Thanks to [icehaunter](https://github.com/icehaunter).
+* Dependencies update.
+
+## Version 1.8.3
+
+* Fix bug with svg2png in 2.0.0 Use 1.0.2
+
+## Version 1.8.2
+
+* Fix watcher for templates with _ in the begining of the name;
+* Default scheme for Jade component has been changed. 
+* Dependencies update. Eslint has been updated to version 3.x.x.
+
+## Version 1.8.1
+
+* Init process without user-package.json fixed.
+* Autoprefixer was added for IE9.
+* Pathes for IE entry points were fixed.
+* Dependencies update.
+
+## Version 1.8.0
+
+* Modules directory was renamed to components. This is optional, you can change it in [tars-config](options.md#componentsfoldername). 
+* Task concat-modules-data was renamed to concat-mocks-data.
+* Log fixing for case, when there is problems with sprite generation.
+* You can configure gulp-plugins by using [plugins-config.js](plugins-options.md).
+* Jade recompilation became faster.
+* You can crate components inside another components.
+* All images from assets of component will be moved to static/img/assets. Images are files with extensions svg, png, jpg, jpeg, jpe, gif, tiff and bmp.
+Other files will be moved to static/components-assets.
+* staticPrefix was removed from tars-config.
+* Option [generateStaticPath](options.md#generatestaticpath) was added.
+* Build name is based on local date.
+* TARS works in NodeJs 6.x.x version.
+
+## Version 1.7.1
+
+* Rebuild process of jade-templates became faster.
+* Gulp-csso update to version 2.0.0.
+
+## Version 1.7.0
+
+* Plugin gulp-strip-debug has been deleted. uglifyJS will strip all useless code.
+* Error log became much more clear.
+* You can use notifier.success and notifier.error not in pipe only.
+* Tars-config has been updated. All JavaScript-options in [one object now](options.md#js).
+* You can [import style-files from node_modules/bower_components by using short syntax](css-processing.md).
+* [Webpack](https://webpack.github.io/) has been added. You can use old workflow (concatenation of files) or webpack — this is optional feature, you can manage it [from tars-config](options.md#workflow-1). Alse [Hot Module Replacing](https://webpack.github.io/docs/hot-module-replacement.html) is available. This feature is [managed from tars-config too](options.md#usehmr).
+* Tasks main:dev an js:processing have been updated.
+* .babelrc update.
+* .eslintrc update. New version of eslint is used.
+```js
+// Updated/added rules:
+env: {
+    commonjs: true    
+},
+
+parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module'
+},
+
+rules: {
+    'consistent-return': 0,
+    'keyword-spacing': 2,
+    strict: 0,
+    'no-confusing-arrow': 2,
+    'prefer-arrow-callback': 0,
+    'no-debugger': 0
+}
+
+// Deleted rules:
+'no-arrow-condition': undefined,
+'space-return-throw-case': undefined,
+'space-after-keywords': undefined,
+'no-empty-label': undefined,
+'no-process-exit': undefined
+```
+* Documentation update.
+* Dependencies update.
+
 ## Version 1.6.3
 
 * Bug with images minification has been fixed.

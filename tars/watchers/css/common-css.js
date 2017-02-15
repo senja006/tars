@@ -1,20 +1,20 @@
 'use strict';
 
 const watcherLog = tars.helpers.watcherLog;
-const cssPreprocFolderPath = 'markup/' + tars.config.fs.staticFolderName + '/' + tars.cssPreproc.name;
+const cssPreprocFolderPath = `markup/${tars.config.fs.staticFolderName}/${tars.cssPreproc.name}`;
 const globsToWatch = [
-    cssPreprocFolderPath + '/**/*.' + tars.cssPreproc.ext,
-    cssPreprocFolderPath + '/**/*.css'
+    `${cssPreprocFolderPath}/**/*.${tars.cssPreproc.ext}`,
+    `${cssPreprocFolderPath}/**/*.css`
 ];
 
 /**
- * Watcher for common scss(less or stylus)-files and scss(less or stylus)-files of plugins
+ * Watcher for all scss(less or stylus)-files
  */
 module.exports = () => {
     return tars.packages.chokidar.watch(
         globsToWatch,
         Object.assign(tars.options.watch, {
-            ignored: [cssPreprocFolderPath + '/separate-css/**/*.css']
+            ignored: [`${cssPreprocFolderPath}/separate-css/**/*.css`]
         })
     ).on('all', (event, watchedPath) => {
         watcherLog(event, watchedPath);
