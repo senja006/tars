@@ -4,24 +4,7 @@
 
 # ![Tars](https://raw.githubusercontent.com/artem-malko/artwork/master/tars/logo.png)
 
-alias deployFrontBuild="tars start deploy --flags '--build --frontend'"
-alias deployFrontDev="tars dev --custom-flags '--deploywatcher --dev --frontend'"
-
-alias deployBackBuild="tars start deploy --flags '--build --backend'"
-alias deployBackDev="tars dev --custom-flags '--deploywatcher --dev --backend'"
-
-alias tarsDevLocalServer="tars dev --custom-flags '--deploywatcher --dev --local'"
-alias tarsBuildLocalServer="tars start deploy --flags '--build --local'"
-
-alias tarsDevLocalServerHtml="tars dev --custom-flags '--deploywatcher --dev --local --html'"
-alias tarsBuildLocalServerHtml="tars start deploy --flags '--build --local --html'"
-
-alias tarsDeployServer="tars start deploy --flags '--server'"
-
-alias tarsInit="tars init --silent --source https://github.com/senja006/tars/archive/senja006.zip"
-alias tarsUpdateProject="tars update-project --source https://github.com/senja006/tars/archive/senja006.zip"
-
-[![Mac/Linux Build Status](https://img.shields.io/travis/tars/tars/master.svg?label=Mac%20OSX%20%26%20Linux&style=flat-square)](https://travis-ci.org/tars/tars) [![Windows Build status](https://img.shields.io/appveyor/ci/artem-malko/tars/master.svg?label=Windows&style=flat-square)](https://ci.appveyor.com/project/artem-malko/tars/branch/master) [![Gitter](https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg?style=flat-square)](https://gitter.im/tars/tars?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Downloads][downloads-image]][npm-url] [![Mac/Linux Build Status](https://img.shields.io/travis/tars/tars/master.svg?label=Mac%20OSX%20%26%20Linux&style=flat-square)](https://travis-ci.org/tars/tars) [![Windows Build status](https://img.shields.io/appveyor/ci/artem-malko/tars/master.svg?label=Windows&style=flat-square)](https://ci.appveyor.com/project/artem-malko/tars/branch/master) [![Gitter](https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg?style=flat-square)](https://gitter.im/tars/tars?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 TARS — сборщик frontend'а любой сложности, основанный на [Gulp](http://gulpjs.com/). Облегчает и ускоряет процесс разработки веб-сайтов/приложений, делая работу приятной и продуктивной.
 Подойдет как командам, так и отдельному разработчику. TARS решает большинство рутинных дел, связанных с веб-разработкой, чтобы вы получали больше удовольствия от работы.
@@ -45,7 +28,7 @@ TARS — сборщик-фреймворк, включающий в себя н�
 * Использование json (а точнее js-объекта, который может быть описан в json) для передачи данных в шаблоны (опционально, но очень крутая штука, которая позволит избавиться от копипаста). Подробнее [тут](/docs/ru/html-processing.md#%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0-%D1%81-%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D1%8F%D0%BC%D0%B8-%D0%B8-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%BC%D0%B8-%D0%B2-handlebars).
 * [CLI-утилита](https://github.com/tars/tars-cli) и **автообновление проекта**.
 * Вы можете ипользовать ES6 (и некоторые фичи из ES7) уже сегодня. Подробнее в [документации](/docs/ru/js-processing.md).
-* [SCSS (SASS)](http://sass-lang.com/), [LESS](http://www.lesscss.ru/) или [Stylus](http://learnboost.github.io/stylus/) в качестве препроцессора для css. Также в комплекте идет небольшой набор миксинов. Доступны sourcemaps. При выборе scss в качестве препроцессора, вы можете использовать как расширение scss, так и sass + можете миксовать их использование. Подробности [здесь](/docs/ru/css-processing.md). В комплекте идет [PostCSS](https://github.com/postcss/postcss) с [autoprefixer'ом](https://github.com/postcss/autoprefixer). Также очень [легко подключить дополнительные плагины для PostCSS](/docs/ru/options.md#postcss).
+* [SCSS (SASS)](http://sass-lang.com/), [LESS](http://www.lesscss.org/) или [Stylus](http://learnboost.github.io/stylus/) в качестве препроцессора для css. Также в комплекте идет небольшой набор миксинов. Доступны sourcemaps. При выборе scss в качестве препроцессора, вы можете использовать как расширение scss, так и sass + можете миксовать их использование. Подробности [здесь](/docs/ru/css-processing.md). В комплекте идет [PostCSS](https://github.com/postcss/postcss) с [autoprefixer'ом](https://github.com/postcss/autoprefixer). Также очень [легко подключить дополнительные плагины для PostCSS](/docs/ru/options.md#postcss).
 * Никаких внешних библиотек и плагинов (кроме [html5shiv](https://ru.wikipedia.org/wiki/Html5_Shiv)). И да, это фича, так как вы вольны сами выбирать, какие библиотеки использовать. Доступны sourcemaps для JavaScript.
 * Используется модуль [chokidar](https://github.com/paulmillr/chokidar) для вотчинга файлов.
 * Расшариванием верстки с вашего компьютера во внешний веб, опционально. Ну и конечно же livereload в браузере (и не только локально) + графический интерфейс к панели управления устройствами, на которые расшаривается верстка.
@@ -176,3 +159,6 @@ gulp init
 По всем вопросам можно писать в [gitter](https://gitter.im/tars/tars?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) или на почту [tars.builder@gmail.com](mailto:tars.builder@gmail.com)
 
 Баги и фича-реквесты сюда: [issues](https://github.com/tars/tars/issues/new).
+
+[downloads-image]: http://img.shields.io/npm/dm/tars-cli.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/tars-cli

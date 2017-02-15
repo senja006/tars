@@ -4,6 +4,14 @@ English description | <a href="../ru/changelog.md">Описание на рус�
 
 # Changelog
 
+## Version 1.9.7
+
+* Added webpack [ProvidePlugin](https://webpack.github.io/docs/list-of-plugins.html#provideplugin) support. This is optional, see [tars-config](https://github.com/tars/tars/blob/master/docs/en/options.md#provideplugin).
+
+## Version 1.9.4
+
+* Build won't be deleted in dev-mode.
+
 ## Version 1.9.2
 
 * Fix bug with helper Icon in handlebars.
