@@ -1,7 +1,7 @@
 yaModules.yaFixedHeader = (function() {
 
-    let $fixedHeader = undefined;
-    let $containerFixedHeader = $('.ya-header__fixed-container');
+    let $containerFixedHeader = $('.ya-header__fixed');
+    let $fixedHeader = $('.ya-header__fixed-in');
 
     /**
      * Добавление обработчиков
@@ -21,7 +21,7 @@ yaModules.yaFixedHeader = (function() {
      */
     function setPositionHeader(scrollLeft) {
         if(scrollLeft < 0) return;
-        if(!$fixedHeader) $fixedHeader = $('.ya-header__fixed');
+        if(!$fixedHeader) $fixedHeader = $('.ya-header__fixed-in');
 
         $fixedHeader.each(function() {
             $(this).css('left', -scrollLeft);
@@ -29,7 +29,7 @@ yaModules.yaFixedHeader = (function() {
     }
 
     function setHeightContainer() {
-        let height = $containerFixedHeader.outerHeight();
+        let height = $fixedHeader.outerHeight();
 
         $containerFixedHeader.css('height', height);
     }
@@ -37,7 +37,7 @@ yaModules.yaFixedHeader = (function() {
     return {
         init() {
             if($('.ya-header__fixed').length) {
-                // setHeightContainer();
+                setHeightContainer();
                 addEventListeners();
                 setPositionHeader();
             }

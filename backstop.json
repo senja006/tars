@@ -2,24 +2,44 @@
     "viewports": [
         {
             "name": "small",
-            "width": 384,
-            "height": 1920
+            "width": 320,
+            "height": 5000
+        },
+        {
+            "name": "xsmall",
+            "width": 480,
+            "height": 5000
+        },
+        {
+            "name": "smedium",
+            "width": 600,
+            "height": 4500
         },
         {
             "name": "medium",
-            "width": 534,
-            "height": 1499
+            "width": 768,
+            "height": 4500
         },
         {
             "name": "large",
-            "width": 964,
-            "height": 1192
+            "width": 960,
+            "height": 4000
+        },
+        {
+            "name": "xlarge",
+            "width": 1200,
+            "height": 3500
+        },
+        {
+            "name": "xxlarge",
+            "width": 1440,
+            "height": 3500
         }
     ],
     "scenarios": [
         {
             "label": "Главная",
-            "url": "http://localhost:5757/index.html",
+            "url": "http://localhost:3004/index.html",
             "hideSelectors": [],
             "removeSelectors": [],
             "selectors": [

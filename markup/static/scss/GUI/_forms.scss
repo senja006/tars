@@ -86,3 +86,38 @@ textarea.ya-field {
         }
     }
 }
+
+.ya-label-checkbox {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.ya-checkbox-row {
+    @include cols(shrink default, 10px);
+}
+
+.ya-checkbox-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 1px solid white;
+}
+
+[class*=icon] {
+
+    .ya-checkbox-value__icon & {
+        opacity: 0;
+    }
+
+    input:checked + .ya-checkbox-value & {
+        opacity: 1;
+    }
+}
+
+.ya-field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+}

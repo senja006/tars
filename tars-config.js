@@ -300,14 +300,14 @@ module.exports = {
      */
     deploy: {
         frontend: { // настройки для фронтенда
-            host:     'sra.webhost1.ru', // host ftp
+            host:     's19.webhost1.ru', // host ftp
             user:     'senja006', // login
             password: 'pass-ftp-front.txt', // в этом файле хранится пароль
             parallel: 10, // количество одовременных загрузок
             remoteFolder: '.yarkevich.ru',
         },
         backend: { // настройки для бэкенда
-            host:     'sra.webhost1.ru', // host ftp
+            host:     's19.webhost1.ru', // host ftp
             user:     'senja006', // login
             password: 'pass-ftp-front.txt', // в этом файле хранится пароль
             parallel: 10, // количество одовременных загрузок
@@ -317,7 +317,7 @@ module.exports = {
             remoteFolder: 'server' // путь до папки static (без названия папки static)
         },
         server: {
-            host:     'sra.webhost1.ru', // host ftp
+            host:     's19.webhost1.ru', // host ftp
             user:     'senja006', // login
             password: 'pass-ftp-front.txt', // в этом файле хранится пароль
             parallel: 10, // количество одовременных загрузок
