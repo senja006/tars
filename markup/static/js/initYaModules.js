@@ -9,8 +9,12 @@ function initModules() {
         }
 
         if(scriptsForLoad.length) {
-            scriptsForLoad.forEach(function(el) {
-                $.getScript(el);
+            scriptsForLoad.forEach(function(url) {
+                let script = document.createElement('script');
+
+                script.setAttribute('type', 'text/javascript');
+                script.setAttribute('src', url);
+                document.body.appendChild(script);
             });
         }
 

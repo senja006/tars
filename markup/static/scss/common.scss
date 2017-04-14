@@ -40,7 +40,8 @@ body {
 
     // .ya-content__row &,
     .remodal &,
-    [class*=ya-sidebar] & {
+    [class*=ya-sidebar] &,
+    & & {
         padding: 0;
         width: 100%;
     }

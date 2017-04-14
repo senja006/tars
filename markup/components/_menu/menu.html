@@ -1,16 +1,15 @@
 <div class="ya-menu">
-    <div class="ya-menu__list">
-        <ul class="ya-menu__list-ul">
+    <ul class="ya-menu__ul">
             {{#each list}}
-                <li class="ya-menu__list-li {{#if isActive}} ya-active {{/if}}">
+                <li class="ya-menu__li {{#unless href}} ya-is-active {{/unless}}">
                     {{#if list}}
-                        <ul class="ya-menu__list-ul">
+                        <ul class="ya-menu__ul">
                             {{#each list}}
-                                <li class="ya-menu__list-li {{#if isActive}} ya-active {{/if}}">
+                                <li class="ya-menu__li {{#unless href}} ya-is-active {{/unless}}">
                                     {{#if href}}
-                                        <a href="{{href}}" class="ya-menu__list-text">{{text}}</a>
+                                        <a href="{{href}}" class="ya-menu__text">{{text}}</a>
                                     {{else}}
-                                        <span class="ya-menu__list-text">{{text}}</span>
+                                        <span class="ya-menu__text">{{text}}</span>
                                     {{/if}}
                                 </li>
                             {{/each}}
@@ -18,12 +17,11 @@
                     {{/if}}
 
                     {{#if href}}
-                        <a href="{{href}}" class="ya-menu__list-text">{{text}}</a>
+                        <a href="{{href}}" class="ya-menu__text">{{text}}</a>
                     {{else}}
-                        <span class="ya-menu__list-text">{{text}}</span>
+                        <span class="ya-menu__text">{{text}}</span>
                     {{/if}}
                 </li>
             {{/each}}
         </ul>
-    </div>
 </div>

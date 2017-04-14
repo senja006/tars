@@ -1,1 +1,3 @@
-map: {}
+var data = {'map': {
+    template: {}
+}};

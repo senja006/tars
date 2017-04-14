@@ -4,7 +4,18 @@
             {{#with sidebar-blocks-left}}
                 <div class="ya-sidebar {{mod}}">
                     {{#each sidebar-blocks}}
-                        {{> sidebar-block/sidebar-block sidebar-block}}
+                        <div class="ya-sidebar__block {{mod}} {{#if orderMobile}} ya-order-mobile-{{orderMobile}} {{/if}}">
+                            {{#if title}}
+                                <span class="ya-sidebar__title">{{title}}
+                                    {{#if subTitle}}
+                                        <span class="ya-sidebar__sub-title">{{subTitle}}</span>
+                                    {{/if}}
+                                </span>
+                            {{/if}}
+                            {{#each components}}
+                                {{#if name}} {{> name/name name}} {{/if}}
+                            {{/each}}
+                        </div>
                     {{/each}}
                 </div>
             {{/with}}
@@ -12,13 +23,71 @@
                 <div class="ya-content__main {{mod}}">
                     {{#each list}}
                         {{#if name}} {{> name/name name}} {{/if}}
+                        {{#with cols}}
+                            <div class="ya-content__row">
+                                {{#with sidebar-blocks-left}}
+                                    <div class="ya-sidebar {{mod}}">
+                                        {{#each sidebar-blocks}}
+                                            <div class="ya-sidebar__block {{mod}} {{#if orderMobile}} ya-order-mobile-{{orderMobile}} {{/if}}">
+                                                {{#if title}}
+                                                    <span class="ya-sidebar__title">{{title}}
+                                                        {{#if subTitle}}
+                                                            <span class="ya-sidebar__sub-title">{{subTitle}}</span>
+                                                        {{/if}}
+                                                    </span>
+                                                {{/if}}
+                                                {{#each components}}
+                                                    {{#if name}} {{> name/name name}} {{/if}}
+                                                {{/each}}
+                                            </div>
+                                        {{/each}}
+                                    </div>
+                                {{/with}}
+                                {{#with components}}
+                                    <div class="ya-content__main {{mod}}">
+                                        {{#each list}}
+                                            {{#if name}} {{> name/name name}} {{/if}}
+                                        {{/each}}
+                                    </div>
+                                {{/with}}
+                                {{#with sidebar-blocks-right}}
+                                    <div class="ya-sidebar {{mod}}">
+                                        {{#each sidebar-blocks}}
+                                            <div class="ya-sidebar__block {{mod}} {{#if orderMobile}} ya-order-mobile-{{orderMobile}} {{/if}}">
+                                                {{#if title}}
+                                                    <span class="ya-sidebar__title">{{title}}
+                                                        {{#if subTitle}}
+                                                            <span class="ya-sidebar__sub-title">{{subTitle}}</span>
+                                                        {{/if}}
+                                                    </span>
+                                                {{/if}}
+                                                {{#each components}}
+                                                    {{#if name}} {{> name/name name}} {{/if}}
+                                                {{/each}}
+                                            </div>
+                                        {{/each}}
+                                    </div>
+                                {{/with}}
+                            </div>
+                        {{/with}}
                     {{/each}}
                 </div>
             {{/with}}
             {{#with sidebar-blocks-right}}
                 <div class="ya-sidebar {{mod}}">
                     {{#each sidebar-blocks}}
-                        {{> sidebar-block/sidebar-block sidebar-block}}
+                        <div class="ya-sidebar__block {{mod}} {{#if orderMobile}} ya-order-mobile-{{orderMobile}} {{/if}}">
+                            {{#if title}}
+                                <span class="ya-sidebar__title">{{title}}
+                                    {{#if subTitle}}
+                                        <span class="ya-sidebar__sub-title">{{subTitle}}</span>
+                                    {{/if}}
+                                </span>
+                            {{/if}}
+                            {{#each components}}
+                                {{#if name}} {{> name/name name}} {{/if}}
+                            {{/each}}
+                        </div>
                     {{/each}}
                 </div>
             {{/with}}

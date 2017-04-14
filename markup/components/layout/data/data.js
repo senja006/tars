@@ -3,19 +3,69 @@ var data = {'layout': {
         'sidebar-blocks-left': {
             mod: '', // опция
             'sidebar-blocks': [
-                { 'sidebar-block': fullData => fullData['sidebar-block'] }
+                {
+                    mod: '', // опция
+                    title: '', // опция
+                    subTitle: '', // опция
+                    components: [
+                        { name: fullData => fullData.name }
+                    ]
+                }
             ]
         },
         components: {
             mod: '', // опция
             list: [
                 { name: fullData => fullData.name },
+                {
+                    cols: {
+                        'sidebar-blocks-left': {
+                            mod: '', // опция
+                            'sidebar-blocks': [
+                                {
+                                    mod: '', // опция
+                                    title: '', // опция
+                                    subTitle: '', // опция
+                                    components: [
+                                        { name: fullData => fullData.name }
+                                    ]
+                                }
+                            ]
+                        },
+                        components: {
+                            mod: '', // опция
+                            list: [
+                                { name: fullData => fullData.name }
+                            ]
+                        },
+                        'sidebar-blocks-right': {
+                            mod: '', // опция
+                            'sidebar-blocks': [
+                                {
+                                    mod: '', // опция
+                                    title: '', // опция
+                                    subTitle: '', // опция
+                                    components: [
+                                        { name: fullData => fullData.name }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                }
             ]
         },
         'sidebar-blocks-right': {
             mod: '', // опция
             'sidebar-blocks': [
-                { 'sidebar-block': fullData => fullData['sidebar-block'] }
+                {
+                    mod: '', // опция
+                    title: '', // опция
+                    subTitle: '', // опция
+                    components: [
+                        { name: fullData => fullData.name }
+                    ]
+                }
             ]
         }
     }
