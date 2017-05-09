@@ -6,20 +6,22 @@
     var pageLoad = false;
     var scriptsForLoad = [];
 
-    window.addEventListener("DOMContentLoaded", function() {
+    window.addEventListener("DOMContentLoaded", function () {
         pageReady = true;
     });
-    window.addEventListener("load", function() {
+    window.addEventListener("load", function () {
         pageLoad = true;
     });
 
     window.isTouchScreen = 'ontouchstart' in window;
     var html = document.querySelector('html');
-    if(window.isTouchScreen) {
+    if (window.isTouchScreen) {
         html.classList.add('ya-is-touch');
-    }else{
+    } else {
         html.classList.add('ya-is-no-touch');
     }
+
+    // if (navigator.appVersion.indexOf('Win') != -1) html.classList.add('ya-is-windows');
 </script>
 
 <script src="%=static=%js/separate-js/svg4everybody.min.js"></script>

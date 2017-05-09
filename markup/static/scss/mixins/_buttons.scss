@@ -1,12 +1,12 @@
 @mixin button-color($color, $color-hover: $color, $color-active: $color-hover) {
     color: $color !important;
 
-    .ya-is-no-touch &:hover,
-    .ya-is-no-touch &:focus {
+    .ya-is-not-touch &:hover,
+    .ya-is-not-touch &:focus {
         color: $color-hover !important;
     }
 
-    .ya-is-no-touch &:active {
+    .ya-is-not-touch &:active {
         color: $color-active !important;
     }
 }
@@ -14,12 +14,12 @@
 @mixin button-background($background, $background-hover: $background, $background-active: $background-hover) {
     background: $background;
 
-    .ya-is-no-touch &:hover,
-    .ya-is-no-touch &:focus {
+    .ya-is-not-touch &:hover,
+    .ya-is-not-touch &:focus {
         background: $background-hover;
     }
 
-    .ya-is-no-touch &:active {
+    .ya-is-not-touch &:active {
         background: $background-active;
     }
 }
@@ -27,12 +27,12 @@
 @mixin button-border-color($border-color, $border-color-hover: $border-color, $border-color-active: $border-color-hover) {
     border-color: $border-color;
 
-    .ya-is-no-touch &:hover,
-    .ya-is-no-touch &:focus {
+    .ya-is-not-touch &:hover,
+    .ya-is-not-touch &:focus {
         border-color: $border-color-hover;
     }
 
-    .ya-is-no-touch &:active {
+    .ya-is-not-touch &:active {
         border-color: $border-color-active;
     }
 }

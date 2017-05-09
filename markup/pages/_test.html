@@ -1,8 +1,25 @@
 {{> head/head head.index}}
 {{> header/header header.default}}
 
+<!-- example css clip-path for firefox -->
+<div class="ya-hidden">
+    <svg id="clip-path-map">
+        <defs>
+            <clipPath id="clip-path-map-1" clipPathUnits="objectBoundingBox">
+                <polygon points=".50 0, 0 1, 1 1" />
+            </clipPath>
+        </defs>
+    </svg>
+</div>
+<style type="text/css">
+    .selector {
+        clip-path: url('#clip-path-map-1');
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+</style>
+
 <div class="ya-container">
-    <span class="ya-title">Заголовок</span>
+    <span class="ya-title">Title</span>
 
     <div class="ya-text">
         <h1></h1>
@@ -53,60 +70,60 @@
         <p></p>
     </div>
 
-    <a class="ya-button ya-button--red" href="#" class="button">Кнопка с тегом а</a>
-    <button class="ya-button ya-button--red">Кнопка с тегом button</button>
+    <a class="ya-button ya-button--red" href="#" class="button"></a>
+    <button class="ya-button ya-button--red"></button>
 
-    <a href="#" class="ya-link">Ссылка</a>
+    <a href="#" class="ya-link"></a>
 
     <form id="ya-form-contacts">
         <!-- <input class="ya-field" type="text" placeholder="Имя"/> -->
 
         <div class="ya-field-container ya-error">
-            <input class="ya-field" type="text" placeholder="Имя ошибка"/>
+            <input class="ya-field" type="text" placeholder=""/>
         </div>
 
         <div class="ya-field-container">
-            <input class="ya-field" type="text" name="" placeholder="Фамилия"/>
+            <input class="ya-field" type="text" name="" placeholder=""/>
         </div>
 
         <div class="ya-field-container ya-container-select">
             <select name="year" class="ya-field">
-                <option value="" disabled selected>Год выпуска</option>
-                <option value="param">Параметр</option>
-                <option value="param">Параметр</option>
-                <option value="param">Параметр</option>
-                <option value="param">Параметр</option>
-                <option value="param">Параметр</option>
+                <option value="" disabled selected></option>
+                <option value="param"></option>
+                <option value="param"></option>
+                <option value="param"></option>
+                <option value="param"></option>
+                <option value="param"></option>
             </select>
             <span class="ya-icon ya-icon--pointer-down"></span>
         </div>
 
-        <!-- группа -->
+        <!-- group -->
         <div class="ya-field-container ya-field-group ya-width-auto">
-            <input class="ya-field" type="number" name="tel" placeholder="Телефон"/>
-            <button class="ya-button ya-button--white ya-medium" type="submit">Да</button>
+            <input class="ya-field" type="number" name="tel" placeholder=""/>
+            <button class="ya-button ya-button--white ya-medium" type="submit"></button>
         </div>
 
         <textarea class="ya-field" name="message"></textarea>
 
-        <!-- группа checkbox или radio -->
+        <!-- group of checkboxes or radio buttons -->
         <div class="ya-group-checkbox">
             <div class="ya-field-container">
                 <label>
                     <input type="radio" name="time-of-day" value="morning" hidden/>
-                    <span class="ya-group-checkbox__text">Утром</span>
+                    <span class="ya-group-checkbox__text"></span>
                 </label>
             </div>
             <div class="ya-field-container">
                 <label>
                     <input type="radio" name="time-of-day" value="daytime" hidden/>
-                    <span class="ya-group-checkbox__text">Днем</span>
+                    <span class="ya-group-checkbox__text"></span>
                 </label>
             </div>
             <div class="ya-field-container">
                 <label>
                     <input type="radio" name="time-of-day" value="nights" hidden/>
-                    <span class="ya-group-checkbox__text">Вечером</span>
+                    <span class="ya-group-checkbox__text"></span>
                 </label>
             </div>
         </div>
@@ -122,17 +139,15 @@
                     </div>
                 </div>
                 <div class="ya-col">
-                    <span class="ya-field-label">Я ознакомлен и согласен с условиями <a
-                            href="#">публичной оферты</a></span>
+                    <span class="ya-field-label">I agree <a
+                            href="#">offer</a></span>
                 </div>
             </div>
         </label>
 
     </form>
-
-    {{> yaModal/template}}
-
-    <!-- автозаполнение -->
+    
+    <!-- autofill -->
     <form method="post" id="usrForm">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" autocomplete="name">

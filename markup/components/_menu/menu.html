@@ -1,27 +1,27 @@
 <div class="ya-menu">
     <ul class="ya-menu__ul">
-            {{#each list}}
-                <li class="ya-menu__li {{#unless href}} ya-is-active {{/unless}}">
-                    {{#if list}}
-                        <ul class="ya-menu__ul">
-                            {{#each list}}
-                                <li class="ya-menu__li {{#unless href}} ya-is-active {{/unless}}">
-                                    {{#if href}}
-                                        <a href="{{href}}" class="ya-menu__text">{{text}}</a>
-                                    {{else}}
-                                        <span class="ya-menu__text">{{text}}</span>
-                                    {{/if}}
-                                </li>
-                            {{/each}}
-                        </ul>
-                    {{/if}}
+        {{#each list}}
+            <li class="ya-menu__li {{#unless href}} ya-is-active {{/unless}}">
+                {{#if list}}
+                    <ul class="ya-menu__ul">
+                        {{#each list}}
+                            <li class="ya-menu__li {{#unless href}} ya-is-active {{/unless}}">
+                                {{#if href}}
+                                    <a href="{{href}}" class="ya-menu__text">{{text}}</a>
+                                {{else}}
+                                    <span class="ya-menu__text">{{text}}</span>
+                                {{/if}}
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{/if}}
 
-                    {{#if href}}
-                        <a href="{{href}}" class="ya-menu__text">{{text}}</a>
-                    {{else}}
-                        <span class="ya-menu__text">{{text}}</span>
-                    {{/if}}
-                </li>
-            {{/each}}
-        </ul>
+                {{#if href}}
+                    <a href="{{href}}" class="ya-menu__text">{{text}}</a>
+                {{else}}
+                    <span class="ya-menu__text">{{text}}</span>
+                {{/if}}
+            </li>
+        {{/each}}
+    </ul>
 </div>

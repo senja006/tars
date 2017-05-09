@@ -1,4 +1,4 @@
-// Создание иконок
+// creating icons
 
 @mixin icon($class, $img, $img-hover: $img, $img-active: $img-hover, $elementsAction: (''), $classesActive: (''), $transition-duration: $global-transition-duration-icons) {
 
@@ -80,12 +80,12 @@
     }
 }
 
-// эффект наведения
+// hover effect
 @mixin icon-hover($duration: $global-transition-duration-icons, $delay: 0s) {
     @include bg-trh($duration, $delay);
 }
 
-// установка задержки смены иконок
+// setting delay of changing icons
 @mixin icon-delay($delay) {
 
     &:before {

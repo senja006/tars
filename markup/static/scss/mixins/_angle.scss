@@ -1,5 +1,4 @@
-// создание наклоненных краев блоков
-// пример можно посмотреть здесь http://codepen.io/jeremyfrank/pen/avyezR
+// example http://codepen.io/jeremyfrank/pen/avyezR
 
 @mixin angle($pseudo, $flip: false, $angle: 1.5deg) {
   // Possible values for $pseudo are: before, after, both

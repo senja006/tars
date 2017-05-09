@@ -1,4 +1,4 @@
-// Плавное изменение css свойств в зависимости от размеров экрана
+// changing properties when window resize
 
 @mixin fluid-type($properties, $breakpoints-fluid-type, $values) {
     & {
@@ -72,7 +72,7 @@
 //    @return $value / ($value * 0 + 1);
 //}
 
-// пример
+// example
 
 //@include fluid-type(font-size margin-bottom, 320px medium large, 14px 30px 60px);
 

@@ -7,7 +7,7 @@ html, body {
     flex-direction: column;
 }
 
-// этот контейнер для прижатия футера в ie11
+// this container is for moving footer of down in ie11
 .ya-page__in {
     display: flex;
     flex-direction: column;

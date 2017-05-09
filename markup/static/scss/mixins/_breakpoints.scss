@@ -58,7 +58,7 @@
                     $bp-max: null;
                 }
                 @else {
-                    $bp-max: $next-bp - 1; // добавил -1 для того, чтобы соседние медиа не перекрывали друг друга
+                    $bp-max: $next-bp - 1; //  // it is my setting (senja006)
                 }
             }
 

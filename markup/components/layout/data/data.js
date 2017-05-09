@@ -1,12 +1,12 @@
 var data = {'layout': {
     template: {
         'sidebar-blocks-left': {
-            mod: '', // опция
+            mod: '', // option
             'sidebar-blocks': [
                 {
-                    mod: '', // опция
-                    title: '', // опция
-                    subTitle: '', // опция
+                    mod: '', // option
+                    title: '', // option
+                    subTitle: '', // option
                     components: [
                         { name: fullData => fullData.name }
                     ]
@@ -14,18 +14,18 @@ var data = {'layout': {
             ]
         },
         components: {
-            mod: '', // опция
+            mod: '', // option
             list: [
                 { name: fullData => fullData.name },
                 {
                     cols: {
                         'sidebar-blocks-left': {
-                            mod: '', // опция
+                            mod: '', // option
                             'sidebar-blocks': [
                                 {
-                                    mod: '', // опция
-                                    title: '', // опция
-                                    subTitle: '', // опция
+                                    mod: '', // option
+                                    title: '', // option
+                                    subTitle: '', // option
                                     components: [
                                         { name: fullData => fullData.name }
                                     ]
@@ -33,18 +33,18 @@ var data = {'layout': {
                             ]
                         },
                         components: {
-                            mod: '', // опция
+                            mod: '', // option
                             list: [
                                 { name: fullData => fullData.name }
                             ]
                         },
                         'sidebar-blocks-right': {
-                            mod: '', // опция
+                            mod: '', // option
                             'sidebar-blocks': [
                                 {
-                                    mod: '', // опция
-                                    title: '', // опция
-                                    subTitle: '', // опция
+                                    mod: '', // option
+                                    title: '', // option
+                                    subTitle: '', // option
                                     components: [
                                         { name: fullData => fullData.name }
                                     ]
@@ -56,12 +56,12 @@ var data = {'layout': {
             ]
         },
         'sidebar-blocks-right': {
-            mod: '', // опция
+            mod: '', // option
             'sidebar-blocks': [
                 {
-                    mod: '', // опция
-                    title: '', // опция
-                    subTitle: '', // опция
+                    mod: '', // option
+                    title: '', // option
+                    subTitle: '', // option
                     components: [
                         { name: fullData => fullData.name }
                     ]

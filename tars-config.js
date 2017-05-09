@@ -296,31 +296,31 @@ module.exports = {
     ////////////////////////////////////////////////////
 
     /**
-     * Настройки деплоя проекта
+     * Deploy settings
      */
     deploy: {
-        frontend: { // настройки для фронтенда
-            host:     's19.webhost1.ru', // host ftp
-            user:     'senja006', // login
-            password: 'pass-ftp-front.txt', // в этом файле хранится пароль
-            parallel: 10, // количество одовременных загрузок
+        frontend: {
+            host:     's19.webhost1.ru',
+            user:     'senja006',
+            password: 'pass-ftp-front.txt',
+            parallel: 10,
             remoteFolder: '.yarkevich.ru',
         },
-        backend: { // настройки для бэкенда
-            host:     's19.webhost1.ru', // host ftp
-            user:     'senja006', // login
-            password: 'pass-ftp-front.txt', // в этом файле хранится пароль
-            parallel: 10, // количество одовременных загрузок
+        backend: {
+            host:     's19.webhost1.ru',
+            user:     'senja006',
+            password: 'pass-ftp-front.txt',
+            parallel: 10,
             remoteFolder: '.yarkevich.ru/static/'
         },
         local: {
-            remoteFolder: 'server' // путь до папки static (без названия папки static)
+            remoteFolder: 'server'  // path to folder "static" (without name "static")
         },
         server: {
-            host:     's19.webhost1.ru', // host ftp
-            user:     'senja006', // login
-            password: 'pass-ftp-front.txt', // в этом файле хранится пароль
-            parallel: 10, // количество одовременных загрузок
+            host:     's19.webhost1.ru',
+            user:     'senja006',
+            password: 'pass-ftp-front.txt',
+            parallel: 10,
             remoteFolder: '.yarkevich.ru',
         }
     }

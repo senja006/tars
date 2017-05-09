@@ -31,7 +31,7 @@ $button-line-height: 1;
         pointer-events: none;
     }
 
-    .ya-is-no-touch &:active {
+    .ya-is-not-touch &:active {
         transition: all 0s;
     }
 
@@ -42,7 +42,7 @@ $button-line-height: 1;
     }
 
 
-    // набор кнопок //
+    // set of buttons //
 
     &--red {
         @include button-color(black, white, red);

@@ -1,4 +1,4 @@
 data = {head: {
-    listPages: { title: 'Список страниц' },
-    index: { title: 'Главная' },
+    listPages: { title: 'Page list' },
+    index: { title: 'Main page' },
 }};

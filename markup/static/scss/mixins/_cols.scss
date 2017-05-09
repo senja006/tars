@@ -1,5 +1,5 @@
-// Создание колонок
-// Для создания пробелов между колонками @include gutter(20px in). Если добавить in к размеру, то отступы только внутри колонок, но не снаружи. Снаружи необходимы только при переносе колонок на другую строку
+// Creating layout
+// For create gutter between columns @include gutter(20px in). 'in' for create gutter inside columns, but not outside. Outside gutter is needed when columns break in new line
 @mixin gutter($gutter, $selector-cols: 'div', $sizing-content-box: 'false') {
 
     & > #{$selector-cols} {
@@ -24,7 +24,7 @@
     }
 }
 
-// установка ширины колонок
+// set columns width
 @mixin cols($sizes, $gutter: 0, $selector-cols: 'div', $sizing-content-box: 'false') {
     display: flex;
 
@@ -113,7 +113,7 @@
 
 }
 
-// точки изменения колонок для изображений
+// breakpoints of change number of columns for images
 @mixin cols-images($min-cols, $max-cols, $img-width, $gutter, $list: 'li', $page-padding: $global-padding) {
     @for $i from $min-cols through $max-cols {
         $page-width: ($i - 1) * $img-width + $gutter * ($i - 2) + $page-padding * 2;
@@ -123,7 +123,7 @@
     }
 }
 
-// сброс стилей колонок
+// reset columns css
 @mixin reset-cols($selector-cols: 'div') {
     display: block;
 

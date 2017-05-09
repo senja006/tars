@@ -1,13 +1,13 @@
-// Переменные проекта
-// ------------------
+// Project settings
+// ----------------
 
 
-// Глобальные //
-// -------------
+// Global //
+// ---------
 
-$global-padding: 10px; // отступы по краям страницы
-$global-width: 980px; // ширина основного контейнера. 0 для ширины 100%
-$global-max-width: 100%; // изменяется при responsive
+$global-padding: 10px; // padding at the edges of the page
+$global-width: 980px; // width main container. 0 for width 100%
+$global-max-width: 100%; // will change for responsive
 $global-font-size: 16px;
 $global-lineheight: 1.5;
 $global-font-color: #323232;
@@ -28,31 +28,30 @@ $z-index-fixed: 20;
 $z-index-popup: 30;
 $z-index-hidden: -1;
 
-// Типографика //
-// --------------
+// Anchor seeting //
+// -----------------
 
 $anchor-color: #909090;
 $anchor-color-hover: #01579b;
 $anchor-color-active: #063356;
 $anchor-color-visited: #01579b;
 
+// Buttons setting //
+// ------------------
 
-// Кнопки //
-// ---------
-
-$button-border-width: 1px; // для выключения - 0
+$button-border-width: 1px; // for off - 0
 $button-border-style: solid;
 $button-height: 44px;
-$button-padding-x: 30px; // отступы слева и справа
-$button-correction-bottom: 0; // если текст не по вертикальному центру
-$button-correction-top: 0; // если текст не по вертикальному центру
+$button-padding-x: 30px; // paddings left and right
+$button-correction-bottom: 0; // vertical center correction
+$button-correction-top: 0; // vertical center correction
 $button-font-family: $font-main;
 $button-font-weight: $global-weight-normal;
 $button-font-size: 16px;
 $button-radius: 3px;
 
-// Формы //
-// --------
+// Forms settings //
+// -----------------
 
 $field-color: $global-font-color;
 $field-background: white;

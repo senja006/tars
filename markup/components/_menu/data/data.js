@@ -2,14 +2,14 @@ var data = {menu: {
     template: {
         list: [
             {
-                href: '', // опция
+                href: '', // option
                 text: '',
                 list: [
                     {
-                        href: '', // опция
+                        href: '', // option
                         text: ''
                     }
-                ], // опция
+                ], // option
             }
         ]
     }

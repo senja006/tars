@@ -1,4 +1,4 @@
-// конвертирование в em
+// converting to em
 
 @function em($pixels, $context: 16) {
     @if (unitless($pixels)) {

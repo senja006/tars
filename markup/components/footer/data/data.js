@@ -3,7 +3,7 @@ var data = {footer: {
         top: {
             components: [
                 {
-                    mod: '', // опция
+                    mod: '', // option
                     logo: fullData => fullData.logo
                 }
             ]

@@ -3,7 +3,7 @@ var data = {header: {
 		left: {
             components: [
                 {
-                    mod: '', // опция
+                    mod: '', // option
                     name: fullData => fullData.name
                 }
             ]
@@ -11,7 +11,7 @@ var data = {header: {
         right: {
             components: [
                 {
-                    mod: '', // опция
+                    mod: '', // option
                     name: fullData => fullData.name
                 },
             ]

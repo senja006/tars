@@ -1,5 +1,5 @@
 /**
- * Старт всех модулей после события DOMContentLoaded
+ * Init all modules after DOMContentLoaded event
  */
 function initModules() {
     if(pageReady) {

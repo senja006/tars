@@ -68,7 +68,7 @@ body {
     text-shadow: $selection-text-shadow;
 }
 
-// инерционный скролл в мобильных
+// inertial scroll for mobile
 .element {
     -webkit-overflow-scrolling: touch;
 }
@@ -80,7 +80,7 @@ body {
     transform: translateX(-50%);
 }
 
-// изменение порядка на разных экранах
+// change position in different screen sizes
 @for $i from 0 through 10 {
     &.ya-order-mobile-#{$i} {
         order: #{$i};
@@ -89,6 +89,10 @@ body {
             order: 0;
         }
     }
+}
+
+.ya-hidden {
+    @include element-invisible();
 }
 
 // ol {
