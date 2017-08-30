@@ -9,8 +9,8 @@ const fs = require('fs');
 const del = tars.packages.del;
 
 /**
- * Деплой проекта
- * Для запуска
+ * Deploy project
+ * Example
  * tars start deploy --flags '--dev/--build, --html, --frontend/--backend/--local/--server, --deploywatcher'
  */
 
@@ -69,7 +69,7 @@ module.exports = function () {
 
     return gulp.task('deploy', function (cb) {
         if(tars.flags.local) {
-            del.sync([config.remoteFolder + '/static']);
+            // del.sync([config.remoteFolder + '/static'], {force: true});
 
             if(tars.flags.html) {
                 return gulp.src([
@@ -89,7 +89,7 @@ module.exports = function () {
             return gulp.src(localFilesGlob, { base: folderMarkup + '/', buffer: false })
                 .pipe( conn.newer( config.remoteFolder ) ) // only upload newer files
                 .pipe( conn.dest( config.remoteFolder + '/' ) )
-                .pipe(notify('Загрузка завершена!'));
+                .pipe(notify('Deploy is done!'));
         }
     });
 };

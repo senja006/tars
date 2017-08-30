@@ -2,14 +2,14 @@
  * Init all modules after DOMContentLoaded event
  */
 function initModules() {
-    if(pageReady) {
+    if (pageReady) {
 
-        for(var key in yaModules) {
-            if(yaModules[key].init) yaModules[key].init();
+        for (var key in yaModules) {
+            if (yaModules[key].init) yaModules[key].init();
         }
 
-        if(scriptsForLoad.length) {
-            scriptsForLoad.forEach(function(url) {
+        if (scriptsForLoad.length) {
+            scriptsForLoad.forEach(function (url) {
                 let script = document.createElement('script');
 
                 script.setAttribute('type', 'text/javascript');
@@ -18,7 +18,7 @@ function initModules() {
             });
         }
 
-    }else{
+    } else {
         setTimeout(initModules, 100);
     }
 }
