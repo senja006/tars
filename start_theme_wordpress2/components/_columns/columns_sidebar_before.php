@@ -1,0 +1,1 @@
+<div class="ya-sidebar__block <?php echo $sidebar_classes; ?>">
