@@ -10,13 +10,13 @@ const browserSync = tars.packages.browserSync;
  */
 module.exports = () => {
     return gulp.task('other:move-misc-files', () => {
-        return gulp.src(`./markup/${tars.config.fs.staticFolderName}/misc/**/*.*`)
+        return gulp.src(`./markup/${tars.config.fs.staticFolderName}/misc/**/*`, { dot: true })
             .pipe(plumber({
                 errorHandler(error) {
                     notifier.error('An error occurred while moving misc-files.', error);
                 }
             }))
-            .pipe(gulp.dest('./dev/'))
+            .pipe(gulp.dest(`${tars.config.devPath}`))
             .pipe(browserSync.reload({ stream: true }))
             .pipe(
                 notifier.success('Misc files\'ve been moved')

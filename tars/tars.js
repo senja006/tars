@@ -62,7 +62,7 @@ tars.pluginsConfig = require(helpersDirPath + '/plugins-config-processing')();
 tars.flags = gutil.env;
 
 // Dev mode flag
-tars.isDevMode = !tars.flags.release && !tars.flags.min;
+tars.isDevMode = !tars.flags.release && !tars.flags.min && !tars.flags.m;
 tars.useLiveReload = tars.flags.lr || tars.flags.livereload || tars.flags.tunnel;
 
 // Package name
@@ -148,6 +148,14 @@ if (tars.config.svg.active && tars.config.svg.workflow === 'symbols' && (tars.fl
             'Build for IE8 is not available, then svg-symbols is used!'
         )
     );
+}
+
+// availability check '/'
+if (tars.config.devPath.substr(-1) !== '/') {
+    tars.config.devPath = tars.config.devPath + '/';
+}
+if (tars.config.buildPath.substr(-1) !== '/') {
+    tars.config.buildPath = tars.config.buildPath + '/';
 }
 
 // Build options

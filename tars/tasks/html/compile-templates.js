@@ -44,7 +44,7 @@ function concatComponentsData() {
     let readyMocksData;
 
     try {
-        dataEntry = fs.readFileSync('./dev/temp/mocksData.js', 'utf8');
+        dataEntry = fs.readFileSync(`${tars.config.devPath}temp/mocksData.js`, 'utf8');
     } catch (er) {
         dataEntry = false;
     }
@@ -89,7 +89,7 @@ if (!tars.flags.ie9 && !tars.flags.ie) {
 patterns.push(
     {
         match: '%=min=%',
-        replacement: tars.flags.min || tars.flags.release ? '.min' : ''
+        replacement: tars.flags.min || tars.flags.release || tars.flags.m ? '.min' : ''
     }, {
         match: '%=hash=%',
         replacement: tars.flags.release ? tars.options.build.hash : ''
@@ -108,7 +108,7 @@ if (
                 /* eslint-disable no-unused-vars */
 
                 try {
-                    return fs.readFileSync(`./dev/temp/svg-symbols${tars.options.build.hash}.svg`, 'utf8');
+                    return fs.readFileSync(`${tars.config.devPath}temp/svg-symbols${tars.options.build.hash}.svg`, 'utf8');
                 } catch (error) {
                     return '';
                 }
@@ -160,7 +160,7 @@ function jadeAndPugInheritanceProcessing() {
             tars.require(`gulp-${templaterName}-inheritance`)(inheritanceOptions),
             tars.helpers.filterFilesByPath([
                 new RegExp(`\/markup\/${tars.config.fs.componentsFolderName}\/`),
-                /_[\w]+.(jade|pug)/
+                /^_[\w]+.(jade|pug)/
             ])
         );
     }
@@ -231,7 +231,7 @@ module.exports = () => {
 
                 pathToFileToRename.extname = '.html';
             }))
-            .pipe(gulp.dest('./dev/'))
+            .pipe(gulp.dest(`${tars.config.devPath}`))
             .on('end', () => {
                 if (!compileError) {
                     browserSync.reload();
