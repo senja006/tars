@@ -1,7 +1,7 @@
 /**
  * Init all modules after DOMContentLoaded event
  */
-function initModules() {
+(function initModules() {
     if (pageReady) {
 
         for (var key in yaModules) {
@@ -21,6 +21,4 @@ function initModules() {
     } else {
         setTimeout(initModules, 100);
     }
-}
-
-initModules();
+})();

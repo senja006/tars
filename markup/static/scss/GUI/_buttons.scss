@@ -2,6 +2,7 @@ $button-line-height: 1;
 
 .ya-button {
     display: inline-block;
+    //display: block;
     padding-top: $button-correction-top;
     padding-bottom: $button-correction-bottom;
     padding-right: $button-padding-x;
@@ -9,6 +10,7 @@ $button-line-height: 1;
     line-height: $button-line-height;
     height: $button-height;
     vertical-align: top;
+    //vertical-align: middle;
     font-size: $button-font-size;
     border-radius: $button-radius;
     font-family: $button-font-family;
@@ -21,6 +23,7 @@ $button-line-height: 1;
     outline: none;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
+    user-select: none;
 
     @if $button-border-width != 0 {
         border: $button-border-width $button-border-style transparent;
