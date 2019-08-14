@@ -24,6 +24,17 @@
     }
 }
 
+@mixin fluid-gutter($breakpoints, $gutters, $selector-cols: 'div', $sizing-content-box: 'false') {
+
+    & > #{$selector-cols} {
+        @include fluid-type(padding-left, nth($breakpoints, 1) nth($breakpoints, 2), nth($gutters, 1) / 2 nth($gutters, 2) / 2, '!important');
+        @include fluid-type(padding-right, nth($breakpoints, 1) nth($breakpoints, 2), nth($gutters, 1) / 2 nth($gutters, 2) / 2, '!important');
+    }
+
+    @include fluid-type(margin-left, nth($breakpoints, 1) nth($breakpoints, 2), 0 - nth($gutters, 1) / 2 0 - nth($gutters, 2) / 2, '!important');
+    @include fluid-type(margin-right, nth($breakpoints, 1) nth($breakpoints, 2), 0 - nth($gutters, 1) / 2 0 - nth($gutters, 2) / 2, '!important');
+}
+
 // set columns width
 @mixin cols($sizes, $gutter: 0, $selector-cols: 'div', $sizing-content-box: 'false') {
     display: flex;

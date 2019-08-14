@@ -21,6 +21,10 @@ $text-margin-cols: 20px;
         }
     }
 
+    & > * {
+        margin: 1.5em 0;
+    }
+
     & > .ya-col > *:first-child {
         margin-top: 0;
     }
@@ -32,68 +36,64 @@ $text-margin-cols: 20px;
 
 .ya-typography-styles {
 
-    & > * {
-        margin: em(10px) 0;
-    }
-
     @for $i from 1 through 6 {
 
-        h#{$i} {
+        & > h#{$i} {
             font-size: $global-font-size + $i * 2;
             margin: 1.5em 0;
             font-family: $font-main;
         }
     }
 
-    ol {
+    & > ol {
 
         li {
             list-style: decimal inside;
         }
     }
 
-    ul {
+    & > ul {
 
         li {
             list-style: disc inside;
         }
     }
 
-    blockquote {
+    & > blockquote {
         border-top: 1px solid #E3E3E3;
         border-bottom: 1px solid #E3E3E3;
         padding: em(14px) 0;
         font-size: em(20px);
     }
 
-    table {
+    & > table {
         width: 100%;
         table-layout: fixed;
         border-collapse: collapse;
         border-spacing: 0;
-    }
 
-    td, th {
+        td, th {
         height: 44px;
         padding: em(15px) 0;
         text-align: left;
-    }
+	    }
 
-    th {
-        background: #2E2E30;
-        border: 1px solid #626262;
-        font-size: em(17px);
-        font-weight: 700;
-        color: white;
-    }
+	    th {
+	        background: #2E2E30;
+	        border: 1px solid #626262;
+	        font-size: em(17px);
+	        font-weight: 700;
+	        color: white;
+	    }
 
-    td {
-        border: 1px solid #ddd;
-        color: #272727;
-    }
+	    td {
+	        border: 1px solid #ddd;
+	        color: #272727;
+	    }
 
-    tr:nth-child(2n+2) td {
-        background: #EFEFEF;
+	    tr:nth-child(2n+2) td {
+	        background: #EFEFEF;
+	    }
     }
 
     a {

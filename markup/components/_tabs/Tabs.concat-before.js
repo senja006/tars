@@ -51,6 +51,7 @@ class YaTabs {
     }
 
     _showTab(ev) {
+        ev.preventDefault();
         let self = this;
 
         let $button = $(ev.target).closest('.' + self.classes.button);

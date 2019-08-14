@@ -1,0 +1,55 @@
+.ya-allow-cookie {
+	position: fixed;
+	z-index: $z-index-fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: none;
+	margin: 0 auto;
+	max-width: 900px;
+	line-height: 1.2;
+	font-size: 14px;
+	color: #88878C;
+	font-weight: 300;
+}
+
+.ya-allow-cookie__container {
+	padding: 10px;
+	background: #f4f4f7;
+	border: 1px solid #e5e5e5;
+}
+
+.ya-allow-cookie__row {
+
+	@include breakpoint(800px) {
+		@include cols(default shrink, 30px);
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+.ya-allow-cookie__col {
+
+	@include breakpoint(800px down) {
+
+		& + & {
+			margin-top: 10px;
+		}
+
+		&:last-child {
+			text-align: center;
+		}
+	}
+}
+
+.ya-allow-cookie__text {
+
+	a {
+		color: #5d6f5a;
+		transition: all $global-transition-duration;
+
+		.ya-is-no-touch &:hover {
+			color: $color-button-hover;
+		}
+	}
+}

@@ -2,12 +2,13 @@
     "dependencies": {
         "jquery": "^3.1.0",
         "normalize.css": "^4.2.0",
-        "es6-promise": "^3.2.1"
+        "es6-promise": "^3.2.1",
+        "handlebars-helpers": "^0.10.0"
     },
     "devDependencies": {
         "postcss-flexbugs-fixes": "^2.0.0",
         "vinyl-ftp": "^0.5.0",
-        "backstopjs": "^1.3.5"
+        // "backstopjs": "^1.3.5"
     },
   "scripts": {
     "tarsInit": "tars init --silent --source https://github.com/senja006/tars/archive/senja006.zip",
@@ -24,9 +25,9 @@
     "deployServer": "tars start deploy --flags '--server'",
     "deployServerBuildHtml": "npm run deployLocalBuildHtml && tars start deploy --flags '--server'",
     "updateProject": "tars update-project --source https://github.com/senja006/tars/archive/senja006.zip",
-    "backstopScreen": "cd node_modules/backstopjs && gulp reference && cd ../..",
-    "backstopTest": "cd node_modules/backstopjs && gulp test && cd ../..",
-    "backstopTestRm": "rm -rf backstop_data/bitmaps_test && rm -rf node_modules/backstopjs/bitmaps_test && rm -rf node_modules/backstopjs/bitmaps_reference",
-    "backstopBless": "cd node_modules/backstopjs && npm run bless && npm run test && cd ../.."
+    "backstopInit": "backstop init",
+    "backstopApprove": "backstop approve",
+    "backstopTest": "backstop test",
+    "backstopTestRm": "rm -rf backstop_data/bitmaps_test"
   }
 }

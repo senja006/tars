@@ -1,4 +1,4 @@
-yaModules.yaTabs = (function () {
+yaModules.tabs = (function () {
 
     let $tabs = $('.ya-tabs');
 

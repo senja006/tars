@@ -1,14 +1,14 @@
 // changing properties when window resize
 
-@mixin fluid-type($properties, $breakpoints-fluid-type, $values) {
+@mixin fluid-type($properties, $breakpoints-fluid-type, $values, $important: '') {
     & {
 
         @each $property in $properties {
             $default-value: nth($values, 1);
             @if length($default-value) > 1 {
-                #{$property}: nth($default-value, 1);
+                #{$property}: nth($default-value, 1) #{$important};
             }@else{
-                #{$property}: $default-value;
+                #{$property}: $default-value #{$important};
             }
 
             @each $breakpoint-fliud-type in $breakpoints-fluid-type {
@@ -25,7 +25,7 @@
 
                 @if length($breakpoints-fluid-type) == $i {
                     @include breakpoint($breakpoint-fliud-type) {
-                        #{$property}: $min-value;
+                        #{$property}: $min-value #{$important};
                     }
                 }@else{
                     $max-value: nth($values, $i+1);
@@ -39,8 +39,8 @@
                     }
 
                     @include breakpoint($breakpoint-fliud-type) {
-                        #{$property}: $min-value;
-                        #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+                        #{$property}: $min-value #{$important};
+                        #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})) #{$important};
                     }
                 }
             }
@@ -75,6 +75,7 @@
 // example
 
 //@include fluid-type(font-size margin-bottom, 320px medium large, 14px 30px 60px);
+//@include fluid-type(font-size margin-bottom, 320px medium large, (0px 14px) 30px (60px 100px));
 
 /* Single property */
 /*

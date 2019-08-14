@@ -1,7 +1,13 @@
-data = {yaTabs: {
-    template: {
-        tabsButtons: [
-            { text: '' }
-        ]
+var data = {
+    tabs: {
+        template: {
+            list: [
+                {
+                    name: '',
+                    title: '',
+                    html: ''
+                }
+            ]
+        }
     }
-}};
+};

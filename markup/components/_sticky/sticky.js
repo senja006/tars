@@ -4,30 +4,46 @@ yaModules.yaSticky = (function () {
 
     function addEventListeners() {
         $(document).on('scroll', moveStickyBlock);
-        $(window).on('resize', getPositionStickyBlock);
-        $stickyBlock.on("sticky_kit:bottom", function(e) {
+        $(window).on('resize', function() {
+            getPositionStickyBlock();
+            initSticky();
+            recalcSticky();
+        });
+        $('.ya-sticky').on("sticky_kit:bottom", function(e) {
             $(this).addClass('ya-is-bottom');
         });
-        $stickyBlock.on("sticky_kit:unbottom", function(e) {
+        $('.ya-sticky').on("sticky_kit:unbottom", function(e) {
             $(this).removeClass('ya-is-bottom');
         });
     }
 
     function initSticky() {
-        let offset = 10;
+        $('.ya-sticky').each(function() {
+            let $sticky = $(this);
+            let widthToInit = $sticky.data('width-to-init');
+            let $hiddenContainer = $sticky.data('hidden-container') ? $sticky.parents($sticky.data('hidden-container')) : false;
 
-        if($('.ya-header__fixed').length) {
-            offset += $('.ya-header__fixed').outerHeight();
-        }
+            if($hiddenContainer && $hiddenContainer.css('display') === 'none') return;
 
-        $stickyBlock.stick_in_parent({
-            'offset_top': offset
+            if($sticky.hasClass('ya-is-init') || $(window).outerWidth() < widthToInit) return;
+
+            $sticky.addClass('ya-is-init');
+
+            let offsetTop = $sticky.data('offset-top');
+
+            if($('.ya-header__fixed').length) {
+                offsetTop += $('.ya-header__fixed').outerHeight();
+            }
+
+            $sticky.stick_in_parent({
+                'offset_top': offsetTop,
+            });
         });
     }
 
     function moveStickyBlock() {
         let scrollLeft = $(document).scrollLeft();
-        $stickyBlock.each(function() {
+        $('.ya-sticky').each(function() {
             let $block = $(this);
             let defaultPosition = $block.data('position');
             let position = defaultPosition - scrollLeft;
@@ -36,12 +52,25 @@ yaModules.yaSticky = (function () {
     }
 
     function getPositionStickyBlock() {
-        $stickyBlock.each(function() {
+        $('.ya-sticky').each(function() {
             let $block = $(this);
             let position = $block.parent().offset().left;
             $block.data('position', position);
         });
         moveStickyBlock();
+    }
+
+    function detachSticky() {
+        $('.ya-sticky').trigger("sticky_kit:detach").removeClass('ya-is-init');
+        $('.ya-sticky').removeClass('ya-is-init');
+    }
+
+    function recalcSticky() {
+        setTimeout(function() {
+            getPositionStickyBlock();
+            $('.ya-sticky').removeClass('ya-is-bottom');
+            $(document.body).trigger("sticky_kit:recalc");
+        }, 10);
     }
 
     return {
@@ -51,6 +80,16 @@ yaModules.yaSticky = (function () {
                 initSticky();
                 addEventListeners();
             }
+        },
+        customInit() {
+            getPositionStickyBlock();
+            initSticky();
+        },
+        detach() {
+            detachSticky();
+        },
+        recalc() {
+            recalcSticky();
         }
     }
 }());

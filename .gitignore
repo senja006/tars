@@ -5,6 +5,7 @@ bower_components
 pass*
 server-*
 bitmaps_test
+bitmaps_reference
 .DS_Store
 ._.DS_Store
 

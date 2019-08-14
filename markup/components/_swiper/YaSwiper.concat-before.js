@@ -1,9 +1,9 @@
 class YaSwiper {
 
     constructor(container, options, checkNum = true) {
-        if(typeof container == 'string') {
+        if (typeof container == 'string') {
             this.container = $(container);
-        }else{
+        } else {
             this.container = container;
         }
 
@@ -17,31 +17,34 @@ class YaSwiper {
         let self = this;
         let swiper = null;
 
-        this.container.each(function() {
+        this.container.each(function () {
             let $container = $(this);
             let options = $.extend({}, self.options);
             let numSlides = options.slidesPerView || 1;
 
             $container.removeClass('ya-not-ready');
 
-            if(self.checkNum && $container.find('.swiper-slide').length < numSlides + 1) {
+            if (!options.breakpoints && !options.breakpoints && self.checkNum && $container.find('.swiper-wrapper').first().children('.swiper-slide').length < numSlides + 1) {
                 $container.addClass('ya-not-slider');
                 return;
             }
 
-            options = self._getControlsSlider($container, options);
+            if (!options.navigation || !options.navigation.nextEl) {
+                options.navigation = $.extend({
+                    nextEl: $container.find('.swiper-button-next'),
+                    prevEl: $container.find('.swiper-button-prev'),
+                }, options.navigation);
+            }
+
+            if (!options.pagination || !options.pagination.el) {
+                options.pagination = $.extend({
+                    el: $container.find('.swiper-pagination')
+                }, options.pagination);
+            }
 
             swiper = new Swiper($container.find('.swiper-container'), options);
         });
 
         return swiper;
-    }
-
-    _getControlsSlider(container, options) {
-        options.nextButton = container.find('.swiper-button-next');
-        options.prevButton = container.find('.swiper-button-prev');
-        options.pagination = container.find('.swiper-pagination');
-
-        return options;
     }
 }

@@ -98,10 +98,10 @@
 
             // For named breakpoints, subtract the breakpoint value by one "pixel", or 1/16em.
             @if $named {
-                $max: $bp-max;
+                $max: $bp-max - 1;
             }
             @else {
-                $max: $bp;
+                $max: $bp - 1;
             }
 
             $str: $str + '(max-width: #{$max})';

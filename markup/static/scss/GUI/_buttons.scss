@@ -17,7 +17,7 @@ $button-line-height: 1;
     font-weight: $button-font-weight;
     text-align: center;
     text-decoration: none;
-    transition: all $global-transition-duration linear;
+    transition: color $global-transition-duration linear, background $global-transition-duration linear, border-color $global-transition-duration linear;
     -webkit-appearance: none !important;
     -moz-appearance: none !important;
     outline: none;
