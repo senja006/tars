@@ -49,7 +49,7 @@
 		transition: all $global-transition-duration;
 
 		.ya-is-no-touch &:hover {
-			color: $color-button-hover;
+			color: $anchor-color-hover;
 		}
 	}
 }

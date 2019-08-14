@@ -13,7 +13,6 @@ yaModules.allowCookie = (function () {
 
     function checkAllowCookie() {
         let isAllowCookie = getCookie('allowCookie');
-        console.log(isAllowCookie);
         if (!isAllowCookie) {
             setTimeout(function() {
                 $cookieInfo.fadeIn('slow');

@@ -36,7 +36,7 @@ yaModules.yaSticky = (function () {
             }
 
             $sticky.stick_in_parent({
-                'offset_top': offsetTop,
+                'offset_top': offsetTop
             });
         });
     }
@@ -61,8 +61,10 @@ yaModules.yaSticky = (function () {
     }
 
     function detachSticky() {
-        $('.ya-sticky').trigger("sticky_kit:detach").removeClass('ya-is-init');
-        $('.ya-sticky').removeClass('ya-is-init');
+        let $sticky = $('.ya-sticky');
+
+        $sticky.trigger("sticky_kit:detach").removeClass('ya-is-init');
+        $sticky.removeClass('ya-is-init');
     }
 
     function recalcSticky() {
@@ -84,6 +86,7 @@ yaModules.yaSticky = (function () {
         customInit() {
             getPositionStickyBlock();
             initSticky();
+            recalcSticky();
         },
         detach() {
             detachSticky();

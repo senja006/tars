@@ -22,7 +22,10 @@
             {{#with components}}
                 <div class="ya-content__main {{mod}}">
                     {{#each list}}
-                        {{#if name}} {{> name/name name}} {{/if}}
+                        {{#if text}} {{> text/text text}} {{/if}}
+                        {{#if form}} {{> form/template form}} {{/if}}
+                        {{#if mobile-menu}} {{> mobile-menu/mobile-menu mobile-menu}} {{/if}}
+                        {{#if compare}} {{> compare/compare compare}} {{/if}}
                         {{#with cols}}
                             <div class="ya-content__row">
                                 {{#with sidebar-blocks-left}}

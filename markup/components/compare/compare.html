@@ -1,0 +1,186 @@
+<!-- Необходим компонент sticky -->
+<!-- Необходим компонент swiper -->
+
+<div class="ya-compare">
+	<div class="ya-compare__container">
+		<div class="ya-tabs">
+			<div class="ya-tabs__buttons">
+				<ul class="ya-tabs__buttons-ul">
+					{{#each tabs}}
+						<li class="ya-tabs__buttons-li">
+							<a href="#" class="ya-tabs__button">
+								{{name}}
+								{{#if num}}
+									<span class="ya-tabs__button-num">{{num}}</span>
+								{{/if}}
+							</a>
+						</li>
+					{{/each}}
+				</ul>
+			</div>
+			<div class="ya-tabs__list">
+				<ul class="ya-tabs__list-ul">
+					{{#each tabs}}
+						<li class="ya-tabs__list-li">
+							<div class="ya-compare__options">
+								<div class="ya-checkbox">
+									<label class="ya-checkbox__label">
+										<input type="checkbox" class="ya-checkbox__input">
+										<div class="ya-checkbox__row">
+											<div class="ya-checkbox__icon"></div>
+											<div class="ya-checkbox__text">Показать
+												только различия</div>
+										</div>
+									</label>
+								</div>
+							</div>
+							<div class="ya-compare__content ya-js-calc-sticky">
+								<div class="ya-compare__fixed ya-sticky" data-width-to-init="0" data-offset-top="0"
+									 data-hidden-container=".ya-tabs__list-li">
+									<div class="ya-compare__fixed-container">
+										<div class="ya-compare__row">
+											<div class="ya-compare__col">
+												<div class="ya-compare__fixed-row">
+													<div class="ya-compare__fixed-col">
+														<div class="ya-compare__options">
+															<div class="ya-checkbox">
+																<label class="ya-checkbox__label">
+																	<input type="checkbox" class="ya-checkbox__input">
+																	<div class="ya-checkbox__row">
+																		<div class="ya-checkbox__icon"></div>
+																		<div class="ya-checkbox__text">Показать
+																			только различия</div>
+																	</div>
+																</label>
+															</div>
+														</div>
+													</div>
+													<div class="ya-compare__fixed-col">
+														<div
+															class="ya-swiper__nav-container ya-swiper__nav-container--compare">
+															<div class="ya-swiper__nav-row">
+																<div class="ya-swiper__nav-col">
+																	<div class="swiper-button swiper-button-prev">
+																	</div>
+																</div>
+																<div class="ya-swiper__nav-col ya-is-num">
+																	<div class="swiper-pagination"></div>
+																</div>
+																<div class="ya-swiper__nav-col">
+																	<div class="swiper-button swiper-button-next">
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="ya-compare__col">
+												<div
+													class="swiper-container-main ya-not-ready swiper-container-main--fixed">
+													<div class="swiper-container">
+														<ul class="swiper-wrapper">
+															{{#each products}}
+																<li class="swiper-slide">
+																	<div class="ya-compare__product">
+																		<div>ТОВАР</div>
+																	</div>
+																</li>
+															{{/each}}
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="ya-compare__row ya-is-main">
+									<div class="ya-compare__col ya-is-titles">
+										<div class="ya-swiper__nav-container ya-swiper__nav-container--compare">
+											<div class="ya-swiper__nav-row">
+												<div class="ya-swiper__nav-col">
+													<div class="swiper-button swiper-button-prev">
+													</div>
+												</div>
+												<div class="ya-swiper__nav-col ya-is-num">
+													<div class="swiper-pagination"></div>
+												</div>
+												<div class="ya-swiper__nav-col">
+													<div class="swiper-button swiper-button-next">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="ya-compare__feature ya-is-first">
+											{{#each feature_title}}
+												<table class="ya-compare__feature-table">
+													{{#each list}}
+														<tr class="{{modTr}} {{#if not_hover}}ya-not-hover{{/if}}">
+															<td>
+																{{#if title}}
+																	<div
+																		class="ya-compare__feature-title">{{title}}</div>
+																{{/if}}
+
+																{{#if sub_title}}
+																	<div
+																		class="ya-compare__feature-sub-title">{{sub_title}}</div>
+																{{/if}}
+
+																{{#if text}}
+																	<div
+																		class="ya-compare__feature-text">{{title}}</div>
+																{{/if}}
+															</td>
+														</tr>
+													{{/each}}
+												</table>
+											{{/each}}
+										</div>
+									</div>
+									<div class="ya-compare__col js-with-slider">
+										<div class="swiper-container-main ya-not-ready swiper-container-main--compare">
+											<div class="swiper-container">
+												<ul class="swiper-wrapper">
+													{{#each products}}
+														<li class="swiper-slide">
+															<div class="ya-compare__product">
+																{{#if title}}
+																	<div class="ya-compare__product-title">{{title}}</div>
+																{{/if}}
+
+																<div>ТОВАР</div>
+
+																<div class="ya-compare__feature">
+																	{{#each feature}}
+																		<table class="ya-compare__feature-table">
+																			{{#each list}}
+																				<tr class="{{modTr}} {{#if
+																					not_hover}}ya-not-hover{{/if}}">
+																					<td>
+																						{{#if text}}
+																							<div
+																								class="ya-compare__feature-text">{{text}}</div>
+																						{{/if}}
+																					</td>
+																				</tr>
+																			{{/each}}
+																		</table>
+																	{{/each}}
+																</div>
+															</div>
+														</li>
+													{{/each}}
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					{{/each}}
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,111 @@
+<div class="ya-container">
+	<div class="ya-form__container">
+		<div class="ya-form">
+			<form>
+				<div class="ya-form__section">
+					<div class="ya-form__row">
+						<div class="ya-form__col">
+							<div class="ya-form__section-title">Это заголовок поля</div>
+							<div class="ya-field-container">
+								<input class="ya-field" type="text" name="name" placeholder="Введите данные"
+									   data-validation="required"/>
+								<div class="ya-form__text-info ya-for-error">Обязательное поле</div>
+							</div>
+						</div>
+						<div class="ya-form__col">
+							<div class="ya-form__section-title">Это заголовок поля</div>
+							<div class="ya-field-container ya-align-checkbox">
+								<div class="ya-checkbox" data-validation="checkbox-required">
+									<label class="ya-checkbox__label">
+										<input type="checkbox" class="ya-checkbox__input">
+										<div class="ya-checkbox__row">
+											<div class="ya-checkbox__icon"></div>
+											<div class="ya-checkbox__text">Чекбокс</div>
+										</div>
+									</label>
+								</div>
+								<div class="ya-form__text-info ya-for-error">Обязательное поле</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ya-form__section">
+					<div class="ya-form__row">
+						<div class="ya-form__col">
+							<div class="ya-form__section-title">Это заголовок поля</div>
+							<div class="ya-field-container">
+								<input class="ya-field" type="text" name="name" placeholder="Введите данные"
+									   data-validation="required"/>
+								<div class="ya-form__text-info ya-for-error">Обязательное поле</div>
+							</div>
+						</div>
+						<div class="ya-form__col">
+							<div class="ya-form__section-title">Это заголовок поля</div>
+							<div class="ya-field-container">
+								<div class="ya-select">
+									<select class="ya-field chosen-select" data-placeholder="Выберите из списка">
+										<option value="0" selected disabled>Выберите из списка</option>
+										<option value="val1">Диван</option>
+										<option value="val2">Стул</option>
+										<option value="val3">Стол</option>
+									</select>
+									<div class="ya-select__icon">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ya-form__section">
+					<div class="ya-form__row">
+						<div class="ya-form__col">
+							<div class="ya-form__section-title">Это заголовок поля</div>
+							<div class="ya-field-container">
+								<div class="ya-select" data-validation="select-required">
+									<select class="ya-field ya-is-empty">
+										<option value="0" disabled selected>Стандартный select</option>
+										<option value="val1">Диван</option>
+										<option value="val2">Стул</option>
+										<option value="val3">Стол</option>
+									</select>
+									<div class="ya-select__icon">
+									</div>
+								</div>
+								<div class="ya-form__text-info ya-for-error">Обязательное поле</div>
+							</div>
+						</div>
+						<div class="ya-form__col">
+							<div class="ya-form__section-title">Это заголовок поля</div>
+							<div class="ya-field-container ya-align-checkbox">
+								<div class="ya-checkbox">
+									<label class="ya-checkbox__label">
+										<input type="radio" class="ya-checkbox__input">
+										<div class="ya-checkbox__row">
+											<div class="ya-checkbox__icon"></div>
+											<div class="ya-checkbox__text">Радио</div>
+										</div>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="ya-button ya-button--red" type="submit">Отправить</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!--
+
+<script>
+	$('form').on('submit', function (ev) {
+		ev.preventDefault();
+
+		var $form = $(this);
+		var res = yaModules.form.validate($form);
+	})
+</script>
+
+-->
+

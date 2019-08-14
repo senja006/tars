@@ -1,81 +1,58 @@
 {
-    "viewports": [
-        {
-            "name": "small",
-            "width": 320,
-            "height": 5000
-        },
-        {
-            "name": "xsmall",
-            "width": 480,
-            "height": 5000
-        },
-        {
-            "name": "smedium",
-            "width": 600,
-            "height": 4500
-        },
-        {
-            "name": "medium",
-            "width": 768,
-            "height": 4500
-        },
-        {
-            "name": "large",
-            "width": 960,
-            "height": 4000
-        },
-        {
-            "name": "xlarge",
-            "width": 1200,
-            "height": 3500
-        },
-        {
-            "name": "xxlarge",
-            "width": 1440,
-            "height": 3500
-        }
-    ],
-    "scenarios": [
-        {
-          "label": "Index: open header menu",
-          "url": "http://localhost:3004/index.html",
-          "referenceUrl": "",
-          "readyEvent": "",
-          "readySelector": "",
-          "delay": 500,
-          "hideSelectors": [".ya-allow-cookie"],
-          "removeSelectors": [],
-          "hoverSelector": "",
-          "clickSelector": "",
-          "postInteractionWait": 0,
-          "selectors": [],
-          "selectorExpansion": true,
-          "expect": 0,
-          "misMatchThreshold" : 0.1,
-          "requireSameDimensions": true,
-          "onReadyScript": "open-menu-header.js",
-          "viewports": [
-            {
-              "label": "desktop",
-              "width": 1216,
-              "height": 5000
-            }
-          ]
-        }
-    ],
-    "paths": {
-        "bitmaps_reference": "../../backstop_data/bitmaps_reference",
-        "bitmaps_test": "../../backstop_data/bitmaps_test",
-        "compare_data": "../../backstop_data/bitmaps_test/compare.json",
-        "casper_scripts": "../../backstop_data/casper_scripts"
+  "id": "backstop_default",
+  "viewports": [
+    {
+      "label": "phone",
+      "width": 320,
+      "height": 5000
     },
-    "engine": "phantomjs",
-    "report": [
-        "browser"
-    ],
-    "cliExitOnFail": false,
-    "casperFlags": [],
-    "debug": false,
-    "port": 3002
+    {
+      "label": "tablet",
+      "width": 850,
+      "height": 5000
+    },
+    {
+      "label": "desktop",
+      "width": 1256,
+      "height": 5000
+    }
+  ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "scenarios": [
+    {
+      "label": "Index",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:3004/index.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [".ya-allow-cookie"],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": 0,
+      "selectors": [],
+      "selectorExpansion": true,
+      "expect": 0,
+      "misMatchThreshold" : 0.1,
+      "requireSameDimensions": true,
+      "onReadyScript": "open-menu-header.js"
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "puppeteer",
+  "engineOptions": {},
+  "asyncCaptureLimit": 1,
+  "asyncCompareLimit": 5,
+  "debug": false,
+  "debugWindow": false
 }

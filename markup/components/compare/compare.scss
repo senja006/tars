@@ -1,0 +1,398 @@
+$ratioFont: 1;
+$ratioMargin: 0.6;
+
+$breakpointFor3: 1070 + 1px;
+$breakpointFor2: 800 + 1px;
+
+$breakpointCompareOverlay: 600px;
+$breakpointCompareFixed: $breakpointCompareOverlay;
+$breakpointCompareFixedCard: 800px;
+
+$mobileHeaderHeight: 0;
+$breakpointHeader: 1000px;
+
+
+.ya-compare__container {
+	@include container();
+}
+
+.ya-compare__product {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	box-sizing: $global-box-sizing;
+}
+
+.ya-compare__content {
+	position: relative;
+}
+
+.ya-compare__row {
+	position: relative;
+	z-index: $z-index-base;
+
+	.ya-compare__fixed & {
+		align-items: stretch;
+	}
+
+	@include breakpoint($breakpointCompareOverlay) {
+		@include cols(274px auto, 0px);
+		align-items: flex-end;
+	}
+}
+
+$compareOffsetCol: 25px;
+.ya-compare__col {
+
+	.ya-compare__fixed & {
+
+		&:first-child {
+			display: flex;
+		}
+
+		@include breakpoint($breakpointCompareFixedCard down) {
+
+			&:first-child {
+				//display: none;
+			}
+		}
+	}
+
+	@include breakpoint($breakpointCompareOverlay down) {
+
+		&.ya-is-titles {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: $compareOffsetCol;
+		}
+	}
+}
+
+.ya-compare__feature {
+	@include fluid-type(padding-top, 320px $global-max-width, 32px * $ratioMargin 32px);
+
+	.ya-compare__col.js-with-slider & {
+		@include breakpoint($breakpointCompareOverlay down) {
+			@include fluid-type(padding-top, 320px $global-max-width, 32px * $ratioMargin 32px);
+		}
+	}
+
+	@include breakpoint($breakpointCompareOverlay down) {
+
+		.ya-compare__row.ya-is-main & {
+			padding-top: 33px;
+		}
+
+		.ya-compare__col.js-with-slider & {
+			padding-top: 33px + $compareOffsetCol;
+		}
+	}
+}
+
+$gutterCompare: 11px;
+.ya-compare__feature-table {
+	vertical-align: middle;
+	line-height: 1.1;
+	width: 100%;
+
+	td {
+		height: 46px;
+		transition: background-color $global-transition-duration;
+
+		.ya-compare__col:last-child & {
+			@include fluid-type(padding-left, 320px $global-max-width, (40px + $gutterCompare) * $ratioMargin 40px + $gutterCompare);
+		}
+
+		@include breakpoint($breakpointCompareOverlay down) {
+			//width: 100%;
+			height: 60px;
+			padding-left: 0 + $gutterCompare !important;
+			//text-overflow: ellipsis;
+			//overflow: hidden;
+			//white-space: nowrap;
+		}
+	}
+
+	tr.ya-height-bg td {
+		height: 80px;
+
+		@include breakpoint($breakpointCompareOverlay down) {
+			.ya-compare__col.js-with-slider & {
+				padding-top: 10px;
+			}
+		}
+
+	}
+
+	tr.ya-is-hover td {
+
+		@include breakpoint($breakpointCompareOverlay) {
+			background: #f9f9fb;
+		}
+	}
+
+	@include breakpoint($breakpointCompareOverlay down) {
+		table-layout: fixed;
+	}
+
+	.ya-compare__col:last-child & {
+		margin-left: 0 - $gutterCompare;
+		width: calc(100% + #{$gutterCompare});
+	}
+
+	.ya-compare__feature.ya-is-first & td {
+		padding-left: 0 !important;
+	}
+}
+
+.ya-compare__feature-title {
+	@include fluid-type(font-size, 320px $global-max-width, 28px * $ratioFont 28px);
+	line-height: 1.2;
+	color: #2E2D4C;
+
+	@include breakpoint($breakpointCompareOverlay down) {
+		width: 100%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+}
+
+.ya-compare__feature-sub-title {
+	@include fluid-type(font-size, 320px $global-max-width, 14px * $ratioFont 14px);
+	color: #2E2D4C;
+}
+
+.ya-compare__feature-text {
+	@include fluid-type(font-size, 320px $global-max-width, 14px * $ratioFont 14px);
+	color: #88878C;
+}
+
+.ya-compare__product-buttons {
+	@include cols(default, 0px, 'a');
+	flex-direction: column;
+	align-items: flex-end;
+	@include fluid-type(margin-bottom, 320px $global-max-width, 19px * $ratioMargin 19px);
+
+	.ya-compare__fixed & {
+		//position: absolute;
+		//z-index: $z-index-base + 1;
+		//top: 0;
+		//right: 0;
+
+		//@include breakpoint($breakpointCompareFixedCard down) {
+			margin-bottom: 10px;
+			@include gutter(15px, 'a');
+			position: static;
+			flex-direction: row-reverse;
+			align-items: center;
+		//}
+	}
+
+	&.ya-is-hidden {
+		opacity: 0;
+		z-index: $z-index-hidden;
+		user-select: none;
+	}
+
+	&.ya-is-hidden {
+
+		.ya-compare__col.js-with-slider  & {
+			position: relative;
+		}
+	}
+}
+
+.ya-compare__product-button {
+	@include fluid-type(margin-bottom, 320px $global-max-width, 17px * $ratioMargin 17px);
+	text-decoration: none;
+	color: #625777;
+	transition: color $global-transition-duration;
+
+	&.ya-is-close {
+		color: black;
+	}
+
+	.ya-is-no-touch &.ya-is-close:hover {
+		color: $anchor-color-hover;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	.ya-compare__fixed & {
+
+		//@include breakpoint($breakpointCompareFixedCard down) {
+			margin-bottom: 0;
+		//}
+	}
+}
+
+.swiper-wrapper {
+
+	.swiper-container-main--compare.ya-not-ready &,
+	.swiper-container-main--compare.ya-not-slider & {
+		@include cols(1, 0px, 'li');
+		justify-content: flex-start;
+
+		@include breakpoint($breakpointFor2) {
+			@include cols(2, 10px, 'li');
+		}
+
+		@include breakpoint($breakpointFor3) {
+			@include cols(3, 10px, 'li');
+		}
+	}
+}
+
+.ya-swiper__nav-container--compare {
+	display: none;
+
+	.ya-compare & {
+		margin-right: 20px;
+		text-align: right;
+	}
+
+	.ya-compare__col.ya-is-titles & {
+
+		@include breakpoint($breakpointCompareOverlay down) {
+			position: relative;
+			z-index: $z-index-hover + 1;
+			top: 40px;
+			margin-right: 0;
+			text-align: center;
+		}
+	}
+
+	.ya-compare__fixed & {
+
+		@include breakpoint($breakpointCompareFixed down) {
+			position: absolute;
+			z-index: $z-index-base + 3;
+			left: 0;
+			top: 2px;
+			margin-right: 0;
+			text-align: center;
+
+			&::before {
+				content: '';
+				position: absolute;
+				z-index: $z-index-hidden;
+				top: -10px;
+				right: -10px;
+				bottom: -5px;
+				left: -10px;
+				background: white;
+			}
+		}
+	}
+}
+
+.ya-swiper__nav-row {
+
+	.ya-compare__col.ya-is-titles & {
+		display: inline-flex;
+
+		@include breakpoint($breakpointCompareOverlay down) {
+			justify-content: center;
+		}
+	}
+}
+
+.ya-compare__fixed {
+	//display: none;
+	position: absolute;
+	z-index: $z-index-fixed;
+	padding-top: 20px + $mobileHeaderHeight;
+	max-width: 100%;
+	opacity: 0;
+	left: 0 !important;
+	visibility: hidden;
+	background: white;
+	width: 100% !important;
+	transition: opacity .2s, visibility .2s;
+
+	&.ya-is-visible {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		width: 101vw;
+		border-bottom: 1px solid #e3e3e3;
+		transform: translateX(-50%);
+	}
+
+	@include breakpoint($breakpointHeader) {
+		padding-top: 20px;
+	}
+
+	@include breakpoint($breakpointCompareFixedCard down) {
+		padding-top: 12px + $mobileHeaderHeight;
+	}
+}
+
+.ya-compare__fixed-container {
+	@include container();
+
+	.ya-sticky.ya-is-bottom & {
+		padding-right: 0;
+		padding-left: 0;
+	}
+}
+
+.ya-compare__fixed-row {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
+	padding-top: 66px;
+	padding-bottom: 10px;
+
+	@include breakpoint($breakpointCompareFixedCard down) {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	@include breakpoint($breakpointCompareFixed down) {
+		@include cols(auto shrink, 10px);
+		width: 100%;
+		flex-direction: row;
+		//justify-content: space-between;
+		align-items: center;
+	}
+}
+
+.ya-tabs__list-ul {
+
+	.ya-compare & {
+		overflow: visible;
+	}
+}
+
+.ya-compare__options {
+
+	.ya-compare__fixed & {
+
+		@include breakpoint($breakpointCompareFixed down) {
+			display: none;
+		}
+	}
+}
+
+.ya-compare__product-top-row {
+	@include cols(default shrink, 10px);
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.ya-compare__product-title {
+	@include fluid-type(margin-bottom, 320px $global-max-width, 10px * $ratioMargin 10px);
+	@include fluid-type(font-size, 320px $global-max-width, 28px * $ratioFont 28px);
+}

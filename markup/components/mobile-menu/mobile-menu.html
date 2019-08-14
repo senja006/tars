@@ -1,0 +1,72 @@
+<!-- Требуется компонент modal -->
+
+<div class="ya-mobile-menu">
+	<a href="#" class="ya-mobile-menu__open ya-header__mobile-button" id="{{id}}">
+		{{#if text_open}}
+			<div class="ya-mobile-menu__open-text">{{text_open}}</div>
+		{{/if}}
+	</a>
+	<div class="ya-mobile-menu__list {{direction}}">
+		<ul class="ya-mobile-menu__list-ul">
+			{{#each list}}
+				<li class="ya-mobile-menu__list-li {{mod}}">
+					<a href="{{#if href}}{{href}}{{else}}#{{/if}}" class="ya-mobile-menu__list-row  {{#if list}}ya-open-submenu{{/if}}" {{#if modalId}} data-menu-remodal-target="{{modalId}}" {{/if}}>
+						{{#if img}}
+							<div class="ya-mobile-menu__list-col">
+								<div class="ya-mobile-menu__list-icon">
+									<img src="__static__img/content/{{img.name}}" alt="Иконка" width="{{img.width}}">
+								</div>
+							</div>
+						{{/if}}
+
+						<div class="ya-mobile-menu__list-col">
+							{{#if text}}
+								<div class="ya-mobile-menu__list-text">{{text}}</div>
+							{{/if}}
+
+							{{#if pointerRight}}
+								<div class="ya-mobile-menu__list-pointer">
+									{{Icon iconName='pointer-right' iconWidth='6' iconHeight='10'}}
+								</div>
+							{{/if}}
+						</div>
+					</a>
+
+					{{#if list}}
+						<ul class="ya-mobile-menu__list-ul">
+							<li class="ya-mobile-menu__list-li">
+								<a href="#" class="ya-mobile-menu__list-row ya-is-back">
+									<div class="ya-mobile-menu__list-col">
+										<div class="ya-mobile-menu__list-pointer ya-mobile-menu__list-icon">
+											Влево
+										</div>
+									</div>
+									<div class="ya-mobile-menu__list-col">
+										<div class="ya-mobile-menu__list-text">Назад</div>
+									</div>
+								</a>
+							</li>
+							{{#each list}}
+								<li class="ya-mobile-menu__list-li {{mod}}">
+									<{{#if href}}a{{else}}div{{/if}} {{#if href}}
+									href="{{href}}" {{/if}} class="ya-mobile-menu__list-row">
+										<div class="ya-mobile-menu__list-col">
+											<div class="ya-mobile-menu__list-icon">
+												{{#if img}} <img src="__static__img/content/{{img.name}}" alt="Иконка" width="{{img.width}}"> {{/if}}
+											</div>
+										</div>
+
+										<div class="ya-mobile-menu__list-col">
+											<div class="ya-mobile-menu__list-text">{{text}}</div>
+										</div>
+									</{{#if href}}a{{else}}div{{/if}}>
+								</li>
+							{{/each}}
+						</ul>
+					{{/if}}
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>
+<div class="remodal" data-remodal-id="modal-mobile-menu" data-remodal-options="hashTracking: false"></div>
