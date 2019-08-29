@@ -282,6 +282,15 @@ Default: `true`
 
 This option turns on autogeneration of a relative path to the static directory from the current page. In case of using a server or livereload, path to static won't be generated, because static files are served by the server.
 
+### devPath
+
+Type: `String`
+
+Default: `'./dev/'`
+
+You can set a string with a relative or an absolute path to the folder where the project should be built in development mode.
+Using `/` after the path name is required so that there are no problems accessing the files.
+
 ### buildPath
 
 Type: `String`
@@ -290,6 +299,7 @@ Default: `'./builds/'`
 
 You can set a string with a relative or an absolute path to the folder where the project should be built.
 If you are using useBuildVersioning (use versioning of builds), each new build will be created in a separate folder with a name - the build version, and each folder will be created at the path specified in `buildPath`.
+Using `/` after the path name is required so that there are no problems accessing the files.
 
 ### useBuildVersioning
 
@@ -416,7 +426,9 @@ Custom path to the folder with the static for css files. imageFolderName is take
 
 Configuration for autoprefixer ([read more here](https://github.com/postcss/autoprefixer#autoprefixer-)). In short, this module allows you not to write vendor prefixes. In this configuration you do not need to include IE8 and IE9, style assembly is done by another way for them . You can look [here](https://github.com/postcss/autoprefixer#browsers) which browsers are available. If you do not want to use autoprefixer, pass `false` in this option.
 
-**Option was moved to plugins-config.json.**
+~~**Option was moved to plugins-config.json.**~~
+
+**Option was moved to .browserslistrc.**
 
 ### browserSyncConfig
 

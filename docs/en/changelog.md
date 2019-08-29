@@ -4,6 +4,15 @@ English description | <a href="../ru/changelog.md">Описание на рус�
 
 # Changelog
 
+## Version 1.9.9
+
+* Fix bugs: #343
+
+## Version 1.9.8
+
+* Dependencies update.
+* Fix bugs: #318,#324, #336, #325
+
 ## Version 1.9.7
 
 * Added webpack [ProvidePlugin](https://webpack.github.io/docs/list-of-plugins.html#provideplugin) support. This is optional, see [tars-config](https://github.com/tars/tars/blob/master/docs/en/options.md#provideplugin).
@@ -36,7 +45,7 @@ English description | <a href="../ru/changelog.md">Описание на рус�
 ## Version 1.8.2
 
 * Fix watcher for templates with _ in the begining of the name;
-* Default scheme for Jade component has been changed. 
+* Default scheme for Jade component has been changed.
 * Dependencies update. Eslint has been updated to version 3.x.x.
 
 ## Version 1.8.1
@@ -48,7 +57,7 @@ English description | <a href="../ru/changelog.md">Описание на рус�
 
 ## Version 1.8.0
 
-* Modules directory was renamed to components. This is optional, you can change it in [tars-config](options.md#componentsfoldername). 
+* Modules directory was renamed to components. This is optional, you can change it in [tars-config](options.md#componentsfoldername).
 * Task concat-modules-data was renamed to concat-mocks-data.
 * Log fixing for case, when there is problems with sprite generation.
 * You can configure gulp-plugins by using [plugins-config.js](plugins-options.md).
@@ -80,7 +89,7 @@ Other files will be moved to static/components-assets.
 ```js
 // Updated/added rules:
 env: {
-    commonjs: true    
+    commonjs: true
 },
 
 parserOptions: {
@@ -134,7 +143,7 @@ rules: {
 * Option for stylies-inject during livereload is [in tars-config now](options.md#injectchanges).
 * jscs + jshint has been replaced with eslint.
 * **[You can pass data of one module to another by using functions](html-processing.md#working-with-modules-and-data-handlebars). So, it is really easy to init module with any data.**
-* Great refactoring. 
+* Great refactoring.
     - Add ES6, all tasks refactoring.
     - Build process starts much more fast. All dependencies are required only at that moment then they are really needed.
     - Some methods and helpers have been added:
@@ -175,7 +184,7 @@ rules: {
 * Installation in NPM3 has been fixed. If you have a project, which has been made with TARS 1.4.1 and NPM2, and you want to develop this project in NPM3, you have to fix one line in tars/tars.js
 ```javascript
 handlebars: tars.require('gulp-compile-handlebars/node_modules/handlebars'),
-// replace with 
+// replace with
 handlebars: tars.require('handlebars'),
 ```
 * Handlebars is used from its own package, not from gulp-handlebars.
@@ -196,7 +205,7 @@ handlebars: tars.require('handlebars'),
 * Tars-config.js has been updated. [Sourcemaps](options.md#sourcemaps) has more options. Added [Babel supporting switcher](options.md#usebabel).
 * Added ES6(ES.Next) syntax supporting with [Babel](options.md#usebabel). [More info](js-processing.md).
 * Autoprefixer was moved to the end in the postprocessors list.
-* Notifier got one interface for failed and successed end of task. 
+* Notifier got one interface for failed and successed end of task.
 * gulp-html-prettify has been added. Formatted HTML will be generated if [minifyHtml](options.md#minifyhtml) is switched to false.
 * You need to use flags `--ie9` or `--ie` to compile stylies for IE9. `--ie` will compile stylies for IE8 and IE9 too.
 * More helpers were added, docs were updated for helpers and all helpers were moved to task-folder.

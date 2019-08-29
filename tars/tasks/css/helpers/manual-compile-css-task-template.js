@@ -69,11 +69,9 @@ module.exports = function generateTaskContent(browser) {
                 `${stylesFolderPath}/entry/*.${preprocExtensions}`
             );
 
-            if (tars.pluginsConfig.autoprefixerConfig) {
-                postProcessors.push(
-                    autoprefixer({browsers: tars.pluginsConfig.autoprefixerConfig})
-                );
-            }
+            postProcessors.push(
+                autoprefixer()
+            );
 
             generateSourceMaps = tars.config.sourcemaps.css.active && tars.options.watch.isActive;
             break;
@@ -100,7 +98,7 @@ module.exports = function generateTaskContent(browser) {
         .pipe(postcss(postProcessors))
         .pipe(rename({ suffix: tars.options.build.hash }))
         .pipe(gulpif(generateSourceMaps, sourcemaps.write(sourceMapsDest)))
-        .pipe(gulp.dest(`./dev/${tars.config.fs.staticFolderName}/css/`))
+        .pipe(gulp.dest(`${tars.config.devPath}${tars.config.fs.staticFolderName}/css/`))
         .pipe(browserSync.reload({ stream: true, match: '**/*.css' }))
         .pipe(
             notifier.success(successMessage)
