@@ -1,6 +1,6 @@
 yaModules.tabs = (function () {
 
-    let $tabs = $('.ya-tabs');
+    let $tabs = $('[data-tabs-container]');
 
     function createTabs() {
         $tabs.each(function() {

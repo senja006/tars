@@ -10,6 +10,20 @@ yaModules.template = (function () {
                         map.container.fitToViewport();
                         // map.setCenter(coord, 16);
                     });
+
+                    placemarks.forEach(function(item) {
+                        item.placemark.events.add('click', function () {
+                            let coord = item.placemark.geometry.getCoordinates();
+                            let $currentContent = item.point.find('.ya-buy__list-content');
+
+                            $('.ya-buy__list-content.ya-is-active').removeClass('ya-is-active');
+                            $currentContent.addClass('ya-is-active');
+                            map.setCenter(coord, 16);
+                            setTimeout(function() {
+                                $('.ya-buy__list-ul').animate({scrollTop: $currentContent.position().top + $('.ya-buy__list-ul').scrollTop()}, 400);
+                            }, 0);
+                        });
+                    });
                 }
             });
         });

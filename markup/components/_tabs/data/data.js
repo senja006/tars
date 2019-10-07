@@ -1,11 +1,10 @@
 var data = {
     tabs: {
         template: {
-            list: [
+            tabs: [
                 {
                     name: '',
-                    title: '',
-                    html: ''
+                    text: '',
                 }
             ]
         }

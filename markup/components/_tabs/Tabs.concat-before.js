@@ -9,16 +9,16 @@ class YaTabs {
             self.container = container;
         }
 
-        self.classes = {
+        self.selectors = {
             ready: 'ya-tabs-ready',
-            button: 'ya-tabs__button',
-            tab: 'ya-tabs__list-li',
+            button: '[data-tabs-button]',
+            tab: '[data-tabs-content]',
             active: 'ya-tabs-active'
         };
 
         self.$container = $(container);
-        self.$buttons = self.$container.find('.' + self.classes.button);
-        self.$tabs = self.$container.find('.' + self.classes.tab);
+        self.$buttons = self.$container.find(self.selectors.button);
+        self.$tabs = self.$container.find(self.selectors.tab);
 
         // установка высоты контейнера
         let maxHeight = 0;
@@ -33,10 +33,10 @@ class YaTabs {
         self._addEventListener();
 
         // класс готовности
-        self.$container.addClass(self.classes.ready);
+        self.$container.addClass(self.selectors.ready);
 
         // показ необходимого таба
-        let $currentTabButton = self.$buttons.filter('.' + self.classes.active);
+        let $currentTabButton = self.$buttons.filter(self.selectors.active);
         if($currentTabButton.length) {
             $currentTabButton.click();
         }else{
@@ -54,16 +54,16 @@ class YaTabs {
         ev.preventDefault();
         let self = this;
 
-        let $button = $(ev.target).closest('.' + self.classes.button);
+        let $button = $(ev.target).closest(self.selectors.button);
         let num = self.$buttons.index($button);
 
         // активный класс контенту
-        self.$tabs.removeClass(self.classes.active);
-        self.$tabs.eq(num).addClass(self.classes.active);
+        self.$tabs.removeClass(self.selectors.active);
+        self.$tabs.eq(num).addClass(self.selectors.active);
 
         // активный класс кнопке
-        self.$buttons.removeClass(self.classes.active);
-        $button.addClass(self.classes.active);
+        self.$buttons.removeClass(self.selectors.active);
+        $button.addClass(self.selectors.active);
 
         $('body').trigger('ya-tabs-changed');
     }

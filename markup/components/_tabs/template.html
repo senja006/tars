@@ -1,27 +1,21 @@
 <!-- Для первоначальной инициализации нужного таба необходимо: -->
-<!-- 1. Контейнеру ".ya-tabs" добавить класс "ya-tabs-ready" -->
-<!-- 2. Необходимой кнопке "ya-tabs__button" добавить класс "ya-tabs-active" -->
-<!-- 3. Необходимому табу "ya-tabs__list-li" добавить класс "ya-tabs-active" -->
+<!-- 1. Контейнеру "[data-tabs-container]" добавить класс "ya-tabs-ready" -->
+<!-- 2. Необходимой кнопке "[data-tabs-button]" добавить класс "ya-tabs-active" -->
+<!-- 3. Необходимому табу "[data-tabs-content]" добавить класс "ya-tabs-active" -->
 
-<div class="ya-tabs">
-    <div class="ya-tabs__buttons">
-        <ul class="ya-tabs__buttons-ul">
-
-        {{#each tabsButtons}}
-            <li class="ya-tabs__buttons-li">
-                <button class="ya-tabs__button">{{text}}</button>
-            </li>
-        {{/each}}
-
-        </ul>
-    </div>
-    <div class="ya-tabs__content">
-        <div class="ya-tabs__list">
-            <ul class="ya-tabs__list-ul">
-                <li class="ya-tabs__list-li">
-
-                </li>
-            </ul>
-        </div>
-    </div>
+<div data-tabs-container>
+	<ul>
+		{{#each tabs}}
+			<li>
+				<div data-tabs-button>{{name}}</div>
+			</li>
+		{{/each}}
+	</ul>
+	<ul>
+		{{#each tabs}}
+			<li data-tabs-content>
+				{{text}}
+			</li>
+		{{/each}}
+	</ul>
 </div>

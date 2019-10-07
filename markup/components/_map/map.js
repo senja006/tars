@@ -46,7 +46,7 @@ yaModules.map = (function () {
                 if (!$map.hasClass('ya-is-load-on')) {
                     $map.addClass('ya-is-load-on');
                     $('html').on('ya-map-script-is-load', function () {
-                        createMap($map, defaultOptions.coordsContainer, defaultOptions.cb);
+                        createMap(defaultOptions);
                     });
                 }
                 return;

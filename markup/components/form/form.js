@@ -2,6 +2,22 @@ yaModules.form = (function () {
 
     function addEventListeners() {
         $('select').not('.chosen-select').on('change', removeEmptyClass);
+        $('.ya-resize-select').on('change', function() {
+            resizeSelect($(this));
+        });
+    }
+
+    function resizeSelect(selects) {
+        selects.each(function() {
+            let text = $(this).find("option:selected").text();
+            let $test = $("<span>").html(text);
+
+            $test.appendTo('body');
+            let width = $test.width();
+            $test.remove();
+
+            $(this).width(width);
+        });
     }
 
     function initPlugins() {
@@ -120,6 +136,7 @@ yaModules.form = (function () {
 
     return {
         init() {
+            resizeSelect($('.ya-resize-select'));
             addEventListeners();
             initPlugins();
             $('form').on('submit', function (ev) {

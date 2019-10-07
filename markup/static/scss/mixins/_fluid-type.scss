@@ -7,7 +7,7 @@
             $default-value: nth($values, 1);
             @if length($default-value) > 1 {
                 #{$property}: nth($default-value, 1) #{$important};
-            }@else{
+            } @else {
                 #{$property}: $default-value #{$important};
             }
 
@@ -27,7 +27,7 @@
                     @include breakpoint($breakpoint-fliud-type) {
                         #{$property}: $min-value #{$important};
                     }
-                }@else{
+                } @else {
                     $max-value: nth($values, $i+1);
                     @if length($max-value) > 1 {
                         $max-value: nth($max-value, 1);
@@ -43,6 +43,44 @@
                         #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})) #{$important};
                     }
                 }
+            }
+        }
+    }
+}
+
+@mixin fluid-type-steps($properties, $breakpoints-fluid-type, $values, $num-steps, $important: '') {
+    $breakpoint-width: round((nth($breakpoints-fluid-type, 2) - nth($breakpoints-fluid-type, 1)) / $num-steps);
+    $default-value: nth($values, 1);
+    $value-width: 0;
+
+    @if length($default-value) > 1 {
+        $value-width: round((nth($values, 2) - nth($default-value, 2)) / $num-steps);
+    } @else {
+        $value-width: round((nth($values, 2) - nth($values, 1)) / $num-steps);
+    }
+
+    @each $property in $properties {
+        $default-value: nth($values, 1);
+        @if length($default-value) > 1 {
+            #{$property}: nth($default-value, 1) #{$important};
+        } @else {
+            #{$property}: $default-value #{$important};
+        }
+
+        @for $i from 1 through $num-steps {
+            $current-breakpoint: nth($breakpoints-fluid-type, 1) + $breakpoint-width * $i;
+            $current-value: nth($values, 1) + $value-width * $i;
+
+            @if $current-breakpoint > nth($breakpoints-fluid-type, 2) {
+                $current-breakpoint: nth($breakpoints-fluid-type, 2);
+            }
+
+            @if $current-value > nth($values, 2) {
+                $current-value: nth($values, 2);
+            }
+
+            @include breakpoint($current-breakpoint) {
+                #{$property}: #{$current-value};
             }
         }
     }

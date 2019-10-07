@@ -35,6 +35,17 @@
     @include fluid-type(margin-right, nth($breakpoints, 1) nth($breakpoints, 2), 0 - nth($gutters, 1) / 2 0 - nth($gutters, 2) / 2, '!important');
 }
 
+@mixin fluid-gutter-steps($breakpoints, $gutters, $num-steps, $selector-cols: '*', $sizing-content-box: 'false') {
+
+    & > #{$selector-cols} {
+        @include fluid-type-steps(padding-left, nth($breakpoints, 1) nth($breakpoints, 2), nth($gutters, 1) / 2 nth($gutters, 2) / 2, $num-steps);
+        @include fluid-type-steps(padding-right, nth($breakpoints, 1) nth($breakpoints, 2), nth($gutters, 1) / 2 nth($gutters, 2) / 2, $num-steps);
+    }
+
+    @include fluid-type-steps(margin-left, nth($breakpoints, 1) nth($breakpoints, 2), 0 - nth($gutters, 1) / 2 0 - nth($gutters, 2) / 2, $num-steps);
+    @include fluid-type-steps(margin-right, nth($breakpoints, 1) nth($breakpoints, 2), 0 - nth($gutters, 1) / 2 0 - nth($gutters, 2) / 2, $num-steps);
+}
+
 // set columns width
 @mixin cols($sizes, $gutter: 0, $selector-cols: '*', $sizing-content-box: 'false') {
     display: flex;
